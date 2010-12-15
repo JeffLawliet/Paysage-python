@@ -87,7 +87,7 @@ def dessineEtage(hauteurMaison, largeurMaison, couleur, nbrEtages,x,y):
 from random import *
 #module dessineFenetre, change la couleur du trait, dessine les fenêtres.
 def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, largeurFenetre, couleur,x,y):
-    intervalle = ((2*largeurMaison)//3)//(nbrFenetresEtages+1)
+    intervalle = (largeurMaison - (largeurFenetre*nbrFenetresEtages))/(nbrFenetresEtages + 1 )
     if nbrFenetresEtages > 1:
         
         for i in range(1,nbrEtages):
@@ -96,7 +96,7 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, l
             for j in range(0, nbrFenetresEtages):
                 aller(xcor() + intervalle,ycor(),0)
                 dessineCarre(largeurFenetre,xcor(),ycor(),couleur)
-                aller(xcor()+ intervalle,ycor(),0)
+                aller(xcor()+ largeurFenetre,ycor(),0)
     elif nbrFenetresEtages == 1:
         if nbrEtages == 1:
             aller(x+(largeurMaison/6),y+(3*hauteurMaison/4),0)
@@ -119,9 +119,10 @@ def dessineBatiment(hauteurMaison, largeurMaison,toit,x,y,couleur):
     aller(x,y,0)
 hauteur = window_height()
 largeur = window_width()
-bgcolor('#06011d')
-for i in range(0,5):
-    
-    x = randint(int(-largeur/2),int(largeur/2))
-    y = randint(int(-hauteur/2),int(hauteur/2))
-    dessineEtoile(1,x,y,0)
+
+
+reset()
+
+dessineBatiment(300,130,1,0,0,'black')
+dessineEtage(300,130,'blue',4,0,0)
+dessineFenetre(4,4,300,130,130/12,'red',0,0)
