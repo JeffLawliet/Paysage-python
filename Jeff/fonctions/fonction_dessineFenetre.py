@@ -1,5 +1,6 @@
 #fonction dessineFenetre, dessine des fenêtres tous les étages, en les remplissant.
-def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, largeurFenetre, couleur, x, y):
+def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, couleur, x, y):
+    largeurFenetre = largeurMaison / (3*nbrFenetresEtages)
     intervalle = ((2*largeurMaison)//3)//(nbrFenetresEtages+1) #largeur innocupée par les fenêtres
     if nbrFenetresEtages > 1:
         

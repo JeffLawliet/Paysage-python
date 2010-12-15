@@ -1,10 +1,13 @@
-def lireEntierClavier(phrase):
+def lireEntierClavier(phrase,condition):
     valeur = None
-    while valeur == None:
-        try:
-            valeur = int(input("Entrez un nombre : "))
-        except ValueError:
-            pass
+    if condition == '+':
+        valeur = -1
+
+        while valeur == -1:
+            try:
+                valeur = int(input("Entrez un nombre : "))
+            except ValueError:
+                valeur = -1
         
     return valeur
         

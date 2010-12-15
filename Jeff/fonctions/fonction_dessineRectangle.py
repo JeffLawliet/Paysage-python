@@ -2,7 +2,7 @@
 #crée un rectangle qu'elle remplit
 #peut dessiner un batîment, une porte...
 
-def dessineRectangle(x,y,largeur=50,hauteur=80,couleur='#035b98'):
+def dessineRectangle(x,y,largeur,hauteur,couleur):
     aller(x,y,0)
     begin_fill()
     color(couleur)
