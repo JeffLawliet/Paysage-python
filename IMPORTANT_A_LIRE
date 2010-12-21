@@ -43,4 +43,6 @@ Jeff 21 déc / 11h45 : j'vais voir tout ça et donc fanny
 			car par exemple, j'ai déjà créé une fonction lune ainsi
 			qu'une fonction dessineEtoile, regardez un peu dans le dossier des
 			autres. Sinon pour le lampadaire c'est super faudra juste le faire moins grand il 
-			prend un peu trop de place
+			prend un peu trop de place. Aussi, au lieu d'utiliser la fonction "goto" utiliser
+			ma fonction "aller" qui prend en paramètre : la coordonnée x, en y, et l'angle où
+			doit se tourner le pointeur (O = est, 90 = nord, 180 = ouest, 270 = sud)
