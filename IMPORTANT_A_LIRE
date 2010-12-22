@@ -54,3 +54,9 @@ Camille (21dec/22h): oki dsl Jeff mais pour le lampadaire j'ai juste mis ce que 
 			par contre est-ce que tu peux m'expliquer comment on fait pour genre utiliser des
 			fonctions qu'on n'a pas prédéfinis avant ou plutot qui sont prédéfinies ailleurs
 			comme celles que t'as faites? est-ce qu'il faut obligatoirement toutes les recopier?
+======================
+
+Jeff 22 déc, 15h30 : bah le truc le plus simple c'est de faire un copier coller de mes fonctions dans ton dossier
+			au moins pas de probleme puis tu fais un "from [fichier] import *"
+			sinon pour importer des fonctions qui sont pas dans le même dossier, c'est pas vraiment conseillé
+			mais tu peux tjrs chercher sur internet. 
