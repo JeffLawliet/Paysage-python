@@ -5,7 +5,6 @@ from turtle import *
 up()
 goto(-40,-350)
 down()
-bgcolor('#183152')
 
 #création du bas du lampadaire
 width(20)
@@ -185,55 +184,6 @@ goto(5,340)
 goto(-6,340)
 end_fill()
 
-
-# création de la lune
-
-up()
-goto(-300,250)
-down()
-color('white')
-begin_fill()
-circle(100)
-end_fill()
-up()
-goto(-250,250)
-down()
-color('#183152')
-begin_fill()
-circle(90)
-end_fill()
-
-# création des étoiles
-
-
-def etoile(x,y):
-    up()
-    goto(x,y)
-    down()
-    color('#CCC6AD')
-    width(1)
-    goto(x+10,y+10)
-    up()
-    goto(x+5,y+10)
-    down()
-    goto(x+5,y)
-    up()
-    goto(x,y+10)
-    down()
-    goto(x+10,y)
-    up()
-    goto(x+10,y+5)
-    down()
-    goto(x,y+5)
-
-etoile(170,300)
-etoile(-200,250)
-etoile(300,300)
-etoile(-100,200)
-etoile(150,200)
-etoile(250,350)
-etoile(270,110)
-etoile(-150,330)
 
 
 
