@@ -51,18 +51,7 @@ right(40)
 down()
 circle(100,80)
 
-up()
-color('black')
-goto(0,0)
-down()
-goto(210,0)
-goto(260,50)
-goto(207,50)
-goto(147,225)
-goto(132,225)
-goto(79,50)
-goto(60,50)
-goto(0,0)
+
 
 
 
