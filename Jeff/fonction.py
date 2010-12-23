@@ -292,9 +292,7 @@ def lireEntierClavier(phrase, inferieur, superieur):
 
 
 def dessineLampadaire():
-        # lampadaire 2 fois plus petit
 
-    #def dessineLampadaire():
     print("Où voulez-vous dessinez votre lampadaire ?")
     print("Entrez les coordonnées du point bas-gauche du lampadaire : ")
     xLampadaire = lireEntierClavier("Le x du lampadaire : ",-window_width()/2,window_width()/2)
@@ -326,8 +324,13 @@ def dessineLampadaire():
     width(2)
     circle(10)
     end_fill()
-    aller(xcor()-10, ycor()+6)
+    aller(xcor()-10,ycor()+6)
     begin_fill()
-    
-
+    goto(xcor()+10, ycor()+66)
+    goto(xcor()+10, ycor()-66)
+    end_fill()
+    dessineTrait(xcor()-14, ycor()+70, 8, 0, couleurLampadaire, 4)
+    dessineTrait(xcor()-4, ycor()-4, 62, 90, couleurLampadaire, 7)
+    dessineTrait(xcor()-4, ycor()-3, 8, 0, couleurLampadaire, 5)
+                 
 dessineLampadaire()
