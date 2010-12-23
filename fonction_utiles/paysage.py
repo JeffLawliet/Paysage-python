@@ -126,3 +126,4 @@ reset()
 dessineBatiment(300,130,1,0,0,'black')
 dessineEtage(300,130,'blue',4,0,0)
 dessineFenetre(4,4,300,130,130/12,'red',0,0)
+
