@@ -2,6 +2,7 @@ from turtle import *
 from math import *
 from random import *
 reset()
+speed(0)
 # fonction aller : se déplace en x,y et s'oriente vers angle
 def aller(x,y,angle=0):
     up()
@@ -290,6 +291,11 @@ def lireEntierClavier(phrase, inferieur, superieur):
                 valeur = inferieur - 1
     return valeur
 
+def traitDeplacement(xDepart, yDepart, xArrivee, yArrivee, couleur='black', epaisseur=1):
+    aller(xDepart,yDepart)
+    width(epaisseur)
+    color(couleur)
+    goto(xArrivee,yArrivee)
 
 def dessineLampadaire():
 
@@ -311,10 +317,9 @@ def dessineLampadaire():
     dessineTrait(xcor()-20, ycor()+5, 20, 0, couleurLampadaire, 10)
     dessineTrait(xcor()-20, ycor()+5, 20, 0, couleurLampadaire, 10)
     dessineTrait(xcor()-20, ycor()+5, 20, 0, couleurLampadaire, 9)
-    width(8)
     begin_fill()
-    goto(xcor()-10, ycor()+90)
-    goto(xcor()-10, ycor()-85)
+    traitDeplacement(xcor(),ycor(),xcor()-10,ycor()+90, couleurLampadaire, 8)
+    traitDeplacement(xcor(),ycor(),xcor()-10,ycor()-85, couleurLampadaire, 8)
     end_fill()
     dessineTrait(xcor()+6, ycor()+90, 8, 0, couleurLampadaire, 5)
     dessineTrait(xcor()-6, ycor()+4, 4, 0, couleurLampadaire, 4)
@@ -326,11 +331,49 @@ def dessineLampadaire():
     end_fill()
     aller(xcor()-10,ycor()+6)
     begin_fill()
-    goto(xcor()+10, ycor()+66)
-    goto(xcor()+10, ycor()-66)
+    traitDeplacement(xcor(), ycor(), xcor()+10, ycor()+66, couleurLampadaire, 2)
+    traitDeplacement(xcor(), ycor(), xcor()+10, ycor()-66, couleurLampadaire, 2)
     end_fill()
     dessineTrait(xcor()-14, ycor()+70, 8, 0, couleurLampadaire, 4)
     dessineTrait(xcor()-4, ycor()-4, 62, 90, couleurLampadaire, 7)
     dessineTrait(xcor()-4, ycor()-3, 8, 0, couleurLampadaire, 5)
-                 
-dessineLampadaire()
+
+    #création du haut
+    aller(xcor()-4, ycor()+5)
+    begin_fill()
+    traitDeplacement(xcor(), ycor(), xcor()-5, ycor() +5, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()-5, ycor() +15, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()+5, ycor() +10, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()+10, ycor(), couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()+5, ycor() -10, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()-5, ycor() -15, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor() -5, ycor() -5, couleurLampadaire,3)
+    end_fill()
+    dessineTrait(xcor(), ycor()+30, 10, 90, couleurLampadaire, 11)
+    dessineTrait(xcor()-7, ycor()+10, 14, 0, couleurLampadaire, 7)
+    traitDeplacement(xcor(), ycor(), xcor()-7, ycor()-10, couleurLampadaire, 7)
+    dessineTrait(xcor(), ycor(), 35, 90, couleurLampadaire, 11)
+    aller(xcor()-5, ycor()-5)
+    begin_fill()
+    traitDeplacement(xcor(), ycor(), xcor()-18, ycor()+ 50, '#FFF168', 3)
+    traitDeplacement(xcor(), ycor(), xcor()+46, ycor(), '#FFF168', 3)
+    traitDeplacement(xcor(), ycor(), xcor() -18, ycor() -50, '#FFF168', 3)
+    end_fill()
+    traitDeplacement(xcor()-9, ycor(), xcor()-27, ycor()+50, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()-2, ycor()-5, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()+2, ycor()+5, couleurLampadaire, 3)
+    dessineTrait(xcor(), ycor(), 46, 0, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()+2, ycor()-5, couleurLampadaire,3)
+    traitDeplacement(xcor(), ycor(), xcor()-2, ycor()+5, couleurLampadaire,3)
+    traitDeplacement(xcor(), ycor(), xcor()-18, ycor()-50, couleurLampadaire, 3)
+    dessineTrait(xcor(), ycor(), 5, 180, couleurLampadaire, 3)
+    dessineTrait(xcor(), ycor(), 50, 90, couleurLampadaire, 3)
+    aller(xcor()-5, ycor()-50)
+    traitDeplacement(xcor(), ycor(), xcor()+5, ycor()+15, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()+5, ycor()-15, couleurLampadaire, 3)
+    dessineTrait(xcor()-25, ycor()+52, 40, 0, couleurLampadaire, 7)
+    aller(xcor()-9, ycor()-1, 50)
+    begin_fill()
+    width(5)
+    circle(15,240)
+    end_fill()
