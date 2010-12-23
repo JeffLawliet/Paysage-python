@@ -45,3 +45,6 @@ def dessineRoue(x,y,diam):
 dessineRoue(-80,0,30)
 dessineRoue(80,0,30)
 
+# création de la carrosserie
+
+
