@@ -35,6 +35,7 @@ def dessineCarre(x,y,cote=50,couleur='black',epaisseur=1):
 #crée un demi cercle, d'épaisseur choisie, qu'elle remplit
 def dessineDemiCercle(x,y,rayon,couleur='blue',orientation=0,epaisseur=1):
     width(epaisseur)
+    color(couleur)
     aller(x,y,orientation)
     begin_fill()
     circle(rayon,180)
@@ -235,6 +236,48 @@ def dessineTriangle(x,y,cote=50,couleur="black",epaisseur=1):
 #dessine un triangle aux coordonnées (40,50) de côté 30 de couleur jaune
 
 
+def dessineVoiture():
+    print("Où voulez-vous dessinez votre voiture ?")
+    print("Entrez les coordonnées du point bas-gauche de la voiture : ")
+    xVoiture = lireEntierClavier("Le x de la voiture : ",-window_width()/2,window_width()/2)
+    yVoiture = lireEntierClavier("Le y de la voiture : ",-window_height()/2,window_height()/2)
+    couleurVoiture = input("La couleur de la voiture (en hexadécimal ou en anglais) : ")
+    aller(xVoiture+5, yVoiture, 0)
+    begin_fill()
+    for i in range(0,8):
+        if i%2 == 0:
+            if i == 0 or i == 4:
+                dessineTrait(xcor(), ycor(), 190, i*45, couleurVoiture, 2)
+            elif i == 2 or i == 6:
+                dessineTrait(xcor(), ycor(), 50, i*45, couleurVoiture, 2)
+        elif i%2 == 1:
+            dessineTrait(xcor(), ycor(), sqrt(50), i*45, couleurVoiture, 2)
+    end_fill()
+    
+
+
+    
+    dessineDemiCercle(xVoiture+25,yVoiture,20,'grey',270)
+    dessineDemiCercle(xcor(),ycor(),20,'grey',90)
+    dessineDemiCercle(xVoiture+125,yVoiture,20,'grey',270)
+    dessineDemiCercle(xcor(),ycor(),20,'grey',90)
+
+    begin_fill()
+    dessineTrait(xVoiture+55, yVoiture+60, 50, 70, couleurVoiture, 2)
+    goto(xcor(),yVoiture+60)
+    ortho1 = xcor()
+    end_fill()
+    begin_fill()
+    dessineTrait(xVoiture+160, yVoiture+60, 50, 110, couleurVoiture, 2)
+    ortho2 = xcor()
+    goto(xcor(),yVoiture+60)
+    end_fill()
+    begin_fill()
+    dessineRectangle(ortho1,yVoiture +60, ortho2-ortho1, 50, couleurVoiture, 2)
+    end_fill()
+
+    
+
 
 #fonction lireEntierClavier, permet de faire en sorte d'avoir un entier compris entre deux valeurs.
 def lireEntierClavier(phrase, inferieur, superieur):
@@ -246,3 +289,6 @@ def lireEntierClavier(phrase, inferieur, superieur):
                 print("Veuillez recommencer.")
                 valeur = inferieur - 1
     return valeur
+
+
+dessineVoiture()
