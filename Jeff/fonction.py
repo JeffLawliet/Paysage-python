@@ -291,4 +291,43 @@ def lireEntierClavier(phrase, inferieur, superieur):
     return valeur
 
 
-dessineVoiture()
+def dessineLampadaire():
+        # lampadaire 2 fois plus petit
+
+    #def dessineLampadaire():
+    print("Où voulez-vous dessinez votre lampadaire ?")
+    print("Entrez les coordonnées du point bas-gauche du lampadaire : ")
+    xLampadaire = lireEntierClavier("Le x du lampadaire : ",-window_width()/2,window_width()/2)
+    yLampadaire = lireEntierClavier("Le y du lampadaire : ",-window_height()/2,window_height()/2)
+    couleurLampadaire = input("La couleur du lampadaire (en hexadécimal ou en anglais) : ")
+
+    aller(xLampadaire, yLampadaire)
+
+    #création du bas du lampadaire
+    dessineTrait(xcor(), ycor(), 40, 0, couleurLampadaire, 10)
+    dessineTrait(xcor()-35, ycor()+7, 30, 0, couleurLampadaire, 8)
+    dessineTrait(xcor()-33, ycor()+5, 36, 0, couleurLampadaire, 10)
+    dessineTrait(xcor()-28, ycor()+8, 20, 0, couleurLampadaire, 10)
+
+    #création du milieu
+    dessineTrait(xcor()-20, ycor()+5, 20, 0, couleurLampadaire, 10)
+    dessineTrait(xcor()-20, ycor()+5, 20, 0, couleurLampadaire, 10)
+    dessineTrait(xcor()-20, ycor()+5, 20, 0, couleurLampadaire, 9)
+    width(8)
+    begin_fill()
+    goto(xcor()-10, ycor()+90)
+    goto(xcor()-10, ycor()-85)
+    end_fill()
+    dessineTrait(xcor()+6, ycor()+90, 8, 0, couleurLampadaire, 5)
+    dessineTrait(xcor()-6, ycor()+4, 4, 0, couleurLampadaire, 4)
+    dessineTrait(xcor()-6, ycor()+2, 8, 0, couleurLampadaire, 5)
+    aller(xcor()-4, ycor()+2)
+    begin_fill()
+    width(2)
+    circle(10)
+    end_fill()
+    aller(xcor()-10, ycor()+6)
+    begin_fill()
+    
+
+dessineLampadaire()
