@@ -2,3 +2,33 @@ Que devons-nous creer :D ?
 
 
 
+
+Il faut créer : 
+
+	- fonction dessine route
+	- 		   Voiture
+	- 		   arbre
+	-		   Drapeau
+	-  		   mer
+	-		   bateau
+	- 		   dauphin
+	- 		   bouée
+	- 		   sable (une sorte de plage, mais que le sable)
+	- 		   phare
+	- 		   rochers
+
+
+
+ces fonctions doivent appeller d'autre fonction : dessine rectangle, carre, triangle  ou des fonctions que
+vous creerez specialement (qui font des choses basiques), chacune des fonctions que l'on doit creer doit etre
+de la forme :
+
+(exemple) : dessineVoiture()
+	        input(coordonnées)
+		input(couleur)
+		input(j'en sais rien de quoi on peut avoir besoin)
+		*dessin de la voiture*
+
+
+Je compte sur vous, dites dans le fichier "important à lire" ce que vous faites ainsi que l'avancement, on se partage les taches
+Fanny, j'te vois pas souvent committer !
