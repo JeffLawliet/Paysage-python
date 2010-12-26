@@ -20,7 +20,7 @@ if typeCreation == 1:
     elif momentDuJour == 'aube' or momentDuJour == 'Aube':
         lampadaireAllume = True
         bgcolor()
-    else momentDuJour == 'jour' or momentDuJour == 'Jour':
+    elif momentDuJour == 'jour' or momentDuJour == 'Jour':
         lampadaireAllume = False
         bgcolor('blue')
     while continuer == 1:
