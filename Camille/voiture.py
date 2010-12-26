@@ -9,20 +9,6 @@ def aller(x,y,angle=0):
     seth(angle)
 
 
-def dessineRectangle(x,y,largeur=180,hauteur=50,couleur='red',epaisseur=1):
-    aller(x,y,0)
-    width(epaisseur)
-    begin_fill()
-    color(couleur)
-    for i in range(0,4):
-        if i%2 == 0:
-            forward(largeur)
-        else:
-            forward(hauteur)
-        left(90)
-    end_fill() 
-    aller(x,y,0)
-
 # création des roues
 
 def dessineRoue(x,y,diam):
@@ -59,9 +45,10 @@ goto(-50,25)
 goto(-60,45)
 goto(-100,45)
 goto(-110,25)
-goto(-170,25)
-goto(-180,55)
-goto(-100,75)
+goto(-140,25)
+goto(-165,35)
+goto(-140,65)
+goto(-80,75)
 goto(110,75)
 goto(150,65)
 goto(170,35)
@@ -73,6 +60,7 @@ goto(70,100)
 goto(-40,100)
 goto(-80,75)
 goto(110,75)
+
 end_fill()
 color('black')
 width(3)
@@ -88,4 +76,28 @@ goto(-60,75)
 aller(15,100)
 goto(15,75)
 
-# arrangements ??
+# arrangements
+
+color('red')
+aller(-150,44)
+width(40)
+goto(-140,44)
+color('grey')
+width(10)
+aller(-175,35)
+goto(-110,35)
+aller(110,35)
+goto(175,35)
+color('white')
+width(7)
+aller(-155,55)
+goto(-145,55)
+color('orange')
+width(5)
+aller(140,57)
+goto(155,57)
+
+
+
+aller(500,500)
+
