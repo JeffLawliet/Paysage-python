@@ -27,8 +27,8 @@ def dessineRoue(x,y,diam):
 
 def dessineVoiture():
     print("Vous allez créer une voiture en fonction de la position et de la taille de la roue avant")
-    x=int(input("Ordonnée du centre de la roue:"))
-    y=int(input("Abscisse du centre de la roue:"))
+    x=int(input("Abscisse du centre de la roue:"))
+    y=int(input("Ordonnée du centre de la roue:"))
     diam=int(input("Diamètre de la roue:"))
     couleur=input("Couleur de la voiture (en anglais ou en hexadécimal):")
 

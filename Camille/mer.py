@@ -2,8 +2,9 @@
 
 from turtle import *
 
-# faire des vagues
 
+
+# faire des vagues
 
 def aller(x,y,angle=0):
     up()
@@ -11,7 +12,7 @@ def aller(x,y,angle=0):
     down()
     seth(angle)
 
-def dessineVague(x,y,hauteur,longueur):
+def dessineVague1(x,y,hauteur,longueur):
     width(3)
     color('blue')
     aller(x+longueur,y)
@@ -23,11 +24,27 @@ def dessineVague(x,y,hauteur,longueur):
         circle(hauteur/2,-180)
         left(180)
         i=i+4*hauteur
+    # quelque soit la longueur, il fait au minimum une "vague"
+    # pour plus, il faut taper au moins 4*hauteur
 
 
-dessineVague(0,70,40,20)
+def dessineVague2(x,y,hauteur):
+    color('blue')
+    width(3)
+    aller(x,y)
+    left(90)
+    circle(hauteur,180)
+    aller(x,y,90)
+    circle((3*hauteur)/4,190)
+    aller(x,y,90)
+    circle(hauteur/4,200)
+    # dessine des vagues reondes vers la gauche
 
-width(2)
-color('red')
-aller(120,70)
-goto(0,70)
+
+
+left(90)
+circle(50,100)
+circle(5,180)
+left(180)
+circle(30,-200)
+
