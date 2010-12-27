@@ -17,7 +17,7 @@ if typeCreation == 1:
     if momentDuJour == 'nuit' or momentDuJour == 'Nuit':
         lampadaireAllume = True
         bgcolor('#06011d')
-    else momentDuJour == 'jour' or momentDuJour == 'Jour':
+    elif momentDuJour == 'jour' or momentDuJour == 'Jour':
         lampadaireAllume = False
         bgcolor('blue')
     while continuer == 1:
