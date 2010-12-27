@@ -1,12 +1,11 @@
 # lampadaire 2 fois plus petit
 
 from turtle import *
-
 up()
 goto(-20,-350)
 down()
 
-#création du bas du lampadaire
+
 width(10)
 goto(20,-350)
 width(8)
@@ -66,6 +65,9 @@ begin_fill()
 width(2)
 circle(10)
 end_fill()
+
+
+
 begin_fill()
 up()
 goto(-10,-206)
@@ -73,11 +75,18 @@ down()
 goto(0,-140)
 goto(10,-206)
 end_fill()
+
+
+
+
 up()
 goto(-4,-140)
 down()
 width(4)
 goto(4,-140)
+
+
+
 up()
 goto(0,-150)
 down()
@@ -145,13 +154,11 @@ begin_fill()
 goto(0,-5)
 goto(5,-20)
 end_fill()
-
 up()
 goto(-20,32)
 down()
 width(7)
 goto(20,32)
-
 up()
 goto(11,31)
 left(50)
@@ -160,6 +167,9 @@ begin_fill()
 width(5)
 circle(15,240)
 end_fill()
+
+
+
 
 up()
 goto(-23,32)

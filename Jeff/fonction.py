@@ -32,6 +32,23 @@ def dessineCarre(x,y,cote=50,couleur='black',epaisseur=1):
 #dessine un carré aux coordonnées (30,40) de côté 15 de couleur rouge d'épaisseur 2
 
 
+def dessineRoue(x,y):
+    aller(x,y)
+    color('black')
+    begin_fill()
+    circle(20,360)
+    end_fill()
+    aller(x,y+(20/3))
+    color('white')
+    begin_fill()
+    circle((2*20)/3,360)
+    end_fill()
+    aller(x,y+(3*20/4))
+    color('#B09F91')
+    begin_fill()
+    circle(20/4,360)
+    end_fill()
+
 #Fonction dessineDemiCercle, se déplace au coordonnées indiquées, s'oriente et
 #crée un demi cercle, d'épaisseur choisie, qu'elle remplit
 def dessineDemiCercle(x,y,rayon,couleur='blue',orientation=0,epaisseur=1):
@@ -258,10 +275,8 @@ def dessineVoiture():
 
 
     
-    dessineDemiCercle(xVoiture+25,yVoiture,20,'grey',270)
-    dessineDemiCercle(xcor(),ycor(),20,'grey',90)
-    dessineDemiCercle(xVoiture+125,yVoiture,20,'grey',270)
-    dessineDemiCercle(xcor(),ycor(),20,'grey',90)
+    dessineRoue(xVoiture+35,yVoiture-10)
+    dessineRoue(xVoiture+165,yVoiture-10)
 
     begin_fill()
     dessineTrait(xVoiture+55, yVoiture+60, 50, 70, couleurVoiture, 2)
@@ -377,3 +392,6 @@ def dessineLampadaire():
     width(5)
     circle(15,240)
     end_fill()
+
+
+dessineVoiture()

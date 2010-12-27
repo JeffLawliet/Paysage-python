@@ -107,3 +107,10 @@ grosse parce que y a un peu d'aléatoire donc il faut faire en fonction de chaqu
 		   Je viens de faire une bouée (totalement basique) donc si vous voulez/avez des idées pour l'améliorer, dites moi =) !
 		   Ah et Jeff j'ai modifié ton programme construction, à la ligne 23 tu avais écrit "else" au lieu de "elif" =) !
 		   Je teste le dauphin mais je promets rien (il est juste 00hO8 en fait xD)...
+
+
+Jeff : 29déc, 11h, on garde la voiture de camille que je vais recoder.
+		   la bouée est trop grosse, divise la taille par deux
+		   on garde l'idée des  fenetres  et de la pognée de portede fanny
+		   l'aléatoire n'est pas utile, 
+		   le phare on gaede aussi.
