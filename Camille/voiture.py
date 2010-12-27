@@ -1,7 +1,7 @@
 # voiture :)
 
 from turtle import *
-
+speed(0)
 def aller(x,y,angle=0):
     up()
     goto(x,y)
@@ -27,9 +27,10 @@ def dessineRoue(x,y,diam):
     begin_fill()
     circle(diam/4,360)
     end_fill()
-
 dessineRoue(-80,0,30)
 dessineRoue(80,0,30)
+
+
 
 # création de la carrosserie
 
@@ -39,14 +40,17 @@ aller(170,35)
 goto(160,25)
 goto(110,25)
 goto(100,45)
+
 goto(60,45)
 goto(50,25)
+
 goto(-50,25)
 goto(-60,45)
 goto(-100,45)
 goto(-110,25)
 goto(-140,25)
 goto(-165,35)
+
 goto(-140,65)
 goto(-80,75)
 goto(110,75)
@@ -62,6 +66,7 @@ goto(-80,75)
 goto(110,75)
 
 end_fill()
+
 color('black')
 width(3)
 aller(110,75)
@@ -96,7 +101,6 @@ color('orange')
 width(5)
 aller(140,57)
 goto(155,57)
-
 
 
 aller(500,500)

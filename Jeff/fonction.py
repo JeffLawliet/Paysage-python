@@ -3,6 +3,12 @@ from math import *
 from random import *
 reset()
 speed(0)
+
+LARGEUR_MAX = window_width()//2
+LARGEUR_MIN = -window_width()//2
+HAUTEUR_MAX = window_height()//2
+HAUTEUR_MIN = -window_height()//2
+
 # fonction aller : se déplace en x,y et s'oriente vers angle
 def aller(x,y,angle=0):
     up()
@@ -66,10 +72,11 @@ def dessineDemiCercle(x,y,rayon,couleur='blue',orientation=0,epaisseur=1):
     
 #fonction dessineEtoile superpose un "+" et une "x" aux coordonnées indiquées
 #le tout de couleur blanche
-def dessineEtoile(taille):
-
-    x = randint(-window_width()//2,window_width()//2)
-    y = randint(-window_height()//2,window_height()//2)
+def dessineEtoile():
+    
+    taille = lireEntierClavier("Quelle taille pour votre étoile : ", 1, 5)
+    x = randint(LARGEUR_MIN,LARGEUR_MAX)
+    y = randint(HAUTEUR_MIN,HAUTEUR_MAX)
     color('black')
     
     aller(x,y-taille,90)
@@ -120,16 +127,19 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, x
 
 #fonction dessineLune, dessine une lune aux coordonnées choisie
 #de diamètre choisie et la remplie
-def dessineLune(diametre,x,y):
-    
-    aller(x,y,0)
+def dessineLune():
+
+    xLune = lireEntierClavier("Entrez le x du centre gauche de la lune : ", LARGEUR_MIN, LARGEUR_MAX)
+    yLune = lireEntierClavier("Entrez le y du centre gauche de la lune : ", HAUTEUR_MIN, HAUTEUR_MAX)
+    diametre = lireEntierClavier("Entrez le diamètre de la lune (entre 50 et 200) : ",50, 200) 
+    aller(xLune,yLune,0)
     
     begin_fill()
     color('#fffaa2')
     circle(diametre/2)
     end_fill()
     
-    aller((27*diametre/50)+x,(27*diametre/50)+y,90)
+    aller((27*diametre/50)+xLune,(27*diametre/50)+yLune,90)
     
     begin_fill()
     color('#06011d')
@@ -147,8 +157,8 @@ def dessineLune(diametre,x,y):
 def dessineMaison():
     print("Où voulez-vous dessinez votre maison ?")
     print("Entrez les coordonnées du point bas-gauche de la maison : ")
-    xMaison = lireEntierClavier("Le x de la maison : ",-window_width()/2,window_width()/2)
-    yMaison = lireEntierClavier("Le y de la maison : ",-window_height()/2,window_height()/2)
+    xMaison = lireEntierClavier("Le x de la maison : ",LARGEUR_MIN,LARGEUR_MAX)
+    yMaison = lireEntierClavier("Le y de la maison : ",HAUTEUR_MIN,HAUTEUR_MAX)
     hauteurMaison = lireEntierClavier("Entrez la hauteur de la maison : ",1, window_height())
     largeurMaison = lireEntierClavier("Entrez la largeur de la maison : ",1, window_width())
     couleurMaison = input("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
@@ -257,8 +267,8 @@ def dessineTriangle(x,y,cote=50,couleur="black",epaisseur=1):
 def dessineVoiture():
     print("Où voulez-vous dessinez votre voiture ?")
     print("Entrez les coordonnées du point bas-gauche de la voiture : ")
-    xVoiture = lireEntierClavier("Le x de la voiture : ",-window_width()/2,window_width()/2)
-    yVoiture = lireEntierClavier("Le y de la voiture : ",-window_height()/2,window_height()/2)
+    xVoiture = lireEntierClavier("Le x de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
+    yVoiture = lireEntierClavier("Le y de la voiture : ",HAUTEUR_MIN,HAUTEUR_MAX)
     couleurVoiture = input("La couleur de la voiture (en hexadécimal ou en anglais) : ")
     aller(xVoiture+5, yVoiture, 0)
     begin_fill()
@@ -316,8 +326,8 @@ def dessineLampadaire():
 
     print("Où voulez-vous dessinez votre lampadaire ?")
     print("Entrez les coordonnées du point bas-gauche du lampadaire : ")
-    xLampadaire = lireEntierClavier("Le x du lampadaire : ",-window_width()/2,window_width()/2)
-    yLampadaire = lireEntierClavier("Le y du lampadaire : ",-window_height()/2,window_height()/2)
+    xLampadaire = lireEntierClavier("Le x du lampadaire : ",LARGEUR_MIN,LARGEUR_MAX)
+    yLampadaire = lireEntierClavier("Le y du lampadaire : ",HAUTEUR_MIN,HAUTEUR_MAX)
     couleurLampadaire = input("La couleur du lampadaire (en hexadécimal ou en anglais) : ")
 
     aller(xLampadaire, yLampadaire)
@@ -393,5 +403,57 @@ def dessineLampadaire():
     circle(15,240)
     end_fill()
 
+def dessineVoiture():
+
+    xVoiture = lireEntierClavier("Entrez le x du point bas droit de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
+    yVoiture = lireEntierClavier("Entrez le y du point bas droit de la voiture : ", HAUTEUR_MIN, HAUTEUR_MAX)
+    couleurVoiture = input("La couleur de la voiture (en hexadécimal ou en anglais) : ")
+
+    dessineRoue(xVoiture-248, yVoiture-25)
+    dessineRoue(xVoiture-88, yVoiture-25)
+    begin_fill()
+    traitDeplacement(xVoiture, yVoiture, xVoiture-10, yVoiture -10, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 50, 180, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()-10, ycor()+20, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 40, 180, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()-10, ycor()-20, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 100, 180, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor() -10, ycor() + 20, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 40, 180, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()-10, ycor() -20, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 30, 180, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()-25, ycor() +10, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()+25, ycor() + 30, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor() +60, ycor()+10, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 190, 0, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()+40, ycor() -10, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()+20, ycor()-30, couleurVoiture)
+    end_fill()
+
+    begin_fill()
+    traitDeplacement(xcor()-60, ycor()+40, xcor()-100, ycor()+65, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 110, 180, couleurVoiture)
+    traitDeplacement(xcor(), ycor(), xcor()-40, ycor()-25, couleurVoiture)
+    dessineTrait(xcor(), ycor(), 190, 0, couleurVoiture)
+    end_fill()
+
+    traitDeplacement(xcor(), ycor(), xcor()-40, ycor()+25, 'black', 3)
+    dessineTrait(xcor(), ycor(), 110, 180, 'black', 3)
+    traitDeplacement(xcor(), ycor(), xcor()-40, ycor()-25, 'black', 3)
+    dessineTrait(xcor(), ycor(), 190, 0, 'black', 3)
+    traitDeplacement(xcor()-40, ycor()+25, xcor()-20, ycor(), 'black', 3)
+    traitDeplacement(xcor()-130, ycor() +25, xcor()-150, ycor() , 'black', 3)
+    traitDeplacement(xcor() +75, ycor() +25, xcor() +75, ycor() , 'black', 3)
+    
+
+    dessineTrait 
+    
+
+
 
 dessineVoiture()
+    
+    
+    
+
+
