@@ -1,7 +1,7 @@
 from turtle import *
 from math import *
 from random import *
-
+reset()
 speed(0)
 
 LARGEUR_MAX = window_width()//2
@@ -166,7 +166,7 @@ def dessineMaison():
     dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison, epaisseurMaison)
 
     toit = input("Voulez-vous un toit (Oui/Non) : ")
-    while toit != ('Non' and 'non' and 'Oui' and 'oui'):
+    while toit != 'Non' and toit != 'non' and  toit != 'Oui' and toit != 'oui':
         print("Veuillez recommencer.")
         toit = input("Voulez-vous un toit (Oui/Non) : ")
     if toit == 'Oui' or toit == 'oui':
@@ -461,9 +461,9 @@ def dessineArbre():
     hautArbre = lireEntierClavier("Entrez la hauteur de l'arbre (10-300) : ",10, 300)
 
     dessineRectangle(xArbre, yArbre, largArbre, 2*hautArbre/3, '#3D0000')
-    aller(xArbre+(largArbre/2),0)
-
-
-
-
+    aller(xArbre+(largArbre/2), yArbre, 0)
     
+dessineArbre()
+
+
+
