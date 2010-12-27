@@ -1,7 +1,7 @@
 # lampadaire
 
 from turtle import *
-
+speed(0)
 up()
 goto(-40,-350)
 down()
