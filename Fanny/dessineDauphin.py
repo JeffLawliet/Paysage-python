@@ -59,8 +59,15 @@ def dessineDauphin(x,y):
     circle(400,8)
     end_fill()
     
-
+    #Dessine un oeil
+    up()
+    color("black")
+    goto(-136,4.5)
+    down()
+    circle(4)
+    goto(-137,3)
+    color("white")
+    circle(0.5)
     up()
     goto(400,400)
-
 dessineDauphin(0,0)
