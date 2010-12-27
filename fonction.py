@@ -456,14 +456,26 @@ def dessineVoiture():
 def dessineArbre():
     xArbre = lireEntierClavier("Entrez le x du point bas-gauche de l'arbre : ", LARGEUR_MIN, LARGEUR_MAX)
     yArbre = lireEntierClavier("Entrez le y du point bas-gauche de l'arbre : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    couleurFeuilles = input("De quelle couleur est le feuillage (en hexadécimal ou en anglais) : ")
     largArbre = lireEntierClavier("Entrez la largeur de l'arbre (10-50) : ", 10, 50)
-    hautArbre = lireEntierClavier("Entrez la hauteur de l'arbre (10-300) : ",10, 300)
+    hautArbre = lireEntierClavier("Entrez la hauteur de l'arbre (100-400) : ",100, 400)
 
-    dessineRectangle(xArbre, yArbre, largArbre, 2*hautArbre/3, '#3D0000')
-    aller(xArbre+(largArbre/2), yArbre, 0)
+    dessineRectangle(xArbre, yArbre, largArbre, hautArbre, '#3D0000')
+
+    begin_fill()
+    diagonale = sqrt(((5*largArbre)**2) + (((5*hautArbre)/6)**2))
+    traitDeplacement(xArbre + largArbre/2, yArbre + hautArbre + 40, xArbre -11*largArbre/2, yArbre + hautArbre/6, '#0B8426')
+    dessineTrait(xcor(), ycor(), 11*largArbre, 0, '#0B8426')
+    traitDeplacement(xcor(), ycor(), xArbre + (largArbre/2), yArbre + hautArbre + 40, '#0B8426')
+    end_fill()
     
-dessineArbre()
+def dessineBateau():
+    xBateau = lireEntierClavier("Entrez le x du point bas-gauche du bateau : ", LARGEUR_MIN, LARGEUR_MAX)
+    yBateau = lireEntierClavier("Entrez le y du point bas-gauche du bateau : ", HAUTEUR_MIN, HAUTEUR_MAX)
+    largBateau = lireEntierClavier("Entrez la largeur du bateau (100-400) : ", 100 , 400)
+    hautBateau = lireEntierClavier("Entrez la hauteur du bateau (80-200) : ", 80, 200)
 
-
-
+def dessineSoleil():
+    xSoleil = lireEntierClavier("Entrez le x du point milieu-gauche du soleil : ", LARGEUR_MIN, LARGEUR_MAX)
+    ySoleil = lireEntierClavier("Entrez le y du point milieu-gauche du soleil : ", HAUTEUR_MIN, HAUTEUR_MAX)
+    
+    
