@@ -63,13 +63,24 @@ def dessineVague4(x,y,hauteur,longueur):
         circle(2*hauteur,-100)
         left(100)
         i=i+4*hauteur
-    #dessine des vagues vers la gauche
+    #dessine des vagues vers la gauche à partir de (x,y)
     # penser à multiplier la taille par 2 pour avoir celle que l'on veut
     # et longueur min 4* la hauteur qu'on indique
 
 
+def dessineVague5(x,y,hauteur,longueur):
+    aller(x,y)
+    width(3)
+    color('blue')
+    i=0
+    while i<=longueur:
+        left(50)
+        circle(3*hauteur,-80)
+        circle(hauteur,-180)
+        circle(2*hauteur,90)
+        left(122)
+        i=i+6*hauteur
+    # dessine des vagues façon aile de requin vers la gauche
+    # penser à multiplier la longueur des vagues
+    # attention à partir d'un certain nombre, les vagues "tombent"
 
-circle(60,-170)
-circle(120,50)
-left(180)
-circle(70,-130)
