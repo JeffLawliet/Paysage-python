@@ -38,13 +38,33 @@ def dessineVague2(x,y,hauteur):
     circle((3*hauteur)/4,190)
     aller(x,y,90)
     circle(hauteur/4,200)
-    # dessine des vagues reondes vers la gauche
+    # dessine des vagues rondes vers la gauche
 
 
+def dessineVague3(x,y,hauteur):
+    color('blue')
+    width(3)
+    aller(x,y)
+    left(90)
+    circle(hauteur,100)
+    circle(hauteur/10,160)
+    left(180)
+    circle((3*hauteur/5),-100)
+    #dessine la forme d'une vague de tempéte vers la gauche
 
-left(90)
-circle(50,100)
-circle(5,180)
-left(180)
-circle(30,-200)
+
+def dessineVague4(x,y,hauteur,longueur):
+    color('blue')
+    width(3)
+    aller(x,y)
+    left(50)
+    i=0
+    while i<=longueur:
+        circle(2*hauteur,-100)
+        left(100)
+        i=i+4*hauteur
+    #dessine des vagues vers la gauche
+    # penser à multiplier la taille par 2 pour avoir celle que l'on veut
+    # et longueur min 4* la hauteur qu'on indique
+
 
