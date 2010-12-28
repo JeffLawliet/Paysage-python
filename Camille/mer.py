@@ -68,3 +68,8 @@ def dessineVague4(x,y,hauteur,longueur):
     # et longueur min 4* la hauteur qu'on indique
 
 
+
+circle(60,-170)
+circle(120,50)
+left(180)
+circle(70,-130)
