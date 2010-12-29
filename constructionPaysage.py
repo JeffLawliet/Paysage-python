@@ -1,6 +1,8 @@
 from turtle import *
 from fonction import *
 
+screensize(1024, 768)
+
 continuer = 1
 print("Bienvenue dans le constructeur de paysage.")
 print("Ce logiciel a été crée par VENANT Fanny, REDOLFI Camille et FILIPPI Jeff.")
@@ -13,21 +15,15 @@ typeCreation = lireEntierClavier("Choisis le numéro correspond à ton choix : "
 if typeCreation == 1:
 
     print("Vous êtes dans le mode de création manuel, libre. Vous pouvez faire tout ce que vous voulez.")
-    momentDuJour = input("C'est la nuit ou le jour ? : ")
-    if momentDuJour == 'nuit' or momentDuJour == 'Nuit':
-        lampadaireAllume = True
-        bgcolor('#06011d')
-    elif momentDuJour == 'jour' or momentDuJour == 'Jour':
-        lampadaireAllume = False
-        bgcolor('blue')
+    couleurBackground = lireCouleurClavier("Entrez la couleur de fond de votre paysage (en hexadécimal ou en anglais) : ",1)
+    bgcolor(couleurBackground)
     while continuer == 1:
             
         print("Quelle catégorie d'éléments ?")
         print(" 0. Retour au menu")
         print(" 1. Catégorie Ville")
         print(" 2. Catégorie Mer")
-        print(" 3. Catégorie Campagne")
-        print(" 4. Catégorie Ciel")
+        print(" 3. Catégorie Ciel")
         choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",1,4)
         
         while choixCategorie == 1:
@@ -37,16 +33,14 @@ if typeCreation == 1:
             print("2. Maison")
             print("3. Voiture")
             print("4. Arbre")
-            print("5. Drapeau")
-            print("6. Lampadaire")
+            print("5. Lampadaire")
             choix = lireEntierClavier("Choisis le numéro correspondant à ton choix :", 0, 6)
             if choix == 0: choixCategorie = 0
             elif choix == 1: dessineRoute()
             elif choix == 2: dessineMaison()
             elif choix == 3: dessineVoiture()
             elif choix == 4: dessineArbre()
-            elif choix == 5: dessineDrapeau()
-            elif choix == 6: dessineLampadaire()
+            elif choix == 5: dessineLampadaire()
             continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
         while choixCategorie == 2:
             print("Quel élément ?")
@@ -69,8 +63,6 @@ if typeCreation == 1:
             elif choix == 7: dessineRochers()
             continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
         while choixCategorie == 3:
-            pass
-        while choixCategorie == 4:
             print("Quel élément ?")
             print("0. Retour aux catégories")
             print("1. Étoiles")
