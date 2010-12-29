@@ -18,6 +18,7 @@ if typeCreation == 2:
     print("Fait-il jour ou fait-il nuit ?")
     momentDuJour = 'momentDuJour'
     emplacementAstre = ''
+    endroit = ''
     while momentDuJour != 'jour' and momentDuJour != 'nuit':
         momentDuJour = input("Il fait ")
     if momentDuJour == 'nuit':
@@ -35,8 +36,15 @@ if typeCreation == 2:
             emplacementAstre = input("Le soleil est à ")
         if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 150, 1)
         elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 150, 1)
-        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 150,1)        
+        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 150,1)
 
+    print("On peut aller en ville ou à la mer.")
+    print("Où voulez-vous aller ?")
+    while endroit != 'ville' and endroit != 'mer':
+        endroit = input("Je veux aller vers la ")
+
+    if endroit == 'ville':
+        print("Vous voyez une route, qui s'éloigne vers l'horizon, ou qui traverse 
 
 elif typeCreation == 1:
         
