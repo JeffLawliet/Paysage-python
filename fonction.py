@@ -507,4 +507,8 @@ def lireCouleurClavier(phrase, couleur=0):
         except:
             securite = 1
     return(chaine)
+
 dessineArbre()
+
+dessineSoleil()
+dessineBateau()
