@@ -44,7 +44,17 @@ if typeCreation == 2:
         endroit = input("Je veux aller vers la ")
 
     if endroit == 'ville':
-        print("Vous voyez une route, qui s'éloigne vers l'horizon, ou qui traverse 
+        route = ''
+        print("Vous voyez une route, qui s'éloigne vers l'horizon (verticale), ou qui traverse la ville de gauche à droite (horizontale) ?")
+        while route != 'horizontale' and route != 'verticable':
+            route = input("La route est ")
+
+        if route == 'verticale':
+            ###fonction route verticale###
+            print("Il y a des maisons de part et d'autres de la route, mais... combien ?")
+            nbrMaison = lireEntierClavier("Nombre de maison(s) (1-4) : ", 1, 4)
+            
+            
 
 elif typeCreation == 1:
         

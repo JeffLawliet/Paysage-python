@@ -82,7 +82,7 @@ def dessineEtoile():
     aller(x,y-taille,90)
     forward(2*taille)
     
-    aller(x-taille,y,0)
+    aller(x-taille,y)
     forward(2*taille)
     
     aller(x-taille,y+taille,315)
@@ -104,22 +104,22 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, x
     if nbrFenetresEtages > 1:
         
         for i in range(1,nbrEtages):
-            aller(x,y+((i+1)*(hauteurMaison/nbrEtages))-(hauteurMaison/(3*nbrEtages)),0) #on se déplace à l'étage supérieur
+            aller(x,y+((i+1)*(hauteurMaison/nbrEtages))-(hauteurMaison/(3*nbrEtages))) #on se déplace à l'étage supérieur
         
             for j in range(0, nbrFenetresEtages):
-                aller(xcor() + intervalle,ycor(),0) #on avance de la longueur d'un intervalle
+                aller(xcor() + intervalle,ycor()) #on avance de la longueur d'un intervalle
                 dessineCarre(xcor(),ycor(),largeurFenetre,couleur,epaisseur)  #on dessine un carré qu'on remplit aussitôt
-                aller(xcor()+ largeurFenetre,ycor(),0) # on se décale de largeur fenetre
+                aller(xcor()+ largeurFenetre,ycor()) # on se décale de largeur fenetre
                 
     elif nbrFenetresEtages == 1:
         
         if nbrEtages == 1:
-            aller(x+(largeurMaison/6),y+(3*hauteurMaison/4),0)   # on se décale un petit peu
+            aller(x+(largeurMaison/6),y+(3*hauteurMaison/4))   # on se décale un petit peu
             dessineCarre(xcor(),ycor(),largeurFenetre,couleur,epaisseur) # on dessine la fenêtre
             
         else:
             for i in range(1,nbrEtages):
-                aller(x+(largeurMaison/6),y+((i+1)*(hauteurMaison/nbrEtages))-(hauteurMaison/(3*nbrEtages)),0) # on se décale un peu
+                aller(x+(largeurMaison/6),y+((i+1)*(hauteurMaison/nbrEtages))-(hauteurMaison/(3*nbrEtages))) # on se décale un peu
                 dessineCarre(xcor(),ycor(),largeurFenetre,couleur,epaisseur)
 
 
@@ -177,7 +177,7 @@ def dessineMaison():
     couleurEtages = lireCouleurClavier("Entrez la couleur de l'étage (en hexadécimal ou en anglais) : ")
     for i in range(1,nbrEtagesMaison):
         
-        aller(xMaison,yMaison+i*(hauteurMaison/nbrEtagesMaison),0)
+        aller(xMaison,yMaison+i*(hauteurMaison/nbrEtagesMaison))
         dessineTrait(xcor(), ycor(), largeurMaison, 0, couleurEtages, epaisseurMaison)
 
     xPorte = xMaison + (2*largeurMaison)/5
@@ -218,7 +218,7 @@ def dessineNuage(x,y,rayon,couleur):
 #crée un rectangle qu'elle remplit
 #peut dessiner un batîment, une porte...
 def dessineRectangle(x,y,largeur=180,hauteur=50,couleur='red',epaisseur=1):
-    aller(x,y,0)
+    aller(x,y)
     width(epaisseur)
     begin_fill()
     color(couleur)
@@ -229,7 +229,7 @@ def dessineRectangle(x,y,largeur=180,hauteur=50,couleur='red',epaisseur=1):
             forward(hauteur)
         left(90)
     end_fill() 
-    aller(x,y,0)
+    aller(x,y)
 
 #exemple d'utilisation
 #dessineRectangle(20,25,40,30,'black')
@@ -252,7 +252,7 @@ def dessineTriangle(x,y,cote=50,couleur="black",epaisseur=1):
     begin_fill()
     color(couleur)
     width(epaisseur)
-    aller(x,y,0)
+    aller(x,y)
     for i in range(0,3):
         forward(cote)
         left(120)
@@ -462,10 +462,9 @@ def dessineArbre():
     dessineRectangle(xArbre, yArbre, largArbre, hautArbre-10, '#3D0000')
 
     begin_fill()
-    diagonale = sqrt(((5*largArbre)**2) + (((5*hautArbre)/6)**2))
-    traitDeplacement(xArbre + largArbre/2, yArbre + hautArbre + 40, xArbre -11*largArbre/2, yArbre + hautArbre/6, '#0B8426')
-    dessineTrait(xcor(), ycor(), 11*largArbre, 0, '#0B8426')
-    traitDeplacement(xcor(), ycor(), xArbre + (largArbre/2), yArbre + hautArbre + 40, '#0B8426')
+    traitDeplacement(xArbre + largArbre//2, yArbre + hautArbre + 40, xArbre -3*largArbre, yArbre + hautArbre//6, '#0B8426')
+    dessineTrait(xcor(), ycor(), 7*largArbre, 0, '#0B8426')
+    traitDeplacement(xcor(), ycor(), xArbre + (largArbre//2), yArbre + hautArbre + 40, '#0B8426')
     end_fill()
     
 def dessineBateau():
@@ -508,3 +507,4 @@ def lireCouleurClavier(phrase, couleur=0):
         except:
             securite = 1
     return(chaine)
+dessineArbre()
