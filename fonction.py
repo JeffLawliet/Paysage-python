@@ -72,12 +72,12 @@ def dessineDemiCercle(x,y,rayon,couleur='blue',orientation=0,epaisseur=1):
     
 #fonction dessineEtoile superpose un "+" et une "x" aux coordonnées indiquées
 #le tout de couleur blanche
-def dessineEtoile(x,y):
+def dessineEtoile():
     
     taille = lireEntierClavier("Quelle taille pour votre étoile (1-5) : ", 1, 5)
     x = randint(LARGEUR_MIN,LARGEUR_MAX)
     y = randint(HAUTEUR_MIN,HAUTEUR_MAX)
-    color('white')
+    color('#fffbb4')
     
     aller(x,y-taille,90)
     forward(2*taille)
@@ -92,7 +92,7 @@ def dessineEtoile(x,y):
     forward(2*sqrt(2*(taille**2)))
 
 #exemple d'utilisation
-#dessineEtoile(3)
+#dessineEtoile()
 #dessine une étoile qui fait 6 pixels de long 
 
 
@@ -127,26 +127,26 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, x
 
 #fonction dessineLune, dessine une lune aux coordonnées choisie
 #de diamètre choisie et la remplie
-def dessineLune():
+def dessineLune(xLune =0, yLune=0,diametre = 100, demander = 0):
 
-    xLune = lireEntierClavier("Entrez le x du centre gauche de la lune : ", LARGEUR_MIN, LARGEUR_MAX)
-    yLune = lireEntierClavier("Entrez le y du centre gauche de la lune : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    diametre = lireEntierClavier("Entrez le diamètre de la lune (entre 50 et 200) : ",50, 200) 
-    aller(xLune,yLune,0)
+    if demander == 0:
+            
+        xLune = lireEntierClavier("Entrez le x du centre gauche de la lune : ", LARGEUR_MIN, LARGEUR_MAX)
+        yLune = lireEntierClavier("Entrez le y du centre gauche de la lune : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        diametre = lireEntierClavier("Entrez le diamètre de la lune (entre 50 et 200) : ",50, 200) 
+    aller(xLune,yLune)
     
     begin_fill()
-    color('#fffaa2')
+    color('#fffbb4')
     circle(diametre/2)
     end_fill()
     
     aller((27*diametre/50)+xLune,(27*diametre/50)+yLune,90)
     
     begin_fill()
-    color('#06011d')
+    color('#001169')
     circle(diametre/3)
     end_fill()
-    
-    aller(x,y,0)
 
 #exemple d'utilisation
 #dessineLune(90,1,-25)
@@ -474,10 +474,12 @@ def dessineBateau():
     largBateau = lireEntierClavier("Entrez la largeur du bateau (100-400) : ", 100 , 400)
     hautBateau = lireEntierClavier("Entrez la hauteur du bateau (80-200) : ", 80, 200)
 
-def dessineSoleil():
-    xSoleil = lireEntierClavier("Entrez le x du point milieu-gauche du soleil : ", LARGEUR_MIN, LARGEUR_MAX)
-    ySoleil = lireEntierClavier("Entrez le y du point milieu-gauche du soleil : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    rayon = lireEntierClavier("Entrez le rayon du soleil (25-100) : ", 25, 100)
+def dessineSoleil(xSoleil=0, ySoleil=0, rayon=50, demander=0):
+    if demander ==0:
+        
+        xSoleil = lireEntierClavier("Entrez le x du point milieu-gauche du soleil : ", LARGEUR_MIN, LARGEUR_MAX)
+        ySoleil = lireEntierClavier("Entrez le y du point milieu-gauche du soleil : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        rayon = lireEntierClavier("Entrez le rayon du soleil (25-100) : ", 25, 100)
 
     color('yellow')
     begin_fill()
@@ -495,12 +497,14 @@ def dessineSoleil():
 
 def lireCouleurClavier(phrase, couleur=0):
     securite = 1
-    while securite = 1:
+    while securite == 1:
         try:
             chaine = input(phrase)
             securite = 0
-            if couleur = 0: color(couleur)
-            elif couleur = 1: bgcolor(couleur)
+            if couleur == 0: color(couleur)
+            elif couleur == 1: bgcolor(couleur)
+        except KeyboardInterrupt:
+            exit()
         except:
             securite = 1
     return(chaine)

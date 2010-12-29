@@ -12,21 +12,46 @@ print("1. Création de paysage manuelle")
 print("2. Création de paysage guidée")
 typeCreation = lireEntierClavier("Choisis le numéro correspond à ton choix : ",1,2)
 
-if typeCreation == 1:
 
-    print("Vous êtes dans le mode de création manuel, libre. Vous pouvez faire tout ce que vous voulez.")
+if typeCreation == 2:
+    print("Vous êtes dans le mode de création guidée. Vous serez amené pas à pas au paysage selon vos choix.")
+    print("Fait-il jour ou fait-il nuit ?")
+    momentDuJour = 'momentDuJour'
+    emplacementAstre = ''
+    while momentDuJour != 'jour' and momentDuJour != 'nuit':
+        momentDuJour = input("Il fait ")
+    if momentDuJour == 'nuit':
+        bgcolor('#001169')
+        print("Où se trouve la lune ? à gauche à groite ou au milieu ?")
+        while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
+            emplacementAstre = input("La lune est à ")
+        if emplacementAstre == 'gauche': dessineLune(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 150, 1)
+        elif emplacementAstre ==  'droite': dessineLune(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 150, 1)
+        elif emplacementAstre == 'milieu': dessineLune(0, HAUTEUR_MAX-200, 150,1)
+    elif momentDuJour == 'jour':
+        bgcolor('blue')
+        print("Où se trouve le soleil ? à gauche à groite ou au milieu ?")
+        while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
+            emplacementAstre = input("Le soleil est à ")
+        if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 150, 1)
+        elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 150, 1)
+        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 150,1)        
+
+
+elif typeCreation == 1:
+        
+    print("Vous êtes dans le mode de création manuelle, libre. Vous pouvez faire tout ce que vous voulez.")
     couleurBackground = lireCouleurClavier("Entrez la couleur de fond de votre paysage (en hexadécimal ou en anglais) : ",1)
     bgcolor(couleurBackground)
     while continuer == 1:
-            
+                
         print("Quelle catégorie d'éléments ?")
-        print(" 0. Retour au menu")
         print(" 1. Catégorie Ville")
         print(" 2. Catégorie Mer")
         print(" 3. Catégorie Ciel")
         choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",1,4)
-        
-        while choixCategorie == 1:
+            
+    while choixCategorie == 1:
             print("Quel élément ?")
             print("0. Retour aux catégories")
             print("1. Route")
@@ -42,7 +67,7 @@ if typeCreation == 1:
             elif choix == 4: dessineArbre()
             elif choix == 5: dessineLampadaire()
             continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
-        while choixCategorie == 2:
+    while choixCategorie == 2:
             print("Quel élément ?")
             print("0. Retour aux catégories")
             print("1. Mer")
@@ -62,7 +87,7 @@ if typeCreation == 1:
             elif choix == 6: dessinePhare()
             elif choix == 7: dessineRochers()
             continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
-        while choixCategorie == 3:
+    while choixCategorie == 3:
             print("Quel élément ?")
             print("0. Retour aux catégories")
             print("1. Étoiles")
@@ -76,4 +101,4 @@ if typeCreation == 1:
             elif choix == 3: dessineLune()
             elif choix == 4: dessineNuage()
             continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
-    
+        
