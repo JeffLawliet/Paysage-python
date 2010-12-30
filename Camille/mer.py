@@ -84,3 +84,8 @@ def dessineVague5(x,y,hauteur,longueur):
     # penser à multiplier la longueur des vagues
     # attention à partir d'un certain nombre, les vagues "tombent"
 
+dessineVague1(0,0,20,300)
+dessineVague2(200,100,40)
+dessineVague3(200,-300,30)
+dessineVague4(-200,100,20,200)
+dessineVague5(-200,-200,20,300)
