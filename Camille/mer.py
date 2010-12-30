@@ -122,21 +122,21 @@ def dessineMer():
     goto(LARGEUR_MAX,HAUTEUR_MIN)
     goto(LARGEUR_MAX,0)
     end_fill()
-    a=random.randint(51,500)
-    for i in (50,a):
-        x=random.randint(LARGEUR_MIN,LARGEUR_MAX)
-        y=random.randint(-20,HAUTEUR_MIN)
-        long=random.randint(80,200)
+    a=randint(51,100)
+    for i in range(50,a):
+        x=randint(LARGEUR_MIN,LARGEUR_MAX)
+        y=randint(HAUTEUR_MIN,-20)
+        long=randint(80,200)
         if tps=="agitée":
-            couleur2=random.choice('0000B0','000010','000090')
+            couleur2='#0000B0'
             color(couleur2)
             dessineVague4(x,y,20,long)
         if tps=="calme":
-            couleur2=random.choice('9090FF','5050FF','B0B0FF')
+            couleur2='#9090FF'
             color(couleur2)
             dessineVague1(x,y,20,long)
+            
     
-
 dessineMer()
 
     
