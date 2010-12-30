@@ -1,7 +1,7 @@
 # mer :)
 
 from turtle import *
-
+from random import *
 
 
 # faire des vagues
@@ -14,7 +14,6 @@ def aller(x,y,angle=0):
 
 def dessineVague1(x,y,hauteur,longueur):
     width(3)
-    color('blue')
     aller(x+longueur,y)
     left(90)
     i=0
@@ -54,7 +53,6 @@ def dessineVague3(x,y,hauteur):
 
 
 def dessineVague4(x,y,hauteur,longueur):
-    color('blue')
     width(3)
     aller(x,y)
     left(50)
@@ -71,7 +69,6 @@ def dessineVague4(x,y,hauteur,longueur):
 def dessineVague5(x,y,hauteur,longueur):
     aller(x,y)
     width(3)
-    color('blue')
     i=0
     while i<=longueur:
         left(50)
@@ -84,8 +81,62 @@ def dessineVague5(x,y,hauteur,longueur):
     # penser à multiplier la longueur des vagues
     # attention à partir d'un certain nombre, les vagues "tombent"
 
-dessineVague1(0,0,20,300)
-dessineVague2(200,100,40)
-dessineVague3(200,-300,30)
-dessineVague4(-200,100,20,200)
-dessineVague5(-200,-200,20,300)
+
+
+LARGEUR_MAX = window_width()//2
+LARGEUR_MIN = -window_width()//2
+HAUTEUR_MAX = window_height()//2
+HAUTEUR_MIN = -window_height()//2
+
+def dessineMer():
+    print("Vous allez dessiné une mer")
+    date=input("À quel moment de la journée sommes-nous? Jour ou nuit? : ")
+    if date!="Jour" and date!="jour" and date!="Nuit" and date!="nuit":
+        print("Veuillez recommencer")
+        date=input("À quel moment de la journée sommes-nous? Jour ou nuit? : ")
+    tps=input("Votre mer est-elle agitée ou calme? ")
+    if tps!="agitée" and tps!="calme":
+        print("Veuillez recommencer")
+        tps=input("Votre mer est-elle agitée ou calme? ")
+    if date=="Jour" or date=="jour":
+        if tps=="agitée":
+            couleur1='#132959'
+        elif tps=="calme":
+            couleur1='#006D80'
+    elif date=="Nuit" or date=="nuit":
+        if tps=="agitée":
+            couleur1='#080830'
+        elif tps=="calme":
+            couleur1='#000050'
+    color(couleur1)
+    begin_fill()
+    if tps=="agitée":
+        dessineVague5(LARGEUR_MAX,0,30,2*LARGEUR_MAX+100)
+        goto(LARGEUR_MIN,HAUTEUR_MIN)
+        goto(LARGEUR_MAX,HAUTEUR_MIN)
+        goto(LARGEUR_MAX,0)
+        end_fill()
+    if tps=="calme":
+        dessineVague4(LARGEUR_MAX,0,20,3*LARGEUR_MAX)
+    goto(LARGEUR_MIN,HAUTEUR_MIN)
+    goto(LARGEUR_MAX,HAUTEUR_MIN)
+    goto(LARGEUR_MAX,0)
+    end_fill()
+    a=random.randint(51,500)
+    for i in (50,a):
+        x=random.randint(LARGEUR_MIN,LARGEUR_MAX)
+        y=random.randint(-20,HAUTEUR_MIN)
+        long=random.randint(80,200)
+        if tps=="agitée":
+            couleur2=random.choice('0000B0','000010','000090')
+            color(couleur2)
+            dessineVague4(x,y,20,long)
+        if tps=="calme":
+            couleur2=random.choice('9090FF','5050FF','B0B0FF')
+            color(couleur2)
+            dessineVague1(x,y,20,long)
+    
+
+dessineMer()
+
+    
