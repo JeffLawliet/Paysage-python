@@ -28,7 +28,17 @@ def dessineTrait(x,y,deplacement=50,orientation=0,couleur='black',epaisseur=2):
     aller(x,y,orientation)
     forward(deplacement)
 
-dessineRectangle(-100,0,180,50,'black',1)
-dessineTrait(-100,25,25,0,'white',4)
-dessineTrait(-55,25,25,0,'white',4)
-dessineTrait(
+def dessineRoute():
+    print("Vous allez dessinez une route")
+    x=int(input("Abscisse du point bas gauche du début de la route: "))
+    y=int(input("Ordonné du point bas gauche du début de la route: "))
+    lar=int(input("Largeur de la route ou point haut gauche du début de la route: "))
+    long=int(input("Longueur de la route: "))
+    dessineRectangle(x,y,long,lar,'black',1)
+    i=x
+    dessineTrait(x,y+lar/2,25,0,'white',5)
+    while i<=x+long:
+        dessineTrait(i+45,y+lar/2,25,0,'white',5)
+        i=i+45
+
+dessineRoute()
