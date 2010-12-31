@@ -134,7 +134,7 @@ def dessineMer():
         if tps=="calme":
             couleur2='#9090FF'
             color(couleur2)
-            dessineVague1(x,y,20,long)
+            dessineVague1(x,y,10,long)
             
     
 dessineMer()
