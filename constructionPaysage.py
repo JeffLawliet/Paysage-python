@@ -2,7 +2,9 @@ from turtle import *
 import turtle
 from fonction import *
 
-
+speed(0)
+reset(0)
+bgcolor(white)
 
 
 
@@ -29,15 +31,15 @@ if typeCreation == 2:
         bgcolor('#001169')
         print("Où se trouve la lune ? à gauche à groite ou au milieu ?")
         while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
-            emplacementAstre = input("La lune est à ")
+            emplacementAstre = input("La lune est à/au ")
         if emplacementAstre == 'gauche': dessineLune(LARGEUR_MIN+100, HAUTEUR_MAX - 150, 100, 1)
         elif emplacementAstre ==  'droite': dessineLune(LARGEUR_MAX - 100, HAUTEUR_MAX-150, 100, 1)
         elif emplacementAstre == 'milieu': dessineLune(0, HAUTEUR_MAX-150, 100,1)
     elif momentDuJour == 'jour':
         bgcolor('blue')
-        print("Où se trouve le soleil ? à gauche à groite ou au milieu ?")
+        print("Où se trouve le soleil ? à gauche à droite ou au milieu ?")
         while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
-            emplacementAstre = input("Le soleil est à ")
+            emplacementAstre = input("Le soleil est à/au ")
         if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 100, 1)
         elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 100, 1)
         elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 100,1)

@@ -167,27 +167,32 @@ def dessineLune(xLune =0, yLune=0,diametre = 100, demander = 0):
 
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
-def dessineMaison():
-    print("Où voulez-vous dessinez votre maison ?")
-    print("Entrez les coordonnées du point bas-gauche de la maison : ")
-    xMaison = lireEntierClavier("Le x de la maison : ",LARGEUR_MIN,LARGEUR_MAX)
-    yMaison = lireEntierClavier("Le y de la maison : ",HAUTEUR_MIN,HAUTEUR_MAX)
-    hauteurMaison = lireEntierClavier("Entrez la hauteur de la maison : ",1, window_height())
-    largeurMaison = lireEntierClavier("Entrez la largeur de la maison : ",1, window_width())
-    couleurMaison = lireCouleurClavier("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
-    epaisseurMaison = lireEntierClavier("L'épaisseur du trait de la maison (entre 1 et 5) : ",1, 5)
-    dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison, epaisseurMaison)
-
-    toit = input("Voulez-vous un toit (Oui/Non) : ")
-    while toit != 'Non' and toit != 'non' and  toit != 'Oui' and toit != 'oui':
-        print("Veuillez recommencer.")
-        toit = input("Voulez-vous un toit (Oui/Non) : ")
-    if toit == 'Oui' or toit == 'oui':
-        couleurToit = lireCouleurClavier("Entrez la couleur de votre toit (en hexadécimal ou en anglais) : ")
-        dessineTriangle(xMaison, yMaison+hauteurMaison, largeurMaison, couleurToit, epaisseurMaison)
+def dessineMaison(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', toit='oui', couleurToit='red', couleurPorte = 'red' nbrEtagesMaison=1, couleurEtages = 'blue', nbrFenetresEtagesMaison=2, couleurFenetresMaison=2, demander = 0):
+    if demander == 0:
         
-    nbrEtagesMaison = lireEntierClavier("Entrez le nombre d'étages (entre 1 et 10) : ", 1, 10)
-    couleurEtages = lireCouleurClavier("Entrez la couleur de l'étage (en hexadécimal ou en anglais) : ")
+        print("Où voulez-vous dessinez votre maison ?")
+        print("Entrez les coordonnées du point bas-gauche de la maison : ")
+        xMaison = lireEntierClavier("Le x de la maison : ",LARGEUR_MIN,LARGEUR_MAX)
+        yMaison = lireEntierClavier("Le y de la maison : ",HAUTEUR_MIN,HAUTEUR_MAX)
+        hauteurMaison = lireEntierClavier("Entrez la hauteur de la maison : ",1, window_height())
+        largeurMaison = lireEntierClavier("Entrez la largeur de la maison : ",1, window_width())
+        couleurMaison = lireCouleurClavier("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
+    dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison)
+
+    if demander == 0:
+        toit = input("Voulez-vous un toit (Oui/Non) : ")
+        while toit != 'Non' and toit != 'non' and  toit != 'Oui' and toit != 'oui':
+            print("Veuillez recommencer.")
+            toit = input("Voulez-vous un toit (Oui/Non) : ")
+    if toit == 'Oui' or toit == 'oui':
+        if demander == 0:
+            
+            couleurToit = lireCouleurClavier("Entrez la couleur de votre toit (en hexadécimal ou en anglais) : ")
+        dessineTriangle(xMaison, yMaison+hauteurMaison, largeurMaison, couleurToit, epaisseurMaison)
+    if demander == 0:
+        
+        nbrEtagesMaison = lireEntierClavier("Entrez le nombre d'étages (entre 1 et 10) : ", 1, 10)
+        couleurEtages = lireCouleurClavier("Entrez la couleur de l'étage (en hexadécimal ou en anglais) : ")
     for i in range(1,nbrEtagesMaison):
         
         aller(xMaison,yMaison+i*(hauteurMaison/nbrEtagesMaison))
@@ -196,11 +201,13 @@ def dessineMaison():
     xPorte = xMaison + (2*largeurMaison)/5
     largeurPorte = largeurMaison/3
     hauteurPorte = 2*hauteurMaison/(3*nbrEtagesMaison)
-    couleurPorte = input("Entrez la couleur de votre porte (en hexadécimal ou en anglais) : ")
+    if demander == 0:
+        
+        couleurPorte = input("Entrez la couleur de votre porte (en hexadécimal ou en anglais) : ")
     dessineRectangle(xPorte, yMaison, largeurPorte, hauteurPorte, couleurPorte, epaisseurMaison)
-
-    nbrFenetresEtagesMaison = lireEntierClavier("Entrez le nombre de fenêtre par étages de votre maison (entre 1 et 10) : ", 1, 10)
-    couleurFenetresMaison = input("Entrez la couleur des fenêtres de votre maison (en hexadécimal ou en anglais) : ")
+    if demander == 0:
+        nbrFenetresEtagesMaison = lireEntierClavier("Entrez le nombre de fenêtre par étages de votre maison (entre 1 et 10) : ", 1, 10)
+        couleurFenetresMaison = input("Entrez la couleur des fenêtres de votre maison (en hexadécimal ou en anglais) : ")
     dessineFenetre(nbrFenetresEtagesMaison,nbrEtagesMaison,hauteurMaison,largeurMaison, xMaison, yMaison, couleurFenetresMaison, epaisseurMaison)
 
 
@@ -316,6 +323,77 @@ def dessineVoiture():
     end_fill()
 
     
+def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
+
+    if demander == 0:
+        
+        xDauphin = lireEntierClavier("Entrez le x du point bas droit du dauphin : ", LARGEUR_MIN, LARGEUR_MAX)
+        yDauphin = lireEntierClavier("Entrez le y du point bas droit du dauphin : ", HAUTEUR_MIN, HAUTEUR_MAX)
+    aller(xDauphin, yDauphin)
+    width(5)
+    begin_fill()
+    color("Gray")
+    left(140)
+    circle(125,90)
+
+    #Dorsale:
+    up()
+    circle(125,-35)
+    down()
+    left(55)
+    circle(40,-80)
+    left(45)
+    circle(40,38)
+    
+    
+    up()
+    right(72)
+    circle(125,47)
+    down()
+    right(39)
+    circle(75,20)
+    right(45)
+    circle(8,180)
+    circle(75,30)
+    right(35)
+    circle(125,30)
+    right(170)
+    circle(200,-35)
+
+    #Nageoire
+    up()
+    circle(200,35)
+    down()
+    left(110)
+    circle(40,80)
+    right(35)
+    circle(40,-48)
+
+    left(246)
+    circle(200,-30)
+    left(90)
+    circle(150,20)
+    left(125)
+    circle(90,35)
+    right(55)
+    circle(90,40)
+    left(125)
+    circle(150,25)
+
+    right(68)
+    circle(400,8)
+    end_fill()
+    
+    #Dessine un oeil
+    color("black")
+    aller(xDauphin-136,yDauphin+4.5)
+    circle(4)
+    goto(xDauphin-137,yDauphin+3)
+    color("white")
+    circle(0.5)
+    up()
+
+
 
 
 #fonction lireEntierClavier, permet de faire en sorte d'avoir un entier compris entre deux valeurs.
@@ -335,13 +413,15 @@ def traitDeplacement(xDepart, yDepart, xArrivee, yArrivee, couleur='black', epai
     color(couleur)
     goto(xArrivee,yArrivee)
 
-def dessineLampadaire():
+def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'black', demander = 0):
 
-    print("Où voulez-vous dessinez votre lampadaire ?")
-    print("Entrez les coordonnées du point bas-gauche du lampadaire : ")
-    xLampadaire = lireEntierClavier("Le x du lampadaire : ",LARGEUR_MIN,LARGEUR_MAX)
-    yLampadaire = lireEntierClavier("Le y du lampadaire : ",HAUTEUR_MIN,HAUTEUR_MAX)
-    couleurLampadaire = lireCouleurClavier("La couleur du lampadaire (en hexadécimal ou en anglais) : ")
+    if demander == 0:
+            
+        print("Où voulez-vous dessinez votre lampadaire ?")
+        print("Entrez les coordonnées du point bas-gauche du lampadaire : ")
+        xLampadaire = lireEntierClavier("Le x du lampadaire : ",LARGEUR_MIN,LARGEUR_MAX)
+        yLampadaire = lireEntierClavier("Le y du lampadaire : ",HAUTEUR_MIN,HAUTEUR_MAX)
+        couleurLampadaire = lireCouleurClavier("La couleur du lampadaire (en hexadécimal ou en anglais) : ")
 
     aller(xLampadaire, yLampadaire)
 
@@ -416,11 +496,13 @@ def dessineLampadaire():
     circle(15,240)
     end_fill()
 
-def dessineVoiture():
+def dessineVoiture(xVoiture = 0, yVoiture = 0, couleurVoiture = 'red', demander = 0):
 
-    xVoiture = lireEntierClavier("Entrez le x du point bas droit de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
-    yVoiture = lireEntierClavier("Entrez le y du point bas droit de la voiture : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    couleurVoiture = lireCouleurClavier("La couleur de la voiture (en hexadécimal ou en anglais) : ")
+    if demander == 0:
+            
+        xVoiture = lireEntierClavier("Entrez le x du point bas droit de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
+        yVoiture = lireEntierClavier("Entrez le y du point bas droit de la voiture : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        couleurVoiture = lireCouleurClavier("La couleur de la voiture (en hexadécimal ou en anglais) : ")
 
     dessineRoue(xVoiture-248, yVoiture-25)
     dessineRoue(xVoiture-88, yVoiture-25)
@@ -466,11 +548,14 @@ def dessineVoiture():
     traitDeplacement(xcor()+285, ycor()+2, xcor()+290, ycor()+2, 'orange',5)
 
 
-def dessineArbre():
-    xArbre = lireEntierClavier("Entrez le x du point bas-gauche de l'arbre : ", LARGEUR_MIN, LARGEUR_MAX)
-    yArbre = lireEntierClavier("Entrez le y du point bas-gauche de l'arbre : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    largArbre = lireEntierClavier("Entrez la largeur de l'arbre (10-50) : ", 10, 50)
-    hautArbre = lireEntierClavier("Entrez la hauteur de l'arbre (100-400) : ",100, 400)
+def dessineArbre(xArbre=0, yArbre=0, largArbre = 50, hautArbre = 300, demander = 0):
+
+    if demander == 0:
+        
+        xArbre = lireEntierClavier("Entrez le x du point bas-gauche de l'arbre : ", LARGEUR_MIN, LARGEUR_MAX)
+        yArbre = lireEntierClavier("Entrez le y du point bas-gauche de l'arbre : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        largArbre = lireEntierClavier("Entrez la largeur de l'arbre (10-50) : ", 10, 50)
+        hautArbre = lireEntierClavier("Entrez la hauteur de l'arbre (100-400) : ",100, 400)
 
     dessineRectangle(xArbre, yArbre, largArbre, hautArbre-10, '#3D0000')
 
