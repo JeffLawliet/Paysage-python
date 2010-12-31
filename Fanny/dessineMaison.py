@@ -2,13 +2,17 @@ from math import *
 from turtle import *
 import random
 
-def dessineMaison(hauteur,largeur,x,couleurMaison,couleurToit,couleurPorte,y=-10):
+def dessineMaison(x=0,y=0,couleurMaison,couleurToit,couleurPorte, largeur = 130, hauteur=150, demander = 0):
+    if demander == 0:
+        x = lireEntierClavier("Le x du point bas gauche de la maison : ", LARGEUR_MIN, LARGEUR_MAX)
+        y = lireEntierClavier("Le y du point bas gauche de la maison : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        couleurMaison = lireCouleurClavier("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
+        couleurPorte
+        couleurToit
+        largeur =
+        hauteur =
     # Dessine le rectangle de la maison :
-    hauteur=int(hauteur)
-    largeur=int(largeur)
-    up()
-    goto(x,y)
-    down()
+    aller(x,y)
     width(0)
     begin_fill()
     color(couleurMaison)

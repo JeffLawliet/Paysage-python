@@ -32,7 +32,200 @@ def dessineRoute(x=0, y=0, lar=100, long=300, demander=0):
         k += 1
         dessineTrait(i+10,y+lar/2,25,0,'white',5)
         i=i+45
+
+def dessineVague1(x,y,hauteur,longueur):
+    width(3)
+    aller(x+longueur,y)
+    left(90)
+    i=0
+    while i<=longueur:
+        circle(hauteur/2,180)
+        left(180)
+        circle(hauteur/2,-180)
+        left(180)
+        i=i+4*hauteur
+    # quelque soit la longueur, il fait au minimum une "vague"
+    # pour plus, il faut taper au moins 4*hauteur
+
+
+def dessineVague2(x,y,hauteur):
+    color('blue')
+    width(3)
+    aller(x,y)
+    left(90)
+    circle(hauteur,180)
+    aller(x,y,90)
+    circle((3*hauteur)/4,190)
+    aller(x,y,90)
+    circle(hauteur/4,200)
+    # dessine des vagues rondes vers la gauche
+
+
+def dessineVague3(x,y,hauteur):
+    color('blue')
+    width(3)
+    aller(x,y)
+    left(90)
+    circle(hauteur,100)
+    circle(hauteur/10,160)
+    left(180)
+    circle((3*hauteur/5),-100)
+    #dessine la forme d'une vague de tempéte vers la gauche
+
+
+def dessineVague4(x,y,hauteur,longueur):
+    width(3)
+    aller(x,y)
+    left(50)
+    i=0
+    while i<=longueur:
+        circle(2*hauteur,-100)
+        left(100)
+        i=i+4*hauteur
+    #dessine des vagues vers la gauche à partir de (x,y)
+    # penser à multiplier la taille par 2 pour avoir celle que l'on veut
+    # et longueur min 4* la hauteur qu'on indique
+
+
+def dessineVague5(x,y,hauteur,longueur):
+    aller(x,y)
+    width(3)
+    i=0
+    while i<=longueur:
+        left(50)
+        circle(3*hauteur,-80)
+        circle(hauteur,-180)
+        circle(2*hauteur,90)
+        left(122)
+        i=i+6*hauteur
+    # dessine des vagues façon aile de requin vers la gauche
+    # penser à multiplier la longueur des vagues
+    # attention à partir d'un certain nombre, les vagues "tombent"
+
+
+def dessineMer(date = 'jour', tps = 'calme', demander = 0):
+    if demander == 0:
+            
+        date=input("À quel moment de la journée sommes-nous? Jour ou nuit? : ")
+        if date!="Jour" and date!="jour" and date!="Nuit" and date!="nuit":
+            print("Veuillez recommencer")
+            date=input("À quel moment de la journée sommes-nous? Jour ou nuit? : ")
+        tps=input("Votre mer est-elle agitée ou calme? ")
+        if tps!="agitée" and tps!="calme":
+            print("Veuillez recommencer")
+            tps=input("Votre mer est-elle agitée ou calme? ")
+    if date=="Jour" or date=="jour":
+        if tps=="agitée":
+            couleur1='#132959'
+        elif tps=="calme":
+            couleur1='#006D80'
+    elif date=="Nuit" or date=="nuit":
+        if tps=="agitée":
+            couleur1='#080830'
+        elif tps=="calme":
+            couleur1='#000050'
+    color(couleur1)
+    begin_fill()
+    if tps=="agitée":
+        dessineVague5(LARGEUR_MAX,0,30,2*LARGEUR_MAX+100)
+        goto(LARGEUR_MIN,HAUTEUR_MIN)
+        goto(LARGEUR_MAX,HAUTEUR_MIN)
+        goto(LARGEUR_MAX,0)
+        end_fill()
+    if tps=="calme":
+        dessineVague4(LARGEUR_MAX,0,20,3*LARGEUR_MAX)
+    goto(LARGEUR_MIN,HAUTEUR_MIN)
+    goto(LARGEUR_MAX,HAUTEUR_MIN)
+    goto(LARGEUR_MAX,0)
+    end_fill()
+    a=randint(51,80)
+    for i in range(50,a):
+        x=randint(LARGEUR_MIN,LARGEUR_MAX)
+        y=randint(HAUTEUR_MIN,-20)
+        long=randint(80,150)
+        if tps=="agitée":
+            couleur2='#0000B0'
+            color(couleur2)
+            dessineVague4(x,y,20,long)
+        if tps=="calme":
+            couleur2='#9090FF'
+            color(couleur2)
+            dessineVague1(x,y,10,long)
+
+
+def dessineVoiture(x=0, y=0, diam = 20, couleur = 'black', demander = 0):
+    
+    if demander == 0:
         
+        x=lireEntierClavier("le x du centre de la roue : ", LARGEUR_MIN, LARGEUR_MAX)
+        y=lireEntierClavier("le y du centre de la roue:", HAUTEUR_MIN, HAUTEUR_MAX)
+        diam=lireEntierClavier("Diamètre de la roue (10-40) : ", 10, 40)
+        couleur=lireCouleurClavier("Couleur de la voiture (en anglais ou en hexadécimal):")
+
+
+    dessineRoue(x,y,diam)
+    dessineRoue(x+(5*diam),y,diam)
+
+    color(couleur)
+    begin_fill()
+    aller(x+(8*diam)+(diam/4),y+(5*diam/4))
+    goto(x+(8*diam)-(diam/3),y+(3*diam/4))
+    goto(x+(6*diam),y+(3*diam/4))
+    goto(x+(6*diam)-(diam/3),y+(3*diam/2))
+    goto(x+(4*diam)+(diam/3),y+(3*diam/2))
+    goto(x+(4*diam),y+(3*diam/4))
+    goto(x+diam,y+(3*diam/4))
+    goto(x+(2*diam/3),y+(3*diam/2))
+    goto(x-(2*diam/3),y+(3*diam/2))
+    goto(x-diam,y+(3*diam/4))
+    goto(x-2*diam,y+(3*diam/4))
+    goto(x-3*diam,y+(3*diam/2))
+    goto(x-(11*diam/4),y+(9*diam/4))
+    goto(x,y+(17*diam/6))
+    goto(x+(6*diam),y+(17*diam/6))
+    goto(x+(29*diam/4),y+(5*diam/2))
+    goto(x+(33*diam/4),y+(5*diam/4))
+    end_fill()
+    color('#ABC8E2')
+    begin_fill()
+    aller(x+(6*diam),y+(17*diam/6))
+    goto(x+(5*diam),y+(23*diam/6))
+    goto(x+(5*diam/4),y+(23*diam/6))
+    goto(x,y+(17*diam/6))
+    goto(x+(6*diam),y+(17*diam/6))
+    end_fill()
+    color(couleur)
+    width(diam/10)
+    aller(x+(6*diam),y+(17*diam/6))
+    goto(x+(5*diam),y+(23*diam/6))
+    goto(x+(5*diam/4),y+(23*diam/6))
+    goto(x,y+(17*diam/6))
+    goto(x+(6*diam),y+(17*diam/6))
+    aller(x+(5*diam),y+(23*diam/6))
+    goto(x+(16*diam/3),y+(17*diam/6))
+    aller(x+(5*diam/4),y+(23*diam/6))
+    goto(x+(diam),y+(17*diam/6))
+    aller(x+(13*diam/4),y+(23*diam/6))
+    goto(x+(13*diam/4),y+(17*diam/6))
+
+    color(couleur)
+    aller(x-(5*diam/2),y+(37*diam/24))
+    width(52*diam/32)
+    goto(x-2*diam,y+(37*diam/24))
+    color('grey')
+    width(diam/3)
+    aller(x-(7*diam/2),y+(5*diam/4))
+    goto(x-diam+(diam/8),y+(5*diam/4))
+    aller(x+(6*diam)-(diam/8),y+(5*diam/4))
+    goto(x+(8*diam)+(diam/4),y+(5*diam/4))
+    color('yellow')
+    width((diam/6)+1)
+    aller(x-(5*diam/2)-(diam/6),y+(37*diam/24)+(diam/2))
+    goto(x-2*diam,y+(37*diam/24)+(diam/2))
+    color('orange')
+    width(diam/6)
+    aller(x+7*diam,y+(37*diam/24)+(diam/2)+1)
+    goto(x+(7*diam)+(diam/2),y+(37*diam/24)+(diam/2)+1)
     
 #Fonction dessineCarre se dépace aux coordonnées indiquées, s'oriente et
 #crée un carré, d'épaisseur choisie, qu'elle remplit
@@ -53,21 +246,21 @@ def dessineCarre(x,y,cote=50,couleur='black',epaisseur=1):
 #dessine un carré aux coordonnées (30,40) de côté 15 de couleur rouge d'épaisseur 2
 
 
-def dessineRoue(x,y):
+def dessineRoue(x,y,diam=20):
     aller(x,y)
     color('black')
     begin_fill()
-    circle(20,360)
+    circle(diam,360)
     end_fill()
-    aller(x,y+(20/3))
+    aller(x,y+(diam/3))
     color('white')
     begin_fill()
-    circle((2*20)/3,360)
+    circle((2*diam)/3,360)
     end_fill()
-    aller(x,y+(3*20/4))
+    aller(x,y+(3*diam/4))
     color('#B09F91')
     begin_fill()
-    circle(20/4,360)
+    circle(diam/4,360)
     end_fill()
 
 #Fonction dessineDemiCercle, se déplace au coordonnées indiquées, s'oriente et
@@ -144,7 +337,7 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, x
                 aller(x+(largeurMaison/6),y+((i+1)*(hauteurMaison/nbrEtages))-(hauteurMaison/(3*nbrEtages))) # on se décale un peu
                 dessineCarre(xcor(),ycor(),largeurFenetre,couleur,epaisseur)
 
-
+    
 
 
 #fonction dessineLune, dessine une lune aux coordonnées choisie
@@ -174,9 +367,207 @@ def dessineLune(xLune =0, yLune=0,diametre = 100, demander = 0):
 #dessineLune(90,1,-25)
 #dessine une lune de 90 de diametre en (1;-25)
 
+def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit='black',couleurPorte='black', demander = 0,largeur = 130, hauteur=150):
+    if demander == 0:
+        x = lireEntierClavier("Le x du point bas gauche de la maison : ", LARGEUR_MIN, LARGEUR_MAX)
+        y = lireEntierClavier("Le y du point bas gauche de la maison : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        couleurMaison = lireCouleurClavier("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
+        couleurPorte = lireCouleurClavier("Entrez la couleur de la porte (en hexadécimal ou en anglais) : ")
+        couleurToit = lireCouleurClavier("Entrez la couleur du toit (en hexadécimal ou en anglais) : ")
+        largeur = lireEntierClavier("Entrez la largeur de la maison (50-200) : ",50, 200)
+        hauteur = lireEntierClavier("Entrez la hauteur de la maison (50-300) : ",50, 300)
+
+    # Dessine le rectangle de la maison :
+    aller(x,y)
+    width(0)
+    begin_fill()
+    color(couleurMaison)
+    for i in range(0,2):
+        forward(largeur)
+        left(90)
+        forward(hauteur)
+        left(90)
+    end_fill()
+    color("black")
+    for i in range(0,2):
+        forward(largeur)
+        left(90)
+        forward(hauteur)
+        left(90)
+    
+    # Dessine le toit :
+    up()
+    goto(largeur+x,hauteur+y)
+    down()
+    begin_fill()
+    color(couleurToit)
+    longueurToit=largeur*acos(pi/4)
+    left(135)
+    forward(longueurToit)
+    goto(x,hauteur+y)
+    end_fill()
+
+    # Dessine la porte :
+    positionPorte=randint(1,3)
+    largeurPorte=largeur/5
+    hauteurPorte=hauteur/3
+    if positionPorte==1:
+        up()
+        goto((largeur/3)-(largeurPorte/2)+x,y)
+        down()
+    elif positionPorte==2:
+        up()
+        goto((largeur/2)-(largeurPorte/2)+x,y)
+        down()
+    else:
+        up()
+        goto((2*largeur/3)-(largeurPorte/2)+x,y)
+        down()
+    begin_fill()
+    color(couleurPorte)
+    right(45)
+    for k in range(0,2):
+        forward(hauteurPorte)
+        right(90)
+        forward(largeurPorte)
+        right(90)
+    end_fill()
+    color("black")
+    for k in range(0,2):
+        forward(hauteurPorte)
+        right(90)
+        forward(largeurPorte)
+        right(90)
+
+    # Dessine la poignée :
+    if positionPorte==1:
+        up()
+        goto((largeur/3)+(4*largeurPorte/10)+x,y+(hauteurPorte/2))
+        down()
+    elif positionPorte==2:
+        up()
+        goto((largeur/2)+(2*largeurPorte/5)+x,y+(hauteurPorte/2))
+        down()
+    else:
+        up()
+        goto((2*largeur/3)+(2*largeurPorte/5)+x,y+(hauteurPorte/2))
+        down()
+    begin_fill()
+    color("black")
+    circle(largeurPorte/10)
+    end_fill()
+
+    # Dessine les fenetres :
+        # Sur le toit:
+    fenetreToit=randint(0,1)
+    if fenetreToit==1:
+        up()
+        goto((19*largeur/30)+x,(11*hauteur/9)+y)
+        down()
+        begin_fill()
+        color("DarkSlateGray")
+        circle(largeur/9)
+        end_fill()
+        #Petite lucarne
+        up()
+        goto((613*largeur/1000)+x,(11*hauteur/9)+y)
+        down()
+        begin_fill()
+        color("yellow")
+        circle(largeur/11)
+        end_fill()
+        # Croix
+        color("black")
+        width(5)
+        left(90)
+        forward(2*largeur/11)
+        goto((613*largeur/1000)-(largeur/11)+x,(11*hauteur/9)+y)
+        right(90)
+        forward(largeur/11)
+        backward(2*largeur/11)
+
+        # Sur la maison:
+    up()
+    goto((largeur/5)+x,(2*hauteur/3)+y)
+    down()
+    width(5)
+    begin_fill()
+    color("#E9FFE5")
+    for j in range(0,4):
+        forward(hauteur/6)
+        right(90)
+    end_fill()
+    color("black")
+    for j in range(0,4):
+        forward(hauteur/6)
+        right(90)
+    forward(hauteur/12)
+    right(90)
+    forward(hauteur/6)
+    backward(hauteur/12)
+    right(90)
+    forward(hauteur/12)
+    backward(hauteur/6)
+        
+    up()
+    goto((7*largeur/10)+x,(2*hauteur/3)+y)
+    down()
+    width(5)
+    begin_fill()
+    color("#E9FFE5")
+    right(180)
+    for j in range(0,4):
+        forward(hauteur/6)
+        right(90)
+    end_fill()
+    color("black")
+    for j in range(0,4):
+        forward(hauteur/6)
+        right(90)
+    forward(hauteur/12)
+    right(90)
+    forward(hauteur/6)
+    backward(hauteur/12)
+    right(90)
+    forward(hauteur/12)
+    backward(hauteur/6)
+
+        #En fonction de la porte
+    if positionPorte==1 or positionPorte==3:
+        if positionPorte==1:
+            up()
+            goto((11*largeur/20)+x,hauteurPorte+y)
+            down()
+        else:
+            up()
+            goto(3*largeur/20+x,hauteurPorte+y)
+            down()
+        begin_fill()
+        color("#E9FFE5")
+        for k in range(0,2):
+            forward(2*hauteurPorte/5)
+            left(90)
+            forward(largeur/3)
+            left(90)
+        end_fill()
+        width(5)
+        color("black")
+        for k in range(0,2):
+            forward(2*hauteurPorte/5)
+            left(90)
+            forward(largeur/3)
+            left(90)
+        forward(hauteurPorte/5)
+        left(90)
+        forward(largeur/3)
+        backward(largeur/6)
+        right(90)
+        forward(hauteurPorte/5)
+        backward(2*hauteurPorte/5)
+    left(90)
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
-def dessineMaison(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', toit='oui', couleurToit='red', couleurPorte = 'red', nbrEtagesMaison=1, couleurEtages = 'blue', nbrFenetresEtagesMaison=2, couleurFenetresMaison=2, demander = 0):
+def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', toit='oui', couleurToit='red', couleurPorte = 'red', nbrEtagesMaison=1, couleurEtages = 'blue', nbrFenetresEtagesMaison=2, couleurFenetresMaison=2, demander = 0):
     if demander == 0:
         
         print("Où voulez-vous dessinez votre maison ?")
@@ -226,18 +617,17 @@ def dessineNuage(x,y,rayon,couleur):
     dessineRectangle(x,y,rayon,rayon/2,couleur)
 
     for i in range(0,4):
-        dessineDemiCercle(x,y,rayon,couleur,270)
-
+        dessineDemiCercle(xcor(),ycor(),rayon/8,couleur,270)
 
     for i in range(0,2):
-        dessineDemiCercle(x,y,rayon,couleur,0)
+        dessineDemiCercle(xcor(),ycor(),rayon/8,couleur,0)
         
     for i in range(0,4):
-        dessineDemiCercle(x,y,rayon,couleur,90)
+        dessineDemiCercle(xcor(),ycor(),rayon/8,couleur,90)
 
 
     for i in range(0,2):
-        dessineDemiCercle(x,y,rayon,couleur,180)
+        dessineDemiCercle(xcor(),ycor(),rayon/8,couleur,180)
 
 #exemple d'utilisation
 #dessineNuage(400,300,50,blue)
@@ -259,7 +649,6 @@ def dessineRectangle(x,y,largeur=180,hauteur=50,couleur='red',epaisseur=1):
         left(90)
     end_fill() 
     aller(x,y)
-
 #exemple d'utilisation
 #dessineRectangle(20,25,40,30,'black')
 #dessine un rectangle aux coordonnées (20;25) de largeur 40 et de hauteur 30
@@ -293,13 +682,16 @@ def dessineTriangle(x,y,cote=50,couleur="black",epaisseur=1):
 #dessine un triangle aux coordonnées (40,50) de côté 30 de couleur jaune
 
 
-def dessineVoiture():
-    print("Où voulez-vous dessinez votre voiture ?")
-    print("Entrez les coordonnées du point bas-gauche de la voiture : ")
-    xVoiture = lireEntierClavier("Le x de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
-    yVoiture = lireEntierClavier("Le y de la voiture : ",HAUTEUR_MIN,HAUTEUR_MAX)
-    couleurVoiture = lireCouleurClavier("La couleur de la voiture (en hexadécimal ou en anglais) : ")
-    aller(xVoiture+5, yVoiture, 0)
+def dessineVoiture1(xVoiture = 0, yVoiture = 0, couleurVoiture = 'grey',diam = 20, demander = 0):
+
+    if demander == 0:
+            
+        print("Où voulez-vous dessinez votre voiture ?")
+        print("Entrez les coordonnées du point bas-gauche de la voiture : ")
+        xVoiture = lireEntierClavier("Le x de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
+        yVoiture = lireEntierClavier("Le y de la voiture : ",HAUTEUR_MIN,HAUTEUR_MAX)
+        couleurVoiture = lireCouleurClavier("La couleur de la voiture (en hexadécimal ou en anglais) : ")
+    aller(xVoiture+5, yVoiture)
     begin_fill()
     for i in range(0,8):
         if i%2 == 0:
@@ -314,8 +706,8 @@ def dessineVoiture():
 
 
     
-    dessineRoue(xVoiture+35,yVoiture-10)
-    dessineRoue(xVoiture+165,yVoiture-10)
+    dessineRoue(xVoiture+35,yVoiture-10,diam)
+    dessineRoue(xVoiture+165,yVoiture-10,diam)
 
     begin_fill()
     dessineTrait(xVoiture+55, yVoiture+60, 50, 70, couleurVoiture, 2)
@@ -465,7 +857,7 @@ def traitDeplacement(xDepart, yDepart, xArrivee, yArrivee, couleur='black', epai
     color(couleur)
     goto(xArrivee,yArrivee)
 
-def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'black', demander = 0):
+def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'black', demander = 0, allume = 0):
 
     if demander == 0:
             
@@ -476,7 +868,10 @@ def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'bla
         couleurLampadaire = lireCouleurClavier("La couleur du lampadaire (en hexadécimal ou en anglais) : ")
 
     aller(xLampadaire, yLampadaire)
-
+    if allumer == 0:
+        lumiere = 'grey'
+    else:
+        lumiere = '#FFF168'
     #création du bas du lampadaire
     dessineTrait(xcor(), ycor(), 40, 0, couleurLampadaire, 10)
     dessineTrait(xcor()-35, ycor()+7, 30, 0, couleurLampadaire, 8)
@@ -525,9 +920,9 @@ def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'bla
     dessineTrait(xcor(), ycor(), 35, 90, couleurLampadaire, 11)
     aller(xcor()-5, ycor()-5)
     begin_fill()
-    traitDeplacement(xcor(), ycor(), xcor()-18, ycor()+ 50, '#FFF168', 3)
-    traitDeplacement(xcor(), ycor(), xcor()+46, ycor(), '#FFF168', 3)
-    traitDeplacement(xcor(), ycor(), xcor() -18, ycor() -50, '#FFF168', 3)
+    traitDeplacement(xcor(), ycor(), xcor()-18, ycor()+ 50, lumiere, 3)
+    traitDeplacement(xcor(), ycor(), xcor()+46, ycor(), lumiere, 3)
+    traitDeplacement(xcor(), ycor(), xcor() -18, ycor() -50, lumiere, 3)
     end_fill()
     traitDeplacement(xcor()-9, ycor(), xcor()-27, ycor()+50, couleurLampadaire, 5)
     traitDeplacement(xcor(), ycor(), xcor()-2, ycor()-5, couleurLampadaire, 3)
@@ -547,57 +942,6 @@ def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'bla
     width(5)
     circle(15,240)
     end_fill()
-
-def dessineVoiture(xVoiture = 0, yVoiture = 0, couleurVoiture = 'red', demander = 0):
-
-    if demander == 0:
-            
-        xVoiture = lireEntierClavier("Entrez le x du point bas droit de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
-        yVoiture = lireEntierClavier("Entrez le y du point bas droit de la voiture : ", HAUTEUR_MIN, HAUTEUR_MAX)
-        couleurVoiture = lireCouleurClavier("La couleur de la voiture (en hexadécimal ou en anglais) : ")
-
-    dessineRoue(xVoiture-248, yVoiture-25)
-    dessineRoue(xVoiture-88, yVoiture-25)
-    begin_fill()
-    traitDeplacement(xVoiture, yVoiture, xVoiture-10, yVoiture -10, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 50, 180, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()-10, ycor()+20, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 40, 180, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()-10, ycor()-20, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 100, 180, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor() -10, ycor() + 20, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 40, 180, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()-10, ycor() -20, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 30, 180, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()-25, ycor() +10, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()+25, ycor() + 30, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor() +60, ycor()+10, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 190, 0, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()+40, ycor() -10, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()+20, ycor()-30, couleurVoiture)
-    end_fill()
-
-    begin_fill()
-    traitDeplacement(xcor()-60, ycor()+40, xcor()-100, ycor()+65, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 110, 180, couleurVoiture)
-    traitDeplacement(xcor(), ycor(), xcor()-40, ycor()-25, couleurVoiture)
-    dessineTrait(xcor(), ycor(), 190, 0, couleurVoiture)
-    end_fill()
-
-    traitDeplacement(xcor(), ycor(), xcor()-40, ycor()+25, 'black', 3)
-    dessineTrait(xcor(), ycor(), 110,  180, 'black', 3)
-    traitDeplacement(xcor(), ycor(), xcor()-40, ycor()-25, 'black', 3)
-    dessineTrait(xcor(), ycor(), 190, 0, 'black', 3)
-    traitDeplacement(xcor()-40, ycor()+25, xcor()-20, ycor(), 'black', 3)
-    traitDeplacement(xcor()-130, ycor() +25, xcor()-150, ycor() , 'black', 3)
-    traitDeplacement(xcor() +75, ycor() +25, xcor() +75, ycor() , 'black', 3)
-    
-
-    dessineTrait(xcor()-165, ycor()-31, 10,0 , couleurVoiture, 40) 
-    dessineTrait(xcor()-35, ycor() -9, 65, 0, 'grey', 10)
-    dessineTrait(xcor()+220, ycor(), 65, 0, 'grey', 10)
-    dessineTrait(xcor()-330, ycor()+20, 10, 0, 'white' ,7)
-    traitDeplacement(xcor()+285, ycor()+2, xcor()+290, ycor()+2, 'orange',5)
 
 
 def dessineArbre(xArbre=0, yArbre=0, largArbre = 50, hautArbre = 300, demander = 0):

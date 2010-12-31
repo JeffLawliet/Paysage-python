@@ -89,7 +89,6 @@ HAUTEUR_MAX = window_height()//2
 HAUTEUR_MIN = -window_height()//2
 
 def dessineMer():
-    print("Vous allez dessiné une mer")
     date=input("À quel moment de la journée sommes-nous? Jour ou nuit? : ")
     if date!="Jour" and date!="jour" and date!="Nuit" and date!="nuit":
         print("Veuillez recommencer")
@@ -122,11 +121,11 @@ def dessineMer():
     goto(LARGEUR_MAX,HAUTEUR_MIN)
     goto(LARGEUR_MAX,0)
     end_fill()
-    a=randint(51,100)
+    a=randint(51,80)
     for i in range(50,a):
         x=randint(LARGEUR_MIN,LARGEUR_MAX)
         y=randint(HAUTEUR_MIN,-20)
-        long=randint(80,200)
+        long=randint(80,150)
         if tps=="agitée":
             couleur2='#0000B0'
             color(couleur2)
@@ -136,7 +135,7 @@ def dessineMer():
             color(couleur2)
             dessineVague1(x,y,10,long)
             
-    
+speed(0)    
 dessineMer()
 
     

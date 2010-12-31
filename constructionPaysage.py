@@ -3,13 +3,9 @@ setup(1280, 1024)
 from fonction import *
 
 
-
-
-
-
 continuer = 1
 print("Bienvenue dans le constructeur de paysage.")
-print("Ce logiciel a été crée par VENANT Fanny, REDOLFI Camille et FILIPPI Jeff.")
+print("Ce logiciel a été crée par VENANT Fanny, REDOLFI Camille et FILIPPI Jeff. Il est actuellement en version 1.0")
 print("\n\n\n")
 print("Que veux-tu faire : ")
 print("1. Création de paysage manuelle")
@@ -44,8 +40,8 @@ if typeCreation == 2:
         while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
             emplacementAstre = input("Le soleil est à/au ")
         if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 80, HAUTEUR_MAX - 100, 90, 1)
-        elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 80, HAUTEUR_MAX-100, 90, 1)
-        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 90,1)
+        elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 130, HAUTEUR_MAX-100, 90, 1)
+        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-100, 90,1)
 
     print("On peut aller en ville ou à la mer.")
     print("Où voulez-vous aller ?")
@@ -53,14 +49,39 @@ if typeCreation == 2:
         endroit = input("Je veux aller vers la ")
 
     if endroit == 'ville':
-        dessineRectangle(LARGEUR_MIN, HAUTEUR_MIN, 2*LARGEUR_MAX, HAUTEUR_MAX/2, 'green')
+        dessineRectangle(LARGEUR_MIN, HAUTEUR_MIN, 2*LARGEUR_MAX, HAUTEUR_MAX/2 + 150, 'green')
         dessineRoute(LARGEUR_MIN, HAUTEUR_MIN/4 - 150, 150, 2*LARGEUR_MAX, 1)
         print("Il y a des maisons de part et d'autres de la route, mais... combien ?")
         nbrMaison = lireEntierClavier("Nombre de maison(s) (1-4) : ", 1, 4)
-        for i in range(1, nbrMaison):
-            pass
-            
+        espaceVide = (2*LARGEUR_MAX - nbrMaison * 130) / (nbrMaison+1)
+        aller(LARGEUR_MIN, HAUTEUR_MAX/2 + 20)
+        listeCouleur = ['black', 'grey', 'brown', 'red', 'purple', 'blue', 'green', 'yellow', 'white', 'pink', 'cyan', 'orange'] 
+        for i in range(0, nbrMaison):
+            aller(xcor() + espaceVide, HAUTEUR_MIN/2 + 140)
+            xMaison = xcor()
+            yMaison = ycor()
+            couleurMaison = listeCouleur[randint(0,11)]
+            couleurToit = listeCouleur[randint(0,11)]
+            couleurPorte = listeCouleur[randint(0,11)]
+            couleurEtages = listeCouleur[randint(0,11)]
+            dessineMaison(xMaison, yMaison, couleurMaison, couleurToit, couleurPorte, 1)
 
+        print("Je vois une voiture !")
+        couleurVoiture = lireCouleurClavier("De quelle couleur était la voiture ?")
+        dessineVoiture(LARGEUR_MAX-200, HAUTEUR_MIN/2, 20,couleurVoiture, demander = 1)
+
+    print("Je crois voir un nuage dans le ciel")
+
+    if emplacementAstre == 'gauche':
+        dessineNuage(LARGEUR_MAX - 130, HAUTEUR_MAX-150, 120, 'white')
+        dessineNuage(0, HAUTEUR_MAX-200, 120,'white')
+    elif emplacementAstre ==  'droite':
+        dessineNuage(LARGEUR_MIN+ 130, HAUTEUR_MAX - 150, 120, 'white')
+        dessineNuage(0, HAUTEUR_MAX-200, 120,'white')
+    elif enmplacementAstre == 'milieu':
+        dessineNuage(LARGEUR_MIN+ 130, HAUTEUR_MAX - 150, 120, 'white')
+        dessineNuage(LARGEUR_MAX - 130, HAUTEUR_MAX-150, 120, 'white')
+        
 elif typeCreation == 1:
         
     print("Vous êtes dans le mode de création manuelle, libre. Vous pouvez faire tout ce que vous voulez.")
@@ -89,7 +110,10 @@ elif typeCreation == 1:
                 elif choix == 3: dessineVoiture()
                 elif choix == 4: dessineArbre()
                 elif choix == 5: dessineLampadaire()
-                continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
+                continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter)", 0, 1)
+                if continuer == 0:
+                    choixCategorie == 0
+                
         while choixCategorie == 2:
                 print("Quel élément ?")
                 print("0. Retour aux catégories")
@@ -109,7 +133,10 @@ elif typeCreation == 1:
                 elif choix == 5: dessineSable()
                 elif choix == 6: dessinePhare()
                 elif choix == 7: dessineRochers()
-                continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
+                continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter)", 0, 1)
+                if continuer == 0:
+                    choixCategorie = 0
+                    
         while choixCategorie == 3:
                 print("Quel élément ?")
                 print("0. Retour aux catégories")
@@ -123,5 +150,8 @@ elif typeCreation == 1:
                 elif choix == 2: dessineSoleil()
                 elif choix == 3: dessineLune()
                 elif choix == 4: dessineNuage()
-                continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
-            
+                continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter)", 0, 1)
+                if continuer == 0:
+                    choixCategorie = 0
+
+print("Admirez votre paysage !")
