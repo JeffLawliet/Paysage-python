@@ -1,10 +1,9 @@
 from turtle import *
-import turtle
+setup(1280, 1024)
 from fonction import *
 
-speed(0)
-reset(0)
-bgcolor(white)
+
+
 
 
 
@@ -32,17 +31,21 @@ if typeCreation == 2:
         print("Où se trouve la lune ? à gauche à groite ou au milieu ?")
         while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
             emplacementAstre = input("La lune est à/au ")
-        if emplacementAstre == 'gauche': dessineLune(LARGEUR_MIN+100, HAUTEUR_MAX - 150, 100, 1)
-        elif emplacementAstre ==  'droite': dessineLune(LARGEUR_MAX - 100, HAUTEUR_MAX-150, 100, 1)
-        elif emplacementAstre == 'milieu': dessineLune(0, HAUTEUR_MAX-150, 100,1)
+        if emplacementAstre == 'gauche': dessineLune(LARGEUR_MIN+80, HAUTEUR_MAX - 100, 90, 1)
+        elif emplacementAstre ==  'droite': dessineLune(LARGEUR_MAX -80, HAUTEUR_MAX-100, 90, 1)
+        elif emplacementAstre == 'milieu': dessineLune(0, HAUTEUR_MAX-100, 90,1)
+
+
+        for i in range(0,15):
+            dessineEtoile(2,1)
     elif momentDuJour == 'jour':
         bgcolor('blue')
         print("Où se trouve le soleil ? à gauche à droite ou au milieu ?")
         while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
             emplacementAstre = input("Le soleil est à/au ")
-        if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 100, 1)
-        elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 100, 1)
-        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 100,1)
+        if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 80, HAUTEUR_MAX - 100, 90, 1)
+        elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 80, HAUTEUR_MAX-100, 90, 1)
+        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 90,1)
 
     print("On peut aller en ville ou à la mer.")
     print("Où voulez-vous aller ?")
@@ -51,7 +54,7 @@ if typeCreation == 2:
 
     if endroit == 'ville':
         dessineRectangle(LARGEUR_MIN, HAUTEUR_MIN, 2*LARGEUR_MAX, HAUTEUR_MAX/2, 'green')
-        dessineRoute(LARGEUR_MIN, 0, 300, 2*LARGEUR_MAX, 1)
+        dessineRoute(LARGEUR_MIN, HAUTEUR_MIN/4 - 150, 150, 2*LARGEUR_MAX, 1)
         print("Il y a des maisons de part et d'autres de la route, mais... combien ?")
         nbrMaison = lireEntierClavier("Nombre de maison(s) (1-4) : ", 1, 4)
         for i in range(1, nbrMaison):
@@ -70,55 +73,55 @@ elif typeCreation == 1:
         print(" 2. Catégorie Mer")
         print(" 3. Catégorie Ciel")
         choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",1,4)
+                
+        while choixCategorie == 1:
+                print("Quel élément ?")
+                print("0. Retour aux catégories")
+                print("1. Route")
+                print("2. Maison")
+                print("3. Voiture")
+                print("4. Arbre")
+                print("5. Lampadaire")
+                choix = lireEntierClavier("Choisis le numéro correspondant à ton choix :", 0, 6)
+                if choix == 0: choixCategorie = 0
+                elif choix == 1: dessineRoute()
+                elif choix == 2: dessineMaison()
+                elif choix == 3: dessineVoiture()
+                elif choix == 4: dessineArbre()
+                elif choix == 5: dessineLampadaire()
+                continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
+        while choixCategorie == 2:
+                print("Quel élément ?")
+                print("0. Retour aux catégories")
+                print("1. Mer")
+                print("2. Bateau")
+                print("3. Dauphin")
+                print("4. Bouée")
+                print("5. Sable")
+                print("6. Phare")
+                print("7. Rochers")
+                choix = lireEntierClavier("Choisis le numéro correspondant à ton choix :", 0, 7)
+                if choix == 0: choixCategorie = 0
+                elif choix == 1: dessineMer()
+                elif choix == 2: dessineBateau()
+                elif choix == 3: dessineDauphin()
+                elif choix == 4: dessineBouee()
+                elif choix == 5: dessineSable()
+                elif choix == 6: dessinePhare()
+                elif choix == 7: dessineRochers()
+                continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
+        while choixCategorie == 3:
+                print("Quel élément ?")
+                print("0. Retour aux catégories")
+                print("1. Étoiles")
+                print("2. Soleil")
+                print("3. Lune")
+                print("4. Nuage")
+                choix = lireEntierClavier("Choisis le numéro correspondant à ton choix :", 0, 4)
+                if choix == 0: choixCategorie = 0
+                elif choix == 1: dessineEtoile()
+                elif choix == 2: dessineSoleil()
+                elif choix == 3: dessineLune()
+                elif choix == 4: dessineNuage()
+                continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
             
-    while choixCategorie == 1:
-            print("Quel élément ?")
-            print("0. Retour aux catégories")
-            print("1. Route")
-            print("2. Maison")
-            print("3. Voiture")
-            print("4. Arbre")
-            print("5. Lampadaire")
-            choix = lireEntierClavier("Choisis le numéro correspondant à ton choix :", 0, 6)
-            if choix == 0: choixCategorie = 0
-            elif choix == 1: dessineRoute()
-            elif choix == 2: dessineMaison()
-            elif choix == 3: dessineVoiture()
-            elif choix == 4: dessineArbre()
-            elif choix == 5: dessineLampadaire()
-            continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
-    while choixCategorie == 2:
-            print("Quel élément ?")
-            print("0. Retour aux catégories")
-            print("1. Mer")
-            print("2. Bateau")
-            print("3. Dauphin")
-            print("4. Bouée")
-            print("5. Sable")
-            print("6. Phare")
-            print("7. Rochers")
-            choix = lireEntierClavier("Choisis le numéro correspondant à ton choix :", 0, 7)
-            if choix == 0: choixCategorie = 0
-            elif choix == 1: dessineMer()
-            elif choix == 2: dessineBateau()
-            elif choix == 3: dessineDauphin()
-            elif choix == 4: dessineBouee()
-            elif choix == 5: dessineSable()
-            elif choix == 6: dessinePhare()
-            elif choix == 7: dessineRochers()
-            continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
-    while choixCategorie == 3:
-            print("Quel élément ?")
-            print("0. Retour aux catégories")
-            print("1. Étoiles")
-            print("2. Soleil")
-            print("3. Lune")
-            print("4. Nuage")
-            choix = lireEntierClavier("Choisis le numéro correspondant à ton choix :", 0, 4)
-            if choix == 0: choixCategorie = 0
-            elif choix == 1: dessineEtoile()
-            elif choix == 2: dessineSoleil()
-            elif choix == 3: dessineLune()
-            elif choix == 4: dessineNuage()
-            continuer = lireEntierClavier("Voulez-vous continuer ? (1 pour continuer, 0 pour arrêter)", 0, 1)
-        

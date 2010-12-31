@@ -1,10 +1,12 @@
 #Programme qui dessine une bouée:
 from turtle import *
 
-def dessineBouée(x,y):
-    up()
-    goto(x,y)
-    down()
+def dessineBouée(x= 0,y=0, demander = 0):
+
+    if demander == 0:
+        x = lireEntierClavier("")
+
+    aller(x,y)
 
     #Corps de la bouée
     begin_fill()
@@ -40,4 +42,4 @@ def dessineBouée(x,y):
             right(202)
             
 
-dessineBouée(0,0)
+dessineBouée(0,0,1)

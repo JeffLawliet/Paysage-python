@@ -1,13 +1,13 @@
 from turtle import *
 from math import *
 from random import *
-reset()
-speed(0)
-
 LARGEUR_MAX = window_width()//2
 LARGEUR_MIN = -window_width()//2
 HAUTEUR_MAX = window_height()//2
 HAUTEUR_MIN = -window_height()//2
+reset()
+speed(0)
+bgcolor('white')
 
 # fonction aller : se déplace en x,y et s'oriente vers angle
 def aller(x,y,angle=0):
@@ -25,10 +25,12 @@ def dessineRoute(x=0, y=0, lar=100, long=300, demander=0):
         lar=lireEntierClavier("Largeur de la route (>50) : ",50, 2*HAUTEUR_MAX)
         long=lireEntierClavier("Longueur de la route (>100: ", 100, 2*LARGEUR_MAX)
     dessineRectangle(x,y,long,lar,'black',1)
-    dessineTrait(x,y+lar/2,25,0,'white',5)
     i = x
-    while i<=x+long:
-        dessineTrait(i+45,y+lar/2,25,0,'white',5)
+    k = 0
+    up()
+    while i<=x+long and (k+1)*25 + (k+1)*20 +10 <=long: 
+        k += 1
+        dessineTrait(i+10,y+lar/2,25,0,'white',5)
         i=i+45
         
     
@@ -85,11 +87,18 @@ def dessineDemiCercle(x,y,rayon,couleur='blue',orientation=0,epaisseur=1):
     
 #fonction dessineEtoile superpose un "+" et une "x" aux coordonnées indiquées
 #le tout de couleur blanche
-def dessineEtoile():
-    
-    taille = lireEntierClavier("Quelle taille pour votre étoile (1-5) : ", 1, 5)
-    x = randint(LARGEUR_MIN,LARGEUR_MAX)
-    y = randint(HAUTEUR_MIN,HAUTEUR_MAX)
+def dessineEtoile(taille = 2, demander = 0):
+
+    if demander == 0:
+
+        taille = lireEntierClavier("Quelle taille pour votre étoile (1-5) : ", 1, 5)
+        x = lireEntierClavier("Le x de votre étoile : ", LARGEUR_MIN, LARGEUR_MAX)
+        y = lireEntierClavier("Le y de voter étoile : ", HAUTEUR_MIN, HAUTEUR_MAX)
+
+    else:
+        
+        x = randint(LARGEUR_MIN,LARGEUR_MAX)
+        y = randint(HAUTEUR_MIN,HAUTEUR_MAX)
     color('#fffbb4')
     
     aller(x,y-taille,90)
@@ -167,15 +176,15 @@ def dessineLune(xLune =0, yLune=0,diametre = 100, demander = 0):
 
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
-def dessineMaison(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', toit='oui', couleurToit='red', couleurPorte = 'red' nbrEtagesMaison=1, couleurEtages = 'blue', nbrFenetresEtagesMaison=2, couleurFenetresMaison=2, demander = 0):
+def dessineMaison(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', toit='oui', couleurToit='red', couleurPorte = 'red', nbrEtagesMaison=1, couleurEtages = 'blue', nbrFenetresEtagesMaison=2, couleurFenetresMaison=2, demander = 0):
     if demander == 0:
         
         print("Où voulez-vous dessinez votre maison ?")
         print("Entrez les coordonnées du point bas-gauche de la maison : ")
         xMaison = lireEntierClavier("Le x de la maison : ",LARGEUR_MIN,LARGEUR_MAX)
         yMaison = lireEntierClavier("Le y de la maison : ",HAUTEUR_MIN,HAUTEUR_MAX)
-        hauteurMaison = lireEntierClavier("Entrez la hauteur de la maison : ",1, window_height())
-        largeurMaison = lireEntierClavier("Entrez la largeur de la maison : ",1, window_width())
+        hauteurMaison = lireEntierClavier("Entrez la hauteur de la maison (>80) : ",80, 2*HAUTEUR_MAX)
+        largeurMaison = lireEntierClavier("Entrez la largeur de la maison (>80) : ",80, 2*LARGEUR_MAX)
         couleurMaison = lireCouleurClavier("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
     dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison)
 
@@ -188,7 +197,7 @@ def dessineMaison(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, cou
         if demander == 0:
             
             couleurToit = lireCouleurClavier("Entrez la couleur de votre toit (en hexadécimal ou en anglais) : ")
-        dessineTriangle(xMaison, yMaison+hauteurMaison, largeurMaison, couleurToit, epaisseurMaison)
+        dessineTriangle(xMaison, yMaison+hauteurMaison, largeurMaison, couleurToit)
     if demander == 0:
         
         nbrEtagesMaison = lireEntierClavier("Entrez le nombre d'étages (entre 1 et 10) : ", 1, 10)
@@ -196,7 +205,7 @@ def dessineMaison(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, cou
     for i in range(1,nbrEtagesMaison):
         
         aller(xMaison,yMaison+i*(hauteurMaison/nbrEtagesMaison))
-        dessineTrait(xcor(), ycor(), largeurMaison, 0, couleurEtages, epaisseurMaison)
+        dessineTrait(xcor(), ycor(), largeurMaison, 0, couleurEtages)
 
     xPorte = xMaison + (2*largeurMaison)/5
     largeurPorte = largeurMaison/3
@@ -204,11 +213,11 @@ def dessineMaison(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, cou
     if demander == 0:
         
         couleurPorte = input("Entrez la couleur de votre porte (en hexadécimal ou en anglais) : ")
-    dessineRectangle(xPorte, yMaison, largeurPorte, hauteurPorte, couleurPorte, epaisseurMaison)
+    dessineRectangle(xPorte, yMaison, largeurPorte, hauteurPorte, couleurPorte)
     if demander == 0:
         nbrFenetresEtagesMaison = lireEntierClavier("Entrez le nombre de fenêtre par étages de votre maison (entre 1 et 10) : ", 1, 10)
         couleurFenetresMaison = input("Entrez la couleur des fenêtres de votre maison (en hexadécimal ou en anglais) : ")
-    dessineFenetre(nbrFenetresEtagesMaison,nbrEtagesMaison,hauteurMaison,largeurMaison, xMaison, yMaison, couleurFenetresMaison, epaisseurMaison)
+    dessineFenetre(nbrFenetresEtagesMaison,nbrEtagesMaison,hauteurMaison,largeurMaison, xMaison, yMaison, couleurFenetresMaison)
 
 
 
@@ -322,7 +331,50 @@ def dessineVoiture():
     dessineRectangle(ortho1,yVoiture +60, ortho2-ortho1, 50, couleurVoiture, 2)
     end_fill()
 
-    
+def dessineBouee(x= 0,y=0, demander = 0):
+
+    if demander == 0:
+        x = lireEntierClavier("Le x du point bas milieu de la bouée : ", LARGEUR_MIN, LARGEUR_MAX)
+        y = lireEntierClavier("Le y du point bas milieu de la bouée : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        
+
+    aller(x,y)
+
+    #Corps de la bouée
+    begin_fill()
+    color("OrangeRed")
+    circle(50)
+    end_fill()
+    seth(90)
+    forward(20)
+    seth(0)
+    begin_fill()
+    color("white")
+    circle(30)
+    end_fill()
+
+    #Bandes grises
+
+    for i in range(0,28):
+        up()
+        circle(30,i)
+        if i==8 or i==15 or i==20 or i==24:
+            down()
+            right(90)
+            begin_fill()
+            color("Gray")
+            forward(20)
+            left(90)
+            circle(50,20)
+            left(90)
+            forward(20)
+            left(72)
+            circle(30,20)
+            end_fill()
+            right(202)
+            
+
+
 def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
 
     if demander == 0:
@@ -477,13 +529,13 @@ def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'bla
     traitDeplacement(xcor(), ycor(), xcor()+46, ycor(), '#FFF168', 3)
     traitDeplacement(xcor(), ycor(), xcor() -18, ycor() -50, '#FFF168', 3)
     end_fill()
-    traitDeplacement(xcor()-9, ycor(), xcor()-27, ycor()+50, couleurLampadaire, 3)
+    traitDeplacement(xcor()-9, ycor(), xcor()-27, ycor()+50, couleurLampadaire, 5)
     traitDeplacement(xcor(), ycor(), xcor()-2, ycor()-5, couleurLampadaire, 3)
     traitDeplacement(xcor(), ycor(), xcor()+2, ycor()+5, couleurLampadaire, 3)
     dessineTrait(xcor(), ycor(), 46, 0, couleurLampadaire, 3)
     traitDeplacement(xcor(), ycor(), xcor()+2, ycor()-5, couleurLampadaire,3)
     traitDeplacement(xcor(), ycor(), xcor()-2, ycor()+5, couleurLampadaire,3)
-    traitDeplacement(xcor(), ycor(), xcor()-18, ycor()-50, couleurLampadaire, 3)
+    traitDeplacement(xcor(), ycor(), xcor()-18, ycor()-50, couleurLampadaire, 5)
     dessineTrait(xcor(), ycor(), 5, 180, couleurLampadaire, 3)
     dessineTrait(xcor(), ycor(), 50, 90, couleurLampadaire, 3)
     aller(xcor()-5, ycor()-50)
@@ -591,6 +643,115 @@ def dessineSoleil(xSoleil=0, ySoleil=0, rayon=50, demander=0):
         down()
         forward(rayon/3)
 
+def dessinePhare(x=0, y=0, demander = 0):
+
+    if demander == 0:
+        x = lireEntierClavier("Le x du point bas gauche du phare : ", LARGEUR_MIN, LARGEUR_MAX)
+        y = lireEntierClavier("Le y du point bas gauche du phrase :", HAUTEUR_MIN, HAUTEUR_MAX)
+    aller(x-50,y-200)
+    
+    # Base du phare:
+    for i in range(0,5):
+        if i%2==0:
+            begin_fill()
+            dessineRectangle(xcor(), ycor(), 135, 75, 'red')
+            end_fill()
+        elif i%2==1:
+            begin_fill()
+            dessineRectangle(xcor(), ycor(), 135, 75, 'white')
+        right(90)
+        backward(75)
+        left(90)
+        
+    #Haut du phare:
+    begin_fill()
+    color("black")
+    forward(145)
+    circle(5,180)
+    forward(155)
+    circle(5,180)
+    end_fill()
+
+    #Ballustrade:
+    forward(10)
+    left(90)
+    forward(30)
+    left(90)
+    forward(10)
+    right(90)
+    forward(10)
+    right(90)
+    forward(25)
+    right(90)
+    for i in range(0,7):
+        for k in range(0,2):
+            forward(30)
+            left(90)
+            forward(15)
+            left(90)
+        right(90)
+        backward(15)
+        left(90)
+    left(90)
+    forward(25)
+    right(90)
+    forward(10)
+    right(90)
+    forward(10)
+    left(90)
+    forward(20)
+
+    #Lumière du phare:
+    up()
+    backward(30)
+    right(90)
+    forward(20)
+    down()
+    left(180)
+    begin_fill()
+    circle(7,180)
+    forward(95)
+    circle(7,180)
+    end_fill()
+    forward(4)
+
+    left(90)
+    forward(60)
+    left(180)
+    for i in range(0,3):
+        for k in range(0,2):
+            forward(53)
+            left(90)
+            forward(88/3)
+            left(90)
+        right(90)
+        backward(88/3)
+        left(90)
+
+    #Dome du phare:
+    left(90)
+    forward(2)
+    begin_fill()
+    circle(7,180)
+    forward(95)
+    circle(7,180)
+    end_fill()
+    forward(92)
+    left(90)
+    forward(7)
+    begin_fill()
+    circle(44,180)
+    end_fill()
+
+    #Clocher du phare:
+    left(90)
+    forward(44)
+    left(90)
+    width(10)
+    forward(60)
+    right(90)
+    circle(3)
+
 
 def lireCouleurClavier(phrase, couleur=0):
     securite = 1
@@ -598,10 +759,8 @@ def lireCouleurClavier(phrase, couleur=0):
         try:
             chaine = input(phrase)
             securite = 0
-            if couleur == 0: color(couleur)
-            elif couleur == 1: bgcolor(couleur)
-        except KeyboardInterrupt:
-            exit()
+            if couleur == 0: color(chaine)
+            elif couleur == 1: bgcolor(chaine)
         except:
             securite = 1
     return(chaine)
