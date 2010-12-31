@@ -57,13 +57,14 @@ def dessineSable():
         couleur2='#A67E2E'
     if date=="Nuit" or date=="nuit":
         couleur1='#BF5C00'
-        couleur2='#BD8D46'
+        #couleur2='#BD8D46'
+        couleur2 = 'black'
     dessineRectangle(x,y,long,haut,couleur1,1)
     color(couleur2)
     i=1
     y2=y+(haut-20)
     while i<=haut/40:
-        dessineVague(x+long,y2,long/405)
+        dessineVague(x+long,y2,long/40)
         i=i+1
         y2=y2-40
 
