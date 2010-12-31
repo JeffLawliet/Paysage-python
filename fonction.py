@@ -17,7 +17,20 @@ def aller(x,y,angle=0):
     seth(angle)
 
 
-
+def dessineRoute(x=0, y=0, lar=100, long=300, demander=0):
+    if demander == 0:
+        
+        x=lireEntierClavier("x du point bas gauche du début de la route: ",LARGEUR_MIN, LARGEUR_MAX)
+        y=lireEntierClavier("y du point bas gauche du début de la route: ", HAUTEUR_MIN, HAUTEUR_MAX)
+        lar=lireEntierClavier("Largeur de la route (>50) : ",50, 2*HAUTEUR_MAX)
+        long=lireEntierClavier("Longueur de la route (>100: ", 100, 2*LARGEUR_MAX)
+    dessineRectangle(x,y,long,lar,'black',1)
+    dessineTrait(x,y+lar/2,25,0,'white',5)
+    i = x
+    while i<=x+long:
+        dessineTrait(i+45,y+lar/2,25,0,'white',5)
+        i=i+45
+        
     
 #Fonction dessineCarre se dépace aux coordonnées indiquées, s'oriente et
 #crée un carré, d'épaisseur choisie, qu'elle remplit
@@ -508,4 +521,3 @@ def lireCouleurClavier(phrase, couleur=0):
             securite = 1
     return(chaine)
 
-dessineLampadaire()

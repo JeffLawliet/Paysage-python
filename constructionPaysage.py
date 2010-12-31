@@ -1,7 +1,10 @@
 from turtle import *
+import turtle
 from fonction import *
 
-screensize(1024, 768)
+
+
+
 
 continuer = 1
 print("Bienvenue dans le constructeur de paysage.")
@@ -11,6 +14,7 @@ print("Que veux-tu faire : ")
 print("1. Création de paysage manuelle")
 print("2. Création de paysage guidée")
 typeCreation = lireEntierClavier("Choisis le numéro correspond à ton choix : ",1,2)
+
 
 
 if typeCreation == 2:
@@ -26,17 +30,17 @@ if typeCreation == 2:
         print("Où se trouve la lune ? à gauche à groite ou au milieu ?")
         while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
             emplacementAstre = input("La lune est à ")
-        if emplacementAstre == 'gauche': dessineLune(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 150, 1)
-        elif emplacementAstre ==  'droite': dessineLune(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 150, 1)
-        elif emplacementAstre == 'milieu': dessineLune(0, HAUTEUR_MAX-200, 150,1)
+        if emplacementAstre == 'gauche': dessineLune(LARGEUR_MIN+100, HAUTEUR_MAX - 150, 100, 1)
+        elif emplacementAstre ==  'droite': dessineLune(LARGEUR_MAX - 100, HAUTEUR_MAX-150, 100, 1)
+        elif emplacementAstre == 'milieu': dessineLune(0, HAUTEUR_MAX-150, 100,1)
     elif momentDuJour == 'jour':
         bgcolor('blue')
         print("Où se trouve le soleil ? à gauche à groite ou au milieu ?")
         while emplacementAstre != 'gauche' and emplacementAstre != 'droite' and emplacementAstre != 'milieu':
             emplacementAstre = input("Le soleil est à ")
-        if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 150, 1)
-        elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 150, 1)
-        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 150,1)
+        if emplacementAstre == 'gauche': dessineSoleil(LARGEUR_MIN+ 120, HAUTEUR_MAX - 200, 100, 1)
+        elif emplacementAstre ==  'droite': dessineSoleil(LARGEUR_MAX - 120, HAUTEUR_MAX-200, 100, 1)
+        elif emplacementAstre == 'milieu': dessineSoleil(0, HAUTEUR_MAX-200, 100,1)
 
     print("On peut aller en ville ou à la mer.")
     print("Où voulez-vous aller ?")
@@ -44,16 +48,12 @@ if typeCreation == 2:
         endroit = input("Je veux aller vers la ")
 
     if endroit == 'ville':
-        route = ''
-        print("Vous voyez une route, qui s'éloigne vers l'horizon (verticale), ou qui traverse la ville de gauche à droite (horizontale) ?")
-        while route != 'horizontale' and route != 'verticable':
-            route = input("La route est ")
-
-        if route == 'verticale':
-            ###fonction route verticale###
-            print("Il y a des maisons de part et d'autres de la route, mais... combien ?")
-            nbrMaison = lireEntierClavier("Nombre de maison(s) (1-4) : ", 1, 4)
-            
+        dessineRectangle(LARGEUR_MIN, HAUTEUR_MIN, 2*LARGEUR_MAX, HAUTEUR_MAX/2, 'green')
+        dessineRoute(LARGEUR_MIN, 0, 300, 2*LARGEUR_MAX, 1)
+        print("Il y a des maisons de part et d'autres de la route, mais... combien ?")
+        nbrMaison = lireEntierClavier("Nombre de maison(s) (1-4) : ", 1, 4)
+        for i in range(1, nbrMaison):
+            pass
             
 
 elif typeCreation == 1:
