@@ -8,6 +8,8 @@ HAUTEUR_MIN = -window_height()//2
 reset()
 speed(0)
 bgcolor('white')
+ht()
+
 
 # fonction aller : se déplace en x,y et s'oriente vers angle
 def aller(x,y,angle=0):
@@ -103,6 +105,51 @@ def dessineVague5(x,y,hauteur,longueur):
     # attention à partir d'un certain nombre, les vagues "tombent"
 
 
+def dessineVagueSable(x,y,nb):
+    aller(x,y)
+    i=1
+    while i<=nb:
+        circle(200,-10)
+        left(180)
+        circle(200,20)
+        left(180)
+        circle(200,-10)
+        left(180)
+        circle(200,20)
+        left(180)
+        circle(200,-40)
+        left(180)
+        circle(200,20)
+        left(180)
+        i=i+1
+
+def dessineSable(x=0, y=0, long = 0, haut = 0, date = 'nuit', demander = 0):
+    if demander == 0:
+        
+        x=lireEntierClavier("Abscisse du coin bas gauche de la plage : ", LARGEUR_MIN, LARGEUR_MAX)
+        y=lireEntierClavier("Ordonnée du coin bas gauche de la plage : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        long=lireEntierClavier("Longueur de la plage : ", 0, LARGEUR_MAX*2)
+        haut=lireEntierClavier("Largeur de la plage : ", 0, HAUTEUR_MAX*2)
+        date=input("Fait-il jour ou nuit? ")
+        if date!="jour" and date!="Jour" and date!="nuit" and date!="Nuit":
+            print("Veuillez recommencer")
+            date=input("Fait-il jour ou nuit?")
+    if date=="jour" or date=="Jour":
+        couleur1='#FAEC7F'
+        couleur2='#A67E2E'
+    if date=="Nuit" or date=="nuit":
+        couleur1='#BF5C00'
+        couleur2='#BD8D46'
+    
+    dessineRectangle(x,y,long,haut,couleur1)
+    color(couleur2)
+    i=1
+    y2=y+(haut-20)
+    while i<=haut/40:
+        dessineVague(x+long,y2,long/40)
+        i=i+1
+        y2=y2-40
+
 def dessineMer(date = 'jour', tps = 'calme', demander = 0):
     if demander == 0:
             
@@ -115,12 +162,12 @@ def dessineMer(date = 'jour', tps = 'calme', demander = 0):
             print("Veuillez recommencer")
             tps=input("Votre mer est-elle agitée ou calme? ")
     if date=="Jour" or date=="jour":
-        if tps=="agitée":
+        if tps=="agitée" or tps =='agitee':
             couleur1='#132959'
         elif tps=="calme":
             couleur1='#006D80'
     elif date=="Nuit" or date=="nuit":
-        if tps=="agitée":
+        if tps=="agitée" or tps =='agitee':
             couleur1='#080830'
         elif tps=="calme":
             couleur1='#000050'
@@ -141,7 +188,7 @@ def dessineMer(date = 'jour', tps = 'calme', demander = 0):
     a=randint(51,80)
     for i in range(50,a):
         x=randint(LARGEUR_MIN,LARGEUR_MAX)
-        y=randint(HAUTEUR_MIN,-20)
+        y=randint(HAUTEUR_MIN,-100)
         long=randint(80,150)
         if tps=="agitée":
             couleur2='#0000B0'
@@ -857,7 +904,7 @@ def traitDeplacement(xDepart, yDepart, xArrivee, yArrivee, couleur='black', epai
     color(couleur)
     goto(xArrivee,yArrivee)
 
-def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'black', demander = 0, allume = 0):
+def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLampadaire = 'black', demander = 0, allumer = 0):
 
     if demander == 0:
             
@@ -944,7 +991,7 @@ def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLamapdaire = 'bla
     end_fill()
 
 
-def dessineArbre(xArbre=0, yArbre=0, largArbre = 50, hautArbre = 300, demander = 0):
+def dessineArbre(xArbre=0, yArbre=0, largArbre = 50, hautArbre = 300, couleur = 'green', demander = 0):
 
     if demander == 0:
         
@@ -956,9 +1003,9 @@ def dessineArbre(xArbre=0, yArbre=0, largArbre = 50, hautArbre = 300, demander =
     dessineRectangle(xArbre, yArbre, largArbre, hautArbre-10, '#3D0000')
 
     begin_fill()
-    traitDeplacement(xArbre + largArbre//2, yArbre + hautArbre + 40, xArbre -3*largArbre, yArbre + hautArbre//6, '#0B8426')
-    dessineTrait(xcor(), ycor(), 7*largArbre, 0, '#0B8426')
-    traitDeplacement(xcor(), ycor(), xArbre + (largArbre//2), yArbre + hautArbre + 40, '#0B8426')
+    traitDeplacement(xArbre + largArbre//2, yArbre + hautArbre + 40, xArbre -3*largArbre, yArbre + hautArbre//6, couleur)
+    dessineTrait(xcor(), ycor(), 7*largArbre, 0, couleur)
+    traitDeplacement(xcor(), ycor(), xArbre + (largArbre//2), yArbre + hautArbre + 40, couleur)
     end_fill()
     
 def dessineBateau():
@@ -1096,7 +1143,42 @@ def dessinePhare(x=0, y=0, demander = 0):
     right(90)
     circle(3)
 
-
+def dessineFleur(x=0, y=0, haut=20, demander = 0):
+    if demander == 0:
+        
+        x=lireEntierClavier("Abscisse du bout de la tige au sol : ",LARGEUR_MIN, LARGEUR_MAX)
+        y=lireEntierClavier("Ordonnée du bout de la tige au sol : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        haut=lireEntierClavier("Hauteur de la fleur (10-60) : ", 10, 60)
+    diam=haut/12
+    color('black')
+    aller(x+(haut/24),y+(11*haut/12))
+    left(100)
+    circle(diam,220)
+    i=1
+    while i<=8:
+        left(220)
+        circle(diam,220)
+        i=i+1
+    color('yellow')
+    begin_fill()
+    aller(x+(diam/6)+(diam/8),y+(26*diam/3)+(diam/8))
+    circle((2*diam/3),360)
+    end_fill()
+    color('green')
+    width(2)
+    aller(x-(diam/2),y+(22*diam/3))
+    left(250)
+    circle(haut+diam,20)
+    left(180)
+    begin_fill()
+    circle(3*diam,100)
+    left(90)
+    circle(3*diam,90)
+    end_fill()
+    right(90)
+    circle(haut+diam,15)
+    
+  
 def lireCouleurClavier(phrase, couleur=0):
     securite = 1
     while securite == 1:

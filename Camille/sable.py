@@ -43,7 +43,6 @@ def dessineRectangle(x,y,largeur=180,hauteur=50,couleur='red',epaisseur=1):
 
 
 def dessineSable():
-    print("Vous allez dessiner une plage")
     x=int(input("Abscisse du coin bas gauche de la plage: "))
     y=int(input("Ordonnée du coin bas gauche de la plage: "))
     long=int(input("Longueur de la plage: "))
