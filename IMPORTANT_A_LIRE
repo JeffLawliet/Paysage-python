@@ -14,8 +14,7 @@ Fanny: C'est trop cool XD !!!!!!
 =======
 Jeff: okok il me les faudrait rapidement donc au pire vous foutez des photos
       ou des scans des ou des txt de vos idées et j'essaie de faire ça,
-	pensez à lire régulièrement ce fichier !!
-<<<<<<< 
+	pensez à lire régulièrement ce fichier !!<<<<<<< 
 
 
 Jeff 20 déc, 1h du mat : pas d'update.. j'attends vos infos les filles 
@@ -183,3 +182,55 @@ jeff : nennuit', et je vais voir ça, les fleurs, euh... petites fin... j'me com
 =======
 Fanny : Ok je verrai ça demain alors, je vais me coucher la xD !!
 >>>>>>> f9e4f376ec91874d5eae81b42861b2195b77bd0b
+
+Camille (28déc/16h28): Bonjour, est-ce que quelqu'un pourrait m'expliquer comment on fait l'interface alors ?? Parce que c'est bien gentil de créer des fonctions
+			que le gentil petit utilisateur va pouvoir utiliser mais concrétement, on en fait quoi ?? D'après ce que j'ai plus ou moins compris, on 
+			demande ce que l'utilisateur veut comme thème donc à partir de là, on créer un background ou on le laisse faire là aussi(ce qui est plus chaud)?
+			Puis en fonction de ce thème, il choisit ce qu'il veut dessiner parmi nos fonctions et les place c'est bien ça? Mais il les place 
+			aléatoirement ou pas? 
+		       Sinon est-ce qu'on a bien toutes les fonctions de base qu'on doit avoir pour le projet? Parce que c'est ce qu'on devrait aussi faire en priorité...
+		       En clair, est-ce que quelqu'un peut me faire un récap' XD
+		       Pour le rocher ben on peut faire des ronds ... :p	
+		22h32: J'ai fait des vagues pour la mer, dites moi lesquelles vous préférez et essayez d'amléiorer si vous pouvez ^^
+
+
+jeff 29 décembre 3H du matin : il manque les fonction que j'ai dit, celles à faire dans le fichier "fonction", et je m'occupe de l'interface
+
+Cam (29déc/18h30): ouaip enfin ça j'avais compris mais bon ça répond pas vraiment à mes questions ... -.-'
+		   sinon pour la mer, faut que tu me dises un peu ce que tu veux ... ou plutot les dimensions de celle-ci ou quoi parce que j'ai des idées et tout
+			mais si c'est pas ce que tu veux ou quoi ... enfin chais pas comment tu veux l'insérer ... genre si c'est juste un background ou si
+			l'utilisateur place vraiment son bout de mer ... enfin bref chais pas trop quoi faire XD
+		   Je crois que la fonction pour lire une couleur ne marche pas ... :S
+jeff : 19H c'est un background, avec qq vagues. il me faut la fleur j'en ai besoin
+
+Cam (30déc/00h57): Oki background intégral donc ou seulement la moitié ???
+	  /11h26   J'ai terminé la fonction route, Jeff dis moi si c'est ok ou si le codage n'est pas bon ou si tu voyais autre chose ...
+		   
+
+
+jeff : 20h20, c'est exactement ça camille ! 
+		pour la mer, c'est juste un background donc on définira la taille (vu qu'il y a aura aussi le ciel (ou la nuit)
+
+Cam (30déc/20h17): oki pour le background mer ^^ j'te le fait pour la moitié d'une fenétre pour l'instant comme ça tu verras par toi méme ce que tu vas faire ^^
+
+
+jeff 22h20 : il faut que je puisse le placer où je veux, sur une largeur que je rentrerais
+
+Cam (30déc/23h54): oh oki bon j'rajouterai ça ... mais là mon programme bug parce que j'crois que j'arrive pas à faire les random ... :s
+		   tu peux m'expliquer stp ??
+jeff 31 déc 1h du mat : ouais ouais 
+			j'ai réparé ta fonction
+			fonction fleur urgent! pareil pour sable! et rocher!
+			(il est 4h du mat', je me couche je compte sur vous)
+Cam (31déc/10h36): oki merci ^^
+		   j'm'occupe de la plage ^^ enfin du sable
+jeff 31, 12h20 : pour la fonction fleur faut juste faire une sorte de pissenli
+			ou autre si vous voulez
+Cam (31déc/12h52): un pissenli?! attends après le sable, j'te fais une marguerite parce que franchement ... un pissenli ... vas te coucher vas !!! XD
+jeff : bah quoi xD ? c'est simple à faire me semble xD 'fin c'était une idée comme ça xD (13h20)
+Cam       /14h09 : c'est moche un pissenli ... :P bon j'ai fini la fonction sable mais y'a des bugs tu peux aller voir stp ?? ^^
+<<<<<<< HEAD
+jeff   15h40 je vais voir
+=======
+	  /20h24 : J'ai fait la fonction fleur <3 et ma fleur est trop zolie ^^
+>>>>>>> e8712e4068a8ee2748f211e51398b43d16921a1c

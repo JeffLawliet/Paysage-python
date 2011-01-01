@@ -64,7 +64,7 @@ def dessineVoiture():
     goto(x,y+(17*diam/6))
     goto(x+(6*diam),y+(17*diam/6))
     end_fill()
-    color('black')
+    color(couleur)
     width(diam/10)
     aller(x+(6*diam),y+(17*diam/6))
     goto(x+(5*diam),y+(23*diam/6))
@@ -99,4 +99,3 @@ def dessineVoiture():
 
 
 dessineVoiture()
-aller(500,500)

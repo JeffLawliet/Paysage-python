@@ -1,10 +1,6 @@
-#Programme qui dessine un dauphin:
-from turtle import *
-
-def dessineDauphin(x,y):
-    up()
-    goto(x,y)
-    down()
+def dessineDauphin(xDauphin =0, yDauphin = 0):
+    
+    aller(xDauphin, yDauphin)
     width(5)
     begin_fill()
     color("Gray")
@@ -60,14 +56,13 @@ def dessineDauphin(x,y):
     end_fill()
     
     #Dessine un oeil
-    up()
     color("black")
-    goto(-136,4.5)
-    down()
+    aller(xDauphin-136,yDauphin+4.5)
     circle(4)
-    goto(-137,3)
+    goto(xDauphin-137,yDauphin+3)
     color("white")
     circle(0.5)
     up()
-    goto(400,400)
-dessineDauphin(0,0)
+
+
+dessineDauphin(29, 20)
