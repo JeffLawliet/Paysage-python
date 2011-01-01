@@ -109,18 +109,11 @@ def dessineVagueSable(x,y,nb):
     aller(x,y)
     i=1
     while i<=nb:
-        circle(200,-10)
+        circle(200,-5)
         left(180)
         circle(200,20)
         left(180)
-        circle(200,-10)
-        left(180)
-        circle(200,20)
-        left(180)
-        circle(200,-40)
-        left(180)
-        circle(200,20)
-        left(180)
+        goto(xcor(), ycor())
         i=i+1
 
 def dessineSable(x=0, y=0, long = 0, haut = 0, date = 'nuit', demander = 0):
@@ -140,16 +133,14 @@ def dessineSable(x=0, y=0, long = 0, haut = 0, date = 'nuit', demander = 0):
     if date=="Nuit" or date=="nuit":
         couleur1='#BF5C00'
         couleur2='#BD8D46'
-    
     dessineRectangle(x,y,long,haut,couleur1)
     color(couleur2)
     i=1
     y2=y+(haut-20)
     while i<=haut/40:
-        dessineVague(x+long,y2,long/40)
+        dessineVagueSable(x+long,y2,long/40)
         i=i+1
         y2=y2-40
-
 def dessineMer(date = 'jour', tps = 'calme', demander = 0):
     if demander == 0:
             
@@ -389,7 +380,7 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, x
 
 #fonction dessineLune, dessine une lune aux coordonnées choisie
 #de diamètre choisie et la remplie
-def dessineLune(xLune =0, yLune=0,diametre = 100, demander = 0):
+def dessineLune(xLune =0, yLune=0,diametre = 100, demander = 0, couleur ='dark blue'):
 
     if demander == 0:
             
@@ -406,7 +397,7 @@ def dessineLune(xLune =0, yLune=0,diametre = 100, demander = 0):
     aller((27*diametre/50)+xLune,(27*diametre/50)+yLune,90)
     
     begin_fill()
-    color('#001169')
+    color(couleur)
     circle(diametre/3)
     end_fill()
 
@@ -660,7 +651,12 @@ def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, co
 
 
 #fonction dessineNuage, crée un nuage à la position indiquée.
-def dessineNuage(x,y,rayon,couleur):
+def dessineNuage(x=0,y=0,rayon=0,couleur='white', demander = 1):
+    if demander == 0:
+        x = lireEntierClavier("Le x du point bas gauche du nuage : ", LARGEUR_MIN, LARGEUR_MAX)
+        y = lireEntierClavier("Le y du point bas gauche du nuage : ", HAUTEUR_MIN, HAUTEUR_MAX)
+        rayon = lireEntierClavier("Le rayon du nuage (10-200) : ", 10, 200)
+        couleur = lireCouleurClavier("La couleur du nuage (en hexadécimal ou en anglais) : ")
     dessineRectangle(x,y,rayon,rayon/2,couleur)
 
     for i in range(0,4):
@@ -684,6 +680,7 @@ def dessineNuage(x,y,rayon,couleur):
 #crée un rectangle qu'elle remplit
 #peut dessiner un batîment, une porte...
 def dessineRectangle(x,y,largeur=180,hauteur=50,couleur='red',epaisseur=1):
+
     aller(x,y)
     width(epaisseur)
     begin_fill()
@@ -788,7 +785,7 @@ def dessineBouee(x= 0,y=0, demander = 0):
     forward(20)
     seth(0)
     begin_fill()
-    color("white")
+    color("#BF5C00")
     circle(30)
     end_fill()
 
@@ -1042,16 +1039,16 @@ def dessinePhare(x=0, y=0, demander = 0):
     aller(x-50,y-200)
     
     # Base du phare:
-    for i in range(0,5):
+    for i in range(0,9):
         if i%2==0:
             begin_fill()
-            dessineRectangle(xcor(), ycor(), 135, 75, 'red')
+            dessineRectangle(xcor(), ycor(), 135, 70, 'red')
             end_fill()
         elif i%2==1:
             begin_fill()
-            dessineRectangle(xcor(), ycor(), 135, 75, 'white')
+            dessineRectangle(xcor(), ycor(), 135, 70, 'white')
         right(90)
-        backward(75)
+        backward(70)
         left(90)
         
     #Haut du phare:
