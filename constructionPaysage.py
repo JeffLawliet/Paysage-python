@@ -73,7 +73,7 @@ if typeCreation == 2:
             couleurToit = listeCouleur[randint(0,10)]
             couleurPorte = listeCouleur[randint(0,10)]
             couleurEtages = listeCouleur[randint(0,10)]
-            dessineMaison(xMaison, yMaison, couleurMaison, couleurToit, couleurPorte, 1)
+            dessineMaison(xMaison, yMaison, couleurMaison, couleurToit, couleurPorte)
 
         print("Je vois une voiture !")
         couleurVoiture = listeCouleur[randint(0,10)]
@@ -147,7 +147,24 @@ elif typeCreation == 1:
                 choix = lireEntierClavier("Choisis le numéro correspondant à ton choix : ", 0, 6)
                 if choix == 0: choixCategorie = 0
                 elif choix == 1: dessineRoute()
-                elif choix == 2: dessineMaison()
+                elif choix == 2:
+                    print("Où voulez-vous dessinez votre maison ?")
+                    print("Entrez les coordonnées du point bas-gauche de la maison : ")
+                    x = lireEntierClavier("Le x du point bas gauche de la maison : ", LARGEUR_MIN, LARGEUR_MAX)
+                    y = lireEntierClavier("Le y du point bas gauche de la maison : ", HAUTEUR_MIN, HAUTEUR_MAX)
+                    couleurMaison = lireCouleurClavier("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
+                    couleurPorte = lireCouleurClavier("Entrez la couleur de la porte (en hexadécimal ou en anglais) : ")
+                    couleurToit = lireCouleurClavier("Entrez la couleur du toit (en hexadécimal ou en anglais) : ")
+                    largeur = lireEntierClavier("Entrez la largeur de la maison (50-200) : ",50, 200)
+                    hauteur = lireEntierClavier("Entrez la hauteur de la maison (50-300) : ",50, 300)
+                    nbrEtagesMaison = lireEntierClavier("Entrez le nombre d'étages (entre 1 et 10) : ", 1, 10)
+                    if nbrEtagesMaison == 1:
+                        dessineMaison(x,y,couleurMaison,couleurToit,couleurPorte,0)
+                    else:
+                        dessineMaison1(x,y,hauteur,largeur,couleurMaison,couleurToit,couleurPorte,nbrEtagesMaison)
+
+
+                    dessineMaison()
                 elif choix == 3: dessineVoiture()
                 elif choix == 4: dessineArbre()
                 elif choix == 5: dessineLampadaire()
