@@ -96,7 +96,7 @@ if typeCreation == 2:
         dessineSable(LARGEUR_MIN,HAUTEUR_MIN, 2*LARGEUR_MAX, HAUTEUR_MAX/3,momentDuJour, 1)
         if emplacementAstre == 'gauche':
             dessineBouee(LARGEUR_MAX - 110, HAUTEUR_MIN + 60,1)
-            dessinePhare(LARGEUR_MAX-80,HAUTEUR_MIN,1)
+            dessinePhare(LARGEUR_MIN+80,HAUTEUR_MIN,1)
             dessineDauphin(LARGEUR_MIN + 200, HAUTEUR_MIN+300, 1)
         elif emplacementAstre ==  'droite':
             dessineBouee(LARGEUR_MIN+ 150, HAUTEUR_MIN + 60,1)
@@ -154,21 +154,20 @@ elif typeCreation == 1:
                     y = lireEntierClavier("Le y du point bas gauche de la maison : ", HAUTEUR_MIN, HAUTEUR_MAX)
                     couleurMaison = lireCouleurClavier("Entrez la couleur de la maison (en hexadécimal ou en anglais) : ")
                     couleurPorte = lireCouleurClavier("Entrez la couleur de la porte (en hexadécimal ou en anglais) : ")
-                    couleurToit = lireCouleurClavier("Entrez la couleur du toit (en hexadécimal ou en anglais) : ")
                     largeur = lireEntierClavier("Entrez la largeur de la maison (50-200) : ",50, 200)
                     hauteur = lireEntierClavier("Entrez la hauteur de la maison (50-300) : ",50, 300)
                     nbrEtagesMaison = lireEntierClavier("Entrez le nombre d'étages (entre 1 et 10) : ", 1, 10)
                     if nbrEtagesMaison == 1:
-                        dessineMaison(x,y,couleurMaison,couleurToit,couleurPorte,0)
+                        dessineMaison(x,y,couleurMaison,couleurPorte,largeur, hauteur,0)
                     else:
-                        dessineMaison1(x,y,hauteur,largeur,couleurMaison,couleurToit,couleurPorte,nbrEtagesMaison)
+                        dessineMaison1(x,y,hauteur,largeur,couleurMaison,couleurPorte,nbrEtagesMaison)
 
-
-                    dessineMaison()
                 elif choix == 3: dessineVoiture()
                 elif choix == 4: dessineArbre()
                 elif choix == 5: dessineLampadaire()
-                continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter) : ", 0, 1)
+                if choix != 0:
+                    continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter) : ", 0, 1)
+                
                 if continuer == 0:
                     choixCategorie == 0
                 

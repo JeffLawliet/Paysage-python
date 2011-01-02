@@ -242,4 +242,8 @@ Cam 	    /11h59  : Lol oui ta fleur est bizarre :p
 		      J'ai fait le premier paysage mais on ne voit pas le haut du phare, il faudrait l'allumer, est-ce que quelqu'un peut le faire sans ça je le 
 			ferais après avoir fait les 2 autres ...
 		      Jeff, les fonctions dessineSable et dessineMaison1 ne sont pas au top et la fonction dessinePhare, j'crois qu'elle ne prend pas les bonnes
-			coordonnées ou plutot elle les fait descendre de 100 ...
+			coordonnées ou plutot elle les fait descendre de 100 ..
+
+
+jeff : 			dessineSable je sais je suis au courant, au pire on enlève les "dessineVagueSable" c'pas forcément important
+			dessinePhare je vais jeter un oeil 

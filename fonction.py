@@ -263,7 +263,10 @@ def dessineRoue(x,y,diam=20):
     circle(diam/4,360)
     end_fill()
 
-def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit='black',couleurPorte='black',largeur = 130, hauteur=150):
+def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit = 'red', couleurPorte='black',largeur = 130, hauteur=150, demander =1):
+    if demander == 0:
+        
+        couleurToit = lireCouleurClavier("Entrez la couleur du toit (en hexadécimal ou en anglais) : ")
     # Dessine le rectangle de la maison :
     aller(x,y)
     width(0)
@@ -454,7 +457,7 @@ def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit='black',couleurPorte='
     left(90)
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
-def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', couleurToit='red', couleurPorte = 'red', nbrEtagesMaison=1):
+def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', couleurPorte = 'red', nbrEtagesMaison=1):
     dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison)
     toit = input("Voulez-vous un toit (Oui/Non) : ")
     while toit != 'Non' and toit != 'non' and  toit != 'Oui' and toit != 'oui':
@@ -880,7 +883,7 @@ def dessineBouee(x=0,y=0, demander=0):
             left(72)                            #
             circle(30,20)                       # la bouée
             end_fill()                          #
-
+            right(202)
             
 def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
 
@@ -1159,4 +1162,3 @@ def dessineSoleil(xSoleil=0, ySoleil=0, rayon=50, demander=0):
         forward(rayon+10)					    # on avance en diagonale
         down()							    # on baisse le pinceau
         forward(rayon/3)					    # trace un rayon de soleil
-dessineMaison()
