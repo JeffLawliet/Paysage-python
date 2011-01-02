@@ -160,7 +160,7 @@ elif typeCreation == 1:
                     if nbrEtagesMaison == 1:
                         dessineMaison(x,y,couleurMaison,couleurPorte,largeur, hauteur,0)
                     else:
-                        dessineMaison1(x,y,hauteur,largeur,couleurMaison,couleurPorte,nbrEtagesMaison)
+                        dessineMaison1(x,y,hauteur,largeur,couleurMaison,couleurPorte,nbrEtagesMaison, demander=0)
 
                 elif choix == 3: dessineVoiture()
                 elif choix == 4: dessineArbre()

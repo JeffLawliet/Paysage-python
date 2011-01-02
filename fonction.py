@@ -457,16 +457,19 @@ def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit = 'red', couleurPorte=
     left(90)
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
-def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', couleurPorte = 'red', nbrEtagesMaison=1):
+def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', couleurPorte = 'red', couleurToit = 'blue', couleurEtages = 'red', demander = 0,nbrEtagesMaison=1):
     dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison)
-    toit = input("Voulez-vous un toit (Oui/Non) : ")
-    while toit != 'Non' and toit != 'non' and  toit != 'Oui' and toit != 'oui':
-        print("Veuillez recommencer.")
+    if demander == 0:
         toit = input("Voulez-vous un toit (Oui/Non) : ")
-    if toit == 'Oui' or toit == 'oui':    
-        couleurToit = lireCouleurClavier("Entrez la couleur de votre toit (en hexadécimal ou en anglais) : ")
+        while toit != 'Non' and toit != 'non' and  toit != 'Oui' and toit != 'oui':
+            print("Veuillez recommencer.")
+            toit = input("Voulez-vous un toit (Oui/Non) : ")
+        if toit == 'Oui' or toit == 'oui':    
+            couleurToit = lireCouleurClavier("Entrez la couleur de votre toit (en hexadécimal ou en anglais) : ")
+        couleurEtages = lireCouleurClavier("Entrez la couleur de l'étage (en hexadécimal ou en anglais) : ")
+    if toit == 'oui' or toit == 'Oui':
         dessineTriangle(xMaison, yMaison+hauteurMaison, largeurMaison, couleurToit)
-    couleurEtages = lireCouleurClavier("Entrez la couleur de l'étage (en hexadécimal ou en anglais) : ")
+        
     for i in range(1,nbrEtagesMaison):
         
         aller(xMaison,yMaison+i*(hauteurMaison/nbrEtagesMaison))
@@ -508,46 +511,6 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, x
                 aller(x+(largeurMaison/24),y+((i+1)*(hauteurMaison/nbrEtages))-(hauteurMaison/(2*nbrEtages))) # on se décale un peu
                 dessineRectangle(xcor(),ycor(),largeurFenetre, hauteurFenetre,couleur,epaisseur)
 
-def dessineVoiture1(xVoiture = 0, yVoiture = 0, couleurVoiture = 'grey',diam = 20, demander = 0):
-
-    if demander == 0:
-            
-        print("Où voulez-vous dessinez votre voiture ?")
-        print("Entrez les coordonnées du point bas-gauche de la voiture : ")
-        xVoiture = lireEntierClavier("Le x de la voiture : ",LARGEUR_MIN,LARGEUR_MAX)
-        yVoiture = lireEntierClavier("Le y de la voiture : ",HAUTEUR_MIN,HAUTEUR_MAX)
-        couleurVoiture = lireCouleurClavier("La couleur de la voiture (en hexadécimal ou en anglais) : ")
-    aller(xVoiture+5, yVoiture)
-    begin_fill()
-    for i in range(0,8):
-        if i%2 == 0:
-            if i == 0 or i == 4:
-                dessineTrait(xcor(), ycor(), 190, i*45, couleurVoiture, 2)
-            elif i == 2 or i == 6:
-                dessineTrait(xcor(), ycor(), 50, i*45, couleurVoiture, 2)
-        elif i%2 == 1:
-            dessineTrait(xcor(), ycor(), sqrt(50), i*45, couleurVoiture, 2)
-    end_fill()
-    
-
-
-    
-    dessineRoue(xVoiture+35,yVoiture-10,diam)
-    dessineRoue(xVoiture+165,yVoiture-10,diam)
-
-    begin_fill()
-    dessineTrait(xVoiture+55, yVoiture+60, 50, 70, couleurVoiture, 2)
-    goto(xcor(),yVoiture+60)
-    ortho1 = xcor()
-    end_fill()
-    begin_fill()
-    dessineTrait(xVoiture+160, yVoiture+60, 50, 110, couleurVoiture, 2)
-    ortho2 = xcor()
-    goto(xcor(),yVoiture+60)
-    end_fill()
-    begin_fill()
-    dessineRectangle(ortho1,yVoiture +60, ortho2-ortho1, 50, couleurVoiture, 2)
-    end_fill()
 
 def dessineLampadaire(xLampadaire = 0, yLampadaire = 0, couleurLampadaire = 'black', demander = 0, allumer = 0):
 
