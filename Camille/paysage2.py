@@ -581,6 +581,7 @@ def dessineNuage(x=0,y=0,rayon=100,couleur='white', demander = 1):
 
 # dessin
 
+setup(1280,1024)
 bgcolor('#ABC8E2')
 
 dessineRectangle(LARGEUR_MIN,HAUTEUR_MIN,2*LARGEUR_MAX,HAUTEUR_MAX,'green')
@@ -594,7 +595,7 @@ dessineRectangle(LARGEUR_MIN,HAUTEUR_MIN+270,2*LARGEUR_MAX,20,'grey')
 
 dessineMaison1(LARGEUR_MIN+100,HAUTEUR_MIN+290,450,520,'#BD8D46',2,'oui','#52251C','black','black','red',1,2)
 dessineLampadaire(50,HAUTEUR_MIN+290,'black',1,0)
-dessineArbre(250,-50,30,200,'#1D702D',1)
+dessineArbre(250,-50,20,300,'#1D702D',1)
 dessineFleur(400,-100,50,1)
 dessineFleur(500,-75,50,1)
 dessineFleur(600,-150,45,1)
