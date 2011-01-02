@@ -624,7 +624,8 @@ def dessineFleur(x=0, y=0, haut=20, demander = 0):
         y=lireEntierClavier("Ordonnée du bout de la tige au sol : ", HAUTEUR_MIN, HAUTEUR_MAX)
         haut=lireEntierClavier("Hauteur de la fleur (10-60) : ", 10, 60)
     diam=haut/12
-    color('black')
+    color('white')
+    begin_fill()
     aller(x+(haut/24),y+(11*haut/12))
     left(100)
     circle(diam,220)
@@ -633,6 +634,7 @@ def dessineFleur(x=0, y=0, haut=20, demander = 0):
         left(220)
         circle(diam,220)
         i=i+1
+    end_fill()
     color('yellow')
     begin_fill()
     aller(x+(diam/6)+(diam/8),y+(26*diam/3)+(diam/8))
