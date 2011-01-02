@@ -263,198 +263,199 @@ def dessineRoue(x,y,diam=20):
     circle(diam/4,360)
     end_fill()
 
+#fonction dessineMaison : dessine une maison dont l'utilisateur peut définir les dimensions, couleurs de la façade, du toit et de la porte et finalement placer la maison.
 def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit = 'red', couleurPorte='black',largeur = 130, hauteur=150, demander =1):
     if demander == 0:
         
-        couleurToit = lireCouleurClavier("Entrez la couleur du toit (en hexadécimal ou en anglais) : ")
+        couleurToit = lireCouleurClavier("Entrez la couleur du toit (en hexadécimal ou en anglais) : ")         #voir fonction lireCouleurClavier
     # Dessine le rectangle de la maison :
-    aller(x,y)
-    width(0)
-    begin_fill()
-    color(couleurMaison)
-    for i in range(0,2):
-        forward(largeur)
-        left(90)
-        forward(hauteur)
-        left(90)
-    end_fill()
-    color("black")
-    for i in range(0,2):
-        forward(largeur)
-        left(90)
-        forward(hauteur)
-        left(90)
+    aller(x,y)                      # voir fonction aller
+    width(0)                        # modifie l'épaisseur du trait
+    begin_fill()                    # commence le remplissage
+    color(couleurMaison)                    # choix de la couleur (ici donnée par l'utilisateur et par défaut rouge)
+    for i in range(0,2):                    # boucle for : on execute 2 fois.
+        forward(largeur)                    # avance de la valeur "largeur"
+        left(90)                            # tourne sur la gauche de 90 degrés
+        forward(hauteur)                    # avance de la valeur "hauteur"
+        left(90)                            # tourne sur la gauche de 90 degrés
+    end_fill()                              # fin du remplissage
+    color("black")                          # choix de la couleur noire
+    for i in range(0,2):                    # boucle for : on execute 2 fois.
+        forward(largeur)                    # avance de la valeur "largeur"
+        left(90)                            # tourne sur la gauche de 90 degrés
+        forward(hauteur)                    # avance de la valeur "hauteur"
+        left(90)                            # tourne sur la gauche de 90 degrés
     
     # Dessine le toit :
-    up()
-    goto(largeur+x,hauteur+y)
-    down()
-    begin_fill()
-    color(couleurToit)
-    longueurToit=largeur*acos(pi/4)
-    left(135)
-    forward(longueurToit)
-    goto(x,hauteur+y)
-    end_fill()
+    up()                                    # leve le pinceau
+    goto(largeur+x,hauteur+y)               # se déplace au point d'abcisse "largeur+x" et d'ordonnées "hauteur+y"
+    down()                                  # pose le pinceau
+    begin_fill()                            # commence le remplissage
+    color(couleurToit)                      # choix de la couleur (ici donnée par l'utilisateur et par défaut rouge)
+    longueurToit=largeur*acos(pi/4)         # définit la variable longueurToit
+    left(135)                               # tourne sur la gauche de 195 degrés
+    forward(longueurToit)                   # avance de la valeur "longueurToit"
+    goto(x,hauteur+y)                       # se déplace au point d'abcisse "x" et d'ordonnées "hauteur+y"
+    end_fill()                              # fin du remplissage
 
     # Dessine la porte :
-    positionPorte=randint(1,3)
-    largeurPorte=largeur/5
-    hauteurPorte=hauteur/3
-    if positionPorte==1:
-        up()
-        goto((largeur/3)-(largeurPorte/2)+x,y)
-        down()
-    elif positionPorte==2:
-        up()
-        goto((largeur/2)-(largeurPorte/2)+x,y)
-        down()
-    else:
-        up()
-        goto((2*largeur/3)-(largeurPorte/2)+x,y)
-        down()
-    begin_fill()
-    color(couleurPorte)
-    right(45)
-    for k in range(0,2):
-        forward(hauteurPorte)
-        right(90)
-        forward(largeurPorte)
-        right(90)
-    end_fill()
-    color("black")
-    for k in range(0,2):
-        forward(hauteurPorte)
-        right(90)
-        forward(largeurPorte)
-        right(90)
+    positionPorte=randint(1,3)              # définit la variable positionPorte qui peut prendre une valeur comprise entre 1 et 3 inclus de manière aléatoire
+    largeurPorte=largeur/5                  # définit la variable largeurPorte
+    hauteurPorte=hauteur/3                  # définit la variable hauteurPorte
+    if positionPorte==1:                    # si la variable positionPorte est égale à 1
+        up()                                                # leve le pinceau
+        goto((largeur/3)-(largeurPorte/2)+x,y)              # se déplace aux coordonnées données
+        down()                                              # pose le pinceau
+    elif positionPorte==2:                                  # si la variable positionPorte est égale à 2
+        up()                                                # leve le pinceau
+        goto((largeur/2)-(largeurPorte/2)+x,y)              # se déplace aux coordonnées données
+        down()                                              # pose le pinceau
+    else:                                                   # si aucune des deux conditions précédentes n'est remplie, alors:
+        up()                                                # leve le pinceau
+        goto((2*largeur/3)-(largeurPorte/2)+x,y)            # se déplace aux coordonnées données
+        down()                                              # pose le pinceau
+    begin_fill()                                            # commence le remplissage
+    color(couleurPorte)                                     # choix de la couleur (ici donnée par l'utilisateur et par défaut noire)
+    right(45)                                               # tourne sur la droite d'un angle de 45
+    for k in range(0,2):                                    # boucle for : on execute 2 fois.
+        forward(hauteurPorte)                               # avance de la valeur "hauteurPorte"
+        right(90)                                           # tourne sur la droite d'un angle de 90 degrés
+        forward(largeurPorte)                               # avance de la valeur "largeurPorte"
+        right(90)                                           # tourne sur la droite d'un angle de 90 degrés
+    end_fill()                                              # fin du remplissage
+    color("black")                                          # choix de la couleur noire
+    for k in range(0,2):                                    # boucle for : on execute 2 fois.
+        forward(hauteurPorte)                               # avance de la valeur "hauteurPorte"
+        right(90)                                           # tourne sur la droite de 90 degrés
+        forward(largeurPorte)                               # avance de la valeur "largeurPorte"
+        right(90)                                           # tourne sur la droite d'un angle de 90 degrés
 
     # Dessine la poignée :
-    if positionPorte==1:
-        up()
-        goto((largeur/3)+(4*largeurPorte/10)+x,y+(hauteurPorte/2))
-        down()
-    elif positionPorte==2:
-        up()
-        goto((largeur/2)+(2*largeurPorte/5)+x,y+(hauteurPorte/2))
-        down()
-    else:
-        up()
-        goto((2*largeur/3)+(2*largeurPorte/5)+x,y+(hauteurPorte/2))
-        down()
-    begin_fill()
-    color("black")
-    circle(largeurPorte/10)
-    end_fill()
+    if positionPorte==1:                                                # si la variable positionPorte est égale à 1
+        up()                                                            # leve le pinceau
+        goto((largeur/3)+(4*largeurPorte/10)+x,y+(hauteurPorte/2))      # se déplace aux coordonnées données
+        down()                                                          # pose le pinceau
+    elif positionPorte==2:                                              # si la variable positionPorte est égale à 2
+        up()                                                            # leve le pinceau
+        goto((largeur/2)+(2*largeurPorte/5)+x,y+(hauteurPorte/2))       # se déplace aux cordonnées données
+        down()                                                          # pose le pinceau
+    else:                                                               # si aucune des deux conditions précedentes n'est remplie, alors :
+        up()                                                            # leve le pinceau
+        goto((2*largeur/3)+(2*largeurPorte/5)+x,y+(hauteurPorte/2))     # se déplace aux coordonnées données
+        down()                                                          # pose le pinceau
+    begin_fill()                                                        # commence le remplissage
+    color("black")                                                      # choix de la couleur noire
+    circle(largeurPorte/10)                                             # dessine un cercle dont le rayon est égal à la valeur "largeurPorte/10"
+    end_fill()                                                          # fin du remplissage
 
     # Dessine les fenetres :
         # Sur le toit:
-    fenetreToit=randint(0,1)
-    if fenetreToit==1:
-        up()
-        goto((19*largeur/30)+x,(11*hauteur/9)+y)
-        down()
-        begin_fill()
-        color("DarkSlateGray")
-        circle(largeur/9)
-        end_fill()
+    fenetreToit=randint(0,1)                                            # définit la variable fenetreToit qui peut prendre la valeur 0 ou 1 de manière aléatoire
+    if fenetreToit==1:                                                  # si la variable fenetreToit est égale à 1
+        up()                                                            # leve le pinceau
+        goto((19*largeur/30)+x,(11*hauteur/9)+y)                        # se déplace aux coordonnées indiquées
+        down()                                                          # pose le pinceau
+        begin_fill()                                                    # commence le remplissage 
+        color("DarkSlateGray")                                          # choix de la couleur DarkSlateGray
+        circle(largeur/9)                                               # dessine un cercle dont le rayon est égale à la valeur "largeur/9"
+        end_fill()                                                      # fin du remplissage
         #Petite lucarne
-        up()
-        goto((613*largeur/1000)+x,(11*hauteur/9)+y)
-        down()
-        begin_fill()
-        color("yellow")
-        circle(largeur/11)
-        end_fill()
+        up()                                                            # leve le pinceau
+        goto((613*largeur/1000)+x,(11*hauteur/9)+y)                     # se déplace aux coordonnées indiquées
+        down()                                                          # pose le pinceau
+        begin_fill()                                                    # commence le remplissage
+        color("yellow")                                                 # choix de la couleur jaune
+        circle(largeur/11)                                              # dessine un cercle dont le rayon est égal à la valeur "largeur/11"
+        end_fill()                                                      # fin du remplissage
         # Croix
-        color("black")
-        width(5)
-        left(90)
-        forward(2*largeur/11)
-        goto((613*largeur/1000)-(largeur/11)+x,(11*hauteur/9)+y)
-        right(90)
-        forward(largeur/11)
-        backward(2*largeur/11)
+        color("black")                                                  # choix de la couleur noire
+        width(5)                                                        # modifie l'épaisseur du trait
+        left(90)                                                        # tourne sur la gauche d'un angle de 90 degrés
+        forward(2*largeur/11)                                           # avance de la valeur "2*largeur/11"
+        goto((613*largeur/1000)-(largeur/11)+x,(11*hauteur/9)+y)        # se déplace aux coordonnées indiquées
+        right(90)                                                       # tourne sur la droite d'un angle de 90 degrés
+        forward(largeur/11)                                             # avance de la valeur "largeur/11"
+        backward(2*largeur/11)                                          # recule de la valeur "2*largeur/11"
 
         # Sur la maison:
-    up()
-    goto((largeur/5)+x,(2*hauteur/3)+y)
-    down()
-    width(5)
-    begin_fill()
-    color("#E9FFE5")
-    for j in range(0,4):
-        forward(hauteur/6)
-        right(90)
-    end_fill()
-    color("black")
-    for j in range(0,4):
-        forward(hauteur/6)
-        right(90)
-    forward(hauteur/12)
-    right(90)
-    forward(hauteur/6)
-    backward(hauteur/12)
-    right(90)
-    forward(hauteur/12)
-    backward(hauteur/6)
+    up()                                                                # leve le pinceau
+    goto((largeur/5)+x,(2*hauteur/3)+y)                                 # se déplace aux coordonnées indiquées
+    down()                                                              # pose le pinceau
+    width(5)                                                            # modifie l'épaisseur du trait
+    begin_fill()                                                        # commence le remplissage
+    color("#E9FFE5")                                                    # choix de la couleur (ici en héxadécimal) "#E9FFE5"
+    for j in range(0,4):                                                # boucle for : on execute 4 fois.
+        forward(hauteur/6)                                              # avance de la valeur "hauteur/6"
+        right(90)                                                       # tourne sur la droite d'un angle de 90 degrés
+    end_fill()                                                          # fin du remplissage
+    color("black")                                                      # choix de la couleur noire
+    for j in range(0,4):                                                # boucle for : on execute 4 fois.
+        forward(hauteur/6)                                              # on avance de la valeur "hauteur/6"
+        right(90)                                                       # on tourne sur la droite d'un angle de 90 degrés
+    forward(hauteur/12)                                                 # on avance de la valeur "hauteur/12"
+    right(90)                                                           # on tourne sur la droite d'un angle de 90 degrés
+    forward(hauteur/6)                                                  # on avance de la valeur "hauteur/6"
+    backward(hauteur/12)                                                # on recule de la valeur "hauteur/12"
+    right(90)                                                           # on tourne sur la droite d'un angle de 90 degrés
+    forward(hauteur/12)                                                 # on avance de la valeur "hauteur/12"
+    backward(hauteur/6)                                                 # on recule de la valeur "hauteur/6"
         
-    up()
-    goto((7*largeur/10)+x,(2*hauteur/3)+y)
-    down()
-    width(5)
-    begin_fill()
-    color("#E9FFE5")
-    right(180)
-    for j in range(0,4):
-        forward(hauteur/6)
-        right(90)
-    end_fill()
-    color("black")
-    for j in range(0,4):
-        forward(hauteur/6)
-        right(90)
-    forward(hauteur/12)
-    right(90)
-    forward(hauteur/6)
-    backward(hauteur/12)
-    right(90)
-    forward(hauteur/12)
-    backward(hauteur/6)
+    up()                                                                # on leve le pinceau
+    goto((7*largeur/10)+x,(2*hauteur/3)+y)                              # on se déplace aux coordonnées indiquées
+    down()                                                              # on pose le pinceau
+    width(5)                                                            # on modifie l'épaisseur du trait
+    begin_fill()                                                        # fin du remplissage
+    color("#E9FFE5")                                                    # choix de la couleur (ici en hexadécimal)
+    right(180)                                                          # on tourne à droite d'un angle de 180 degrés
+    for j in range(0,4):                                                # boucle for : on execute 4 fois.
+        forward(hauteur/6)                                              # on avance de la valeur "hauteur/6"
+        right(90)                                                       # on tourne à droite d'un angle de 90 degrés
+    end_fill()                                                          # fin du remplissage
+    color("black")                                                      # choix de la couleur noire
+    for j in range(0,4):                                                # boucle for : on execute 4 fois
+        forward(hauteur/6)                                              # on avance de la valeur "hauteur/6"
+        right(90)                                                       # on tourne sur la droite d'un angle de 90 degrés
+    forward(hauteur/12)                                                 # on avance de la valeur "hauteur/12"
+    right(90)                                                           # on tourne sur la droite d'un angle de 90 degrés
+    forward(hauteur/6)                                                  # on avance de la valeur "hauteur/6"
+    backward(hauteur/12)                                                # on recule de la valeur "hauteur/12"
+    right(90)                                                           # on tourne sur la droite d'un angle de 90 degrés
+    forward(hauteur/12)                                                 # on avance de la valeur "hauteur/12"
+    backward(hauteur/6)                                                 # on recule de la valeur "hauteur/6"
 
         #En fonction de la porte
-    if positionPorte==1 or positionPorte==3:
-        if positionPorte==1:
-            up()
-            goto((11*largeur/20)+x,hauteurPorte+y)
-            down()
-        else:
-            up()
-            goto(3*largeur/20+x,hauteurPorte+y)
-            down()
-        begin_fill()
-        color("#E9FFE5")
-        for k in range(0,2):
-            forward(2*hauteurPorte/5)
-            left(90)
-            forward(largeur/3)
-            left(90)
-        end_fill()
-        width(5)
-        color("black")
-        for k in range(0,2):
-            forward(2*hauteurPorte/5)
-            left(90)
-            forward(largeur/3)
-            left(90)
-        forward(hauteurPorte/5)
-        left(90)
-        forward(largeur/3)
-        backward(largeur/6)
-        right(90)
-        forward(hauteurPorte/5)
-        backward(2*hauteurPorte/5)
-    left(90)
+    if positionPorte==1 or positionPorte==3:                            # si la variable positionPorte est égale à 1 ou à 3
+        if positionPorte==1:                                            # si la variable positionPorte est égale à 1
+            up()                                                        # on leve le pinceau
+            goto((11*largeur/20)+x,hauteurPorte+y)                      # on se déplace aux coordonnées indiquées
+            down()                                                      # on pose le pinceau
+        else:                                                           # si la variable positionPorte n'est pas égale à 1
+            up()                                                        # on leve le pinceau
+            goto(3*largeur/20+x,hauteurPorte+y)                         # on se déplace aux coordonnées indiquées
+            down()                                                      # on pose le pinceau
+        begin_fill()                                                    # on commence le remplissage
+        color("#E9FFE5")                                                # choix de la couleur (ici en héxadécimal)
+        for k in range(0,2):                                            # boucle for : on execute 2 fois.
+            forward(2*hauteurPorte/5)                                   # on avance de la valeur "2*hauteurPorte/5"
+            left(90)                                                    # on tourne à gauche d'un angle de 90 degrés
+            forward(largeur/3)                                          # on avance de la valeur "largeur/3"
+            left(90)                                                    # on tourne à gauche d'un angle de 90 degrés
+        end_fill()                                                      # fin du remplissage
+        width(5)                                                        # on modifie l'épaisseur du trait
+        color("black")                                                  # choix de la couleur noire
+        for k in range(0,2):                                            # boucle for : on execute 2 fois.
+            forward(2*hauteurPorte/5)                                   # on avance de la valeur "2*hauteurPorte/5"
+            left(90)                                                    # on tourne à gauche d'un angle de 90 degrés
+            forward(largeur/3)                                          # on avance de la valeur "largeur/3"
+            left(90)                                                    # on tourne à gauche d'un angle de 90 degrés
+        forward(hauteurPorte/5)                                         # on avance de la valeur "hauteurPorte/5"
+        left(90)                                                        # on tourne à gauche d'un angle de 90 degrés
+        forward(largeur/3)                                              # on avance de la valeur "largeur/3"
+        backward(largeur/6)                                             # on recule de la valeur "largeur/6"
+        right(90)                                                       # on tourne à droite d'un angle de 90 degrés
+        forward(hauteurPorte/5)                                         # on avance de la valeur "hauteurPorte/5"
+        backward(2*hauteurPorte/5)                                      # on recule de la valeur "2*hauteurPorte/5"
+    left(90)                                                            # on tourne à gauche d'un angle de 90 degrés
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
 def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black',nbrFenetresEtagesMaison = 2,toit = 'oui', couleurPorte = 'red',couleurFenetresMaison='blue', couleurToit = 'blue', couleurEtages = 'red', demander = 0,nbrEtagesMaison=1):
