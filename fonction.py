@@ -457,7 +457,7 @@ def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit = 'red', couleurPorte=
     left(90)
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
-def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', couleurPorte = 'red', couleurToit = 'blue', couleurEtages = 'red', demander = 0,nbrEtagesMaison=1):
+def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', couleurPorte = 'red',couleurFenetresMaison='blue', couleurToit = 'blue', couleurEtages = 'red', demander = 0,nbrEtagesMaison=1):
     dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison)
     if demander == 0:
         toit = input("Voulez-vous un toit (Oui/Non) : ")
@@ -479,9 +479,11 @@ def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, co
     largeurPorte = largeurMaison/3
     hauteurPorte = 2*hauteurMaison/(3*nbrEtagesMaison)
     dessineRectangle(xPorte, yMaison, largeurPorte, hauteurPorte, couleurPorte)
-    nbrFenetresEtagesMaison = lireEntierClavier("Entrez le nombre de fenêtre par étages de votre maison (entre 1 et 10) : ", 1, 10)
-    couleurFenetresMaison = lireCouleurClavier("Entrez la couleur des fenêtres de votre maison (en hexadécimal ou en anglais) : ")
-        
+    if demander == 0:
+            
+        nbrFenetresEtagesMaison = lireEntierClavier("Entrez le nombre de fenêtre par étages de votre maison (entre 1 et 10) : ", 1, 10)
+        couleurFenetresMaison = lireCouleurClavier("Entrez la couleur des fenêtres de votre maison (en hexadécimal ou en anglais) : ")
+            
     dessineFenetre(nbrFenetresEtagesMaison,nbrEtagesMaison,hauteurMaison,largeurMaison, xMaison, yMaison, couleurFenetresMaison)
 	
 #fonction dessineFenetre, dessine des fenêtres tous les étages, en les remplissant.
