@@ -457,7 +457,7 @@ def dessineMaison(x=0,y=0,couleurMaison='red',couleurToit = 'red', couleurPorte=
     left(90)
 
 #fonction dessineMaison, utilise différents module pour créer une maison    
-def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black', couleurPorte = 'red',couleurFenetresMaison='blue', couleurToit = 'blue', couleurEtages = 'red', demander = 0,nbrEtagesMaison=1):
+def dessineMaison1(xMaison=0, yMaison=0, hauteurMaison=200, largeurMaison=70, couleurMaison='black',nbrFenetresEtagesMaison = 2, couleurPorte = 'red',couleurFenetresMaison='blue', couleurToit = 'blue', couleurEtages = 'red', demander = 0,nbrEtagesMaison=1):
     dessineRectangle(xMaison, yMaison, largeurMaison, hauteurMaison, couleurMaison)
     if demander == 0:
         toit = input("Voulez-vous un toit (Oui/Non) : ")
