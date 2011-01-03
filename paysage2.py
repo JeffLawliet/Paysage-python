@@ -511,7 +511,7 @@ def dessineArbre(xArbre=0, yArbre=0, largArbre = 50, hautArbre = 300, couleur = 
     end_fill()
  
 def dessineFleur(x=0, y=0, haut=20, demander = 0):
-    if demander == 0:
+    if demander == 1:
         x=lireEntierClavier("Abscisse du bout de la tige au sol : ",LARGEUR_MIN, LARGEUR_MAX)
         y=lireEntierClavier("Ordonnée du bout de la tige au sol : ", HAUTEUR_MIN, HAUTEUR_MAX)
         haut=lireEntierClavier("Hauteur de la fleur (10-60) : ", 10, 60)

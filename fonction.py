@@ -172,6 +172,77 @@ def dessineRoute(x=0, y=0, lar=100, long=300, demander=0):
         dessineTrait(i+10,y+lar/2,25,0,'white',5)
         i=i+45
 
+
+def dessinePomme(x,y):
+    aller(x,y,90)
+    begin_fill()
+    color("red")
+    circle(5,180)
+    end_fill()
+    begin_fill()
+    circle(10,180)
+    end_fill()
+    begin_fill()
+    circle(5,180)
+    end_fill()
+    width(2)
+    left(55)
+    color("brown")
+    circle(4,-140)
+    up()
+    goto(100,100)
+    left(90)
+
+def dessineArbre1(xArbre1,yArbre1):
+    aller(xArbre1,yArbre1)
+
+    #Dessin du tronc:
+    begin_fill()
+    color("brown")
+    circle(35,50)
+    left(40)
+    forward(100)
+    right(90)
+    forward(30)
+    right(90)
+    forward(100)
+    left(40)
+    circle(35,50)
+    backward(80)
+    end_fill()
+
+    #Dessin du feuillage
+    up()
+    goto(xArbre1+40,yArbre1+110)
+    down()
+    begin_fill()
+    color("green")
+    circle(80)
+    end_fill()
+    left(90)
+    forward(10)
+    right(90)
+    
+    for i in range(0,10):
+        circle(70,i)
+        right(90)
+        begin_fill()
+        circle(30)
+        end_fill()
+        circle(20,207)
+        right(86)
+        i=i+1
+
+    #Pommes
+    dessinePomme(xArbre1+25,yArbre1+155)
+    dessinePomme(xArbre1+50,yArbre1+200)
+    dessinePomme(xArbre1+40,yArbre1+250)
+    dessinePomme(xArbre1+85,yArbre1+145)
+    dessinePomme(xArbre1+5,yArbre1+220)
+    dessinePomme(xArbre1+90,yArbre1+235)
+    dessinePomme(xArbre1+95,yArbre1+195)
+    dessinePomme(xArbre1-10,yArbre1+183)
+
 def dessineVoiture(x=0, y=0, diam = 20, couleur = 'black', demander = 0):
     
     if demander == 0:
@@ -679,7 +750,7 @@ def dessineArbre(xArbre=0, yArbre=0, largArbre = 50, hautArbre = 300, couleur = 
     end_fill()
  
 def dessineFleur(x=0, y=0, haut=20, demander = 0):
-    if demander == 0:
+    if demander == 1:
         
         x=lireEntierClavier("Abscisse du bout de la tige au sol : ",LARGEUR_MIN, LARGEUR_MAX)
         y=lireEntierClavier("Ordonnée du bout de la tige au sol : ", HAUTEUR_MIN, HAUTEUR_MAX)

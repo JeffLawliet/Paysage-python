@@ -1,12 +1,13 @@
 from turtle import *
 setup(1280, 1024)
-from fonction import *
-
 bgcolor('white')
 speed(0)
 ht()
 reset()
 continuer = 1
+from paysage import *
+
+
 print("Bienvenue dans le constructeur de paysage.")
 print("Ce logiciel a été crée par VENANT Fanny, REDOLFI Camille et FILIPPI Jeff. Il est actuellement en version 1.0")
 print("Logiciel optimisé pour des résolutions d'écrans supérieures à 1280*970")
@@ -87,9 +88,9 @@ if typeCreation == 2:
                 aller(LARGEUR_MAX-300 + i*20, HAUTEUR_MIN + 30*(j+1))
                 dessineFleur(xcor(), ycor(), 20, 1)
         print("Tiens, un arbre !")
-        dessineArbre(LARGEUR_MIN + 50, HAUTEUR_MIN + 40, 25, 240, 'green', 1)
-        dessineArbre(LARGEUR_MIN + 150, HAUTEUR_MIN + 20, 25, 240 ,'#0CF415',1)
-        dessineArbre(LARGEUR_MIN + 100, HAUTEUR_MIN + 70, 25, 240, '#07930D', 1)
+        dessineArbre(LARGEUR_MIN + 50, HAUTEUR_MIN)
+        dessineArbre(LARGEUR_MIN + 150, HAUTEUR_MIN)
+        dessineArbre(LARGEUR_MIN + 100, HAUTEUR_MIN)
 
     elif endroit == 'mer':
         temps = ''
@@ -149,6 +150,7 @@ elif typeCreation == 1:
                 print("3. Voiture")
                 print("4. Arbre")
                 print("5. Lampadaire")
+                print("6. Fleur")
                 choix = lireEntierClavier("Choisis le numéro correspondant à ton choix : ", 0, 6)
                 if choix == 0: choixCategorie = 0
                 elif choix == 1: dessineRoute()
@@ -168,8 +170,9 @@ elif typeCreation == 1:
                         dessineMaison1(x,y,hauteur,largeur,couleurMaison,couleurPorte,nbrEtagesMaison, demander=0)
 
                 elif choix == 3: dessineVoiture()
-                elif choix == 4: dessineArbre()
+                elif choix == 4: dessineArbre1()
                 elif choix == 5: dessineLampadaire()
+                elif choix == 6: dessineFleur(demander = 1)
                 if choix != 0:
                     continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter) : ", 0, 1)
                 
@@ -214,7 +217,7 @@ elif typeCreation == 1:
                     
         if choixCategorie == 4:
             reset()
-            bgclor("white")
+            bgcolor("white")
             couleur = lireCouleurClavier("La nouvelle couleur du fond d'écran (en hexadécimal ou en anglais) : ", 1)
             bgcolor(couleur)
 
