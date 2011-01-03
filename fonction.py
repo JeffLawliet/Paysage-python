@@ -859,7 +859,10 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
         
         xDauphin = lireEntierClavier("Entrez le x du point bas droit du dauphin : ", LARGEUR_MIN, LARGEUR_MAX)
         yDauphin = lireEntierClavier("Entrez le y du point bas droit du dauphin : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    aller(xDauphin, yDauphin)
+    
+    up()
+    goto(xDauphin,yDauphin)
+    down()
     width(5)
     begin_fill()
     color("Gray")
@@ -916,12 +919,16 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
     
     #Dessine un oeil
     color("black")
-    aller(xDauphin-136,yDauphin+4.5)
+    up()
+    goto(xDauphin-136,yDauphin+4.5)
+    down()
     circle(4)
     goto(xDauphin-137,yDauphin+3)
     color("white")
     circle(0.5)
     up()
+    goto(100,200)
+
 
 def dessinePhare(x=0, y=0, demander = 0):
 
@@ -929,18 +936,20 @@ def dessinePhare(x=0, y=0, demander = 0):
         x = lireEntierClavier("Le x du point bas gauche du phare : ", LARGEUR_MIN, LARGEUR_MAX)
         y = lireEntierClavier("Le y du point bas gauche du phrase :", HAUTEUR_MIN, HAUTEUR_MAX)
     aller(x-50,y-200)
-    
+
     # Base du phare:
-    for i in range(0,9):
+    for i in range(0,5):
         if i%2==0:
             begin_fill()
-            dessineRectangle(xcor(), ycor(), 135, 70, 'red')
-            end_fill()
-        elif i%2==1:
-            begin_fill()
-            dessineRectangle(xcor(), ycor(), 135, 70, 'white')
+            color("red")
+        for k in range(0,2):
+            forward(135)
+            left(90)
+            forward(75)
+            left(90)
+        end_fill()
         right(90)
-        backward(70)
+        backward(75)
         left(90)
         
     #Haut du phare:
@@ -955,7 +964,10 @@ def dessinePhare(x=0, y=0, demander = 0):
     #Ballustrade:
     forward(10)
     left(90)
-    forward(30)
+    forward(10)
+    fillcolor("darkgrey")
+    begin_fill()
+    forward(20)
     left(90)
     forward(10)
     right(90)
@@ -963,15 +975,26 @@ def dessinePhare(x=0, y=0, demander = 0):
     right(90)
     forward(25)
     right(90)
+    forward(30)
+    right(90)
+    forward(15)
+    end_fill()
+    backward(15)
+    left(90)
+    backward(30)
     for i in range(0,7):
         for k in range(0,2):
+            fillcolor('darkgrey')
+            begin_fill()
             forward(30)
             left(90)
             forward(15)
             left(90)
+            end_fill()
         right(90)
         backward(15)
         left(90)
+    begin_fill()
     left(90)
     forward(25)
     right(90)
@@ -980,14 +1003,16 @@ def dessinePhare(x=0, y=0, demander = 0):
     forward(10)
     left(90)
     forward(20)
+    right(90)
+    forward(15)
+    end_fill()
+    color("black")
+    right(90)
+    forward(30)
 
     #Lumière du phare:
-    up()
-    backward(30)
     right(90)
-    forward(20)
-    down()
-    left(180)
+    backward(5)
     begin_fill()
     circle(7,180)
     forward(95)
@@ -995,8 +1020,20 @@ def dessinePhare(x=0, y=0, demander = 0):
     end_fill()
     forward(4)
 
+    #Coloration :
     left(90)
-    forward(60)
+    forward(15)
+    begin_fill()
+    color("yellow")
+    for i in range(0,2):
+        forward(43)
+        right(90)
+        forward(88)
+        right(90)
+    end_fill()
+    
+    color("black")
+    forward(43)
     left(180)
     for i in range(0,3):
         for k in range(0,2):
@@ -1006,7 +1043,7 @@ def dessinePhare(x=0, y=0, demander = 0):
             left(90)
         right(90)
         backward(88/3)
-        left(90)
+        left(90)    
 
     #Dome du phare:
     left(90)
@@ -1031,7 +1068,8 @@ def dessinePhare(x=0, y=0, demander = 0):
     forward(60)
     right(90)
     circle(3)
-
+    
+    
 #######################################################
 
 ### CATÉGORIE : CIEL ###
@@ -1130,3 +1168,4 @@ def dessineSoleil(xSoleil=0, ySoleil=0, rayon=50, demander=0):
         forward(rayon+10)					    # on avance en diagonale
         down()							    # on baisse le pinceau
         forward(rayon/3)					    # trace un rayon de soleil
+
