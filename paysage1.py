@@ -1,7 +1,6 @@
 # paysage n°1
 
 from turtle import *
-setup(1280,1024)
 from math import *
 from random import *
 setup(1280,1024)
@@ -748,9 +747,71 @@ def dessinePhare(x=0, y=0, demander = 0):
     right(90)
     circle(3)
 
+def dessinePlot(x,y):
+    up()
+    goto(-20+x,-350+y)
+    down()
+
+    width(10)
+    goto(20+x,-350+y)
+    width(8)
+    up()
+    goto(-15+x,-343+y)
+    down()
+    goto(15+x,-343+y)
+    up()
+    goto(-18+x,-338+y)
+    down()
+    width(10)
+    goto(18+x,-338+y)
+    up()
+    goto(-10+x,-330+y)
+    down()
+    goto(10+x,-330+y)
+
+
+    #création du milieu
+    up()
+    goto(-10+x,-325+y)
+    down()
+    goto(10+x,-325+y)
+    up()
+    goto(-10+x,-320+y)
+    down()
+    goto(10+x,-320+y)
+    width(9)
+    up()
+    goto(-10+x,-315+y)
+    down()
+    goto(10+x,-315+y)
+    width(8)
+    begin_fill()
+    goto(0+x,-225+y)
+    goto(-10+x,-310+y)
+    end_fill()
+    width(5)
+    up()
+    goto(-4+x,-220+y)
+    down()
+    goto(4+x,-220+y)
+    up()
+    goto(-2+x,-216+y)
+    down()
+    width(4)
+    goto(2+x,-216+y)
+    up()
+    goto(-4+x,-214+y)
+    down()
+    width(5)
+    goto(4+x,-214+y)
+    up()
+    goto(0+x,-212+y)
+    down()
+    begin_fill()
+    width(2)
+    circle(10)
+    end_fill()
     
-
-
 
 
 # dessin:
@@ -767,3 +828,7 @@ dessineSable(-140,-500,840,300,'nuit',0)
 dessinePhare(-40,-100,1)
 
 dessineMaison(90,-350,'#F6E497','#B9121B','#4C1B1B',1,500,200)
+
+dessinePlot(-115,100)
+
+dessinePlot(-115,-110)
