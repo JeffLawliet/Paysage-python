@@ -707,6 +707,8 @@ def lireCouleurClavier(phrase, couleur=0):
 
 # dessin:
 
+setup(1280,1024)
+
 for i in range(100):
     dessineEtoile(2,1)
 
@@ -719,4 +721,4 @@ dessineSable(-250,-500,950,300,'nuit',1)
 dessinePhare(-100,-150,1)
 
 
-dessineMaison(100,-350,'#F6E497','#B9121B','#4C1B1B',1,500,220)
+dessineMaison(50,-350,'#F6E497','#B9121B','#4C1B1B',1,550,250)
