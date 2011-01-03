@@ -1057,8 +1057,22 @@ def dessinePhare(x=0, y=0, demander = 0):
         backward(88/3)
         left(90)    
 
+    #Lumière :
+    left(100)
+    begin_fill()
+    color("yellow")
+    forward(685)
+    right(100)
+    forward(284)
+    right(100)
+    forward(685)
+    end_fill()
+    color("black")
+    right(80)
+    forward(40)
+
     #Dome du phare:
-    left(90)
+    right(90)
     forward(2)
     begin_fill()
     circle(7,180)
