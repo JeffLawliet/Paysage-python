@@ -725,40 +725,49 @@ def dessineVague5(x,y,hauteur,longueur):
     # penser à multiplier la longueur des vagues
     # attention à partir d'un certain nombre, les vagues "tombent"
 
-def dessineVagueSable(x,y,nb):
+def dessineVague(x,y,nb):
     aller(x,y)
+    longueurVague=412.534656794
     i=1
     while i<=nb:
-        circle(200,-5)
+        circle(200,-10)
         left(180)
         circle(200,20)
         left(180)
-        goto(xcor(), ycor())
+        circle(200,-10)
+        left(180)
+        circle(200,20)
+        left(180)
+        circle(200,-40)
+        left(180)
+        circle(200,20)
+        left(180)
         i=i+1
+    
 
-def dessineSable(x=0, y=0, long = 0, haut = 0, date = 'nuit', demander = 0):
-    if demander == 0:
-        
-        x=lireEntierClavier("Abscisse du coin bas gauche de la plage : ", LARGEUR_MIN, LARGEUR_MAX)
-        y=lireEntierClavier("Ordonnée du coin bas gauche de la plage : ", HAUTEUR_MIN, HAUTEUR_MAX)
-        long=lireEntierClavier("Longueur de la plage : ", 0, LARGEUR_MAX*2)
-        haut=lireEntierClavier("Largeur de la plage : ", 0, HAUTEUR_MAX*2)
+def dessineSable(x=0,y=0,long=412,haut=100,date='jour',demander=0):
+    if demander!=0:
+        x=int(input("Abscisse du coin bas gauche de la plage: "))
+        y=int(input("Ordonnée du coin bas gauche de la plage: "))
+        long=int(input("Longueur de la plage: "))
+        haut=int(input("Largeur de la plage: "))
         date=input("Fait-il jour ou nuit? ")
-        if date!="jour" and date!="Jour" and date!="nuit" and date!="Nuit":
-            print("Veuillez recommencer")
-            date=input("Fait-il jour ou nuit?")
+    if date!="jour" and date!="Jour" and date!="nuit" and date!="Nuit":
+        print("Veuillez recommencer")
+        date=input("Fait-il jour ou nuit?")
     if date=="jour" or date=="Jour":
         couleur1='#FAEC7F'
         couleur2='#A67E2E'
     if date=="Nuit" or date=="nuit":
         couleur1='#BF5C00'
         couleur2='#BD8D46'
-    dessineRectangle(x,y,long,haut,couleur1)
+    dessineRectangle(x,y,long,haut,couleur1,1)
     color(couleur2)
+    longueurVague=412.534656794
     i=1
     y2=y+(haut-20)
     while i<=haut/40:
-        dessineVagueSable(x+long,y2,long/40)
+        dessineVague(x+long,y2,long/longueurVague)
         i=i+1
         y2=y2-40
 
@@ -859,7 +868,10 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
         
         xDauphin = lireEntierClavier("Entrez le x du point bas droit du dauphin : ", LARGEUR_MIN, LARGEUR_MAX)
         yDauphin = lireEntierClavier("Entrez le y du point bas droit du dauphin : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    aller(xDauphin, yDauphin)
+    
+    up()
+    goto(xDauphin,yDauphin)
+    down()
     width(5)
     begin_fill()
     color("Gray")
@@ -916,12 +928,16 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
     
     #Dessine un oeil
     color("black")
-    aller(xDauphin-136,yDauphin+4.5)
+    up()
+    goto(xDauphin-136,yDauphin+4.5)
+    down()
     circle(4)
     goto(xDauphin-137,yDauphin+3)
     color("white")
     circle(0.5)
     up()
+    goto(100,200)
+    right(150)
 
 def dessinePhare(x=0, y=0, demander = 0):
 
@@ -929,18 +945,23 @@ def dessinePhare(x=0, y=0, demander = 0):
         x = lireEntierClavier("Le x du point bas gauche du phare : ", LARGEUR_MIN, LARGEUR_MAX)
         y = lireEntierClavier("Le y du point bas gauche du phrase :", HAUTEUR_MIN, HAUTEUR_MAX)
     aller(x-50,y-200)
-    
+
     # Base du phare:
-    for i in range(0,9):
+    for i in range(0,5):
         if i%2==0:
             begin_fill()
-            dessineRectangle(xcor(), ycor(), 135, 70, 'red')
-            end_fill()
-        elif i%2==1:
+            color("red")
+        else:
             begin_fill()
-            dessineRectangle(xcor(), ycor(), 135, 70, 'white')
+            color("white")
+        for k in range(0,2):
+            forward(135)
+            left(90)
+            forward(75)
+            left(90)
+        end_fill()
         right(90)
-        backward(70)
+        backward(75)
         left(90)
         
     #Haut du phare:
@@ -955,7 +976,10 @@ def dessinePhare(x=0, y=0, demander = 0):
     #Ballustrade:
     forward(10)
     left(90)
-    forward(30)
+    forward(10)
+    fillcolor("darkgrey")
+    begin_fill()
+    forward(20)
     left(90)
     forward(10)
     right(90)
@@ -963,15 +987,26 @@ def dessinePhare(x=0, y=0, demander = 0):
     right(90)
     forward(25)
     right(90)
+    forward(30)
+    right(90)
+    forward(15)
+    end_fill()
+    backward(15)
+    left(90)
+    backward(30)
     for i in range(0,7):
         for k in range(0,2):
+            fillcolor('darkgrey')
+            begin_fill()
             forward(30)
             left(90)
             forward(15)
             left(90)
+            end_fill()
         right(90)
         backward(15)
         left(90)
+    begin_fill()
     left(90)
     forward(25)
     right(90)
@@ -980,14 +1015,16 @@ def dessinePhare(x=0, y=0, demander = 0):
     forward(10)
     left(90)
     forward(20)
+    right(90)
+    forward(15)
+    end_fill()
+    color("black")
+    right(90)
+    forward(30)
 
     #Lumière du phare:
-    up()
-    backward(30)
     right(90)
-    forward(20)
-    down()
-    left(180)
+    backward(5)
     begin_fill()
     circle(7,180)
     forward(95)
@@ -995,8 +1032,20 @@ def dessinePhare(x=0, y=0, demander = 0):
     end_fill()
     forward(4)
 
+    #Coloration :
     left(90)
-    forward(60)
+    forward(15)
+    begin_fill()
+    color("yellow")
+    for i in range(0,2):
+        forward(43)
+        right(90)
+        forward(88)
+        right(90)
+    end_fill()
+    
+    color("black")
+    forward(43)
     left(180)
     for i in range(0,3):
         for k in range(0,2):
@@ -1006,7 +1055,7 @@ def dessinePhare(x=0, y=0, demander = 0):
             left(90)
         right(90)
         backward(88/3)
-        left(90)
+        left(90)    
 
     #Dome du phare:
     left(90)
@@ -1031,7 +1080,8 @@ def dessinePhare(x=0, y=0, demander = 0):
     forward(60)
     right(90)
     circle(3)
-
+    
+    
 #######################################################
 
 ### CATÉGORIE : CIEL ###
@@ -1130,3 +1180,4 @@ def dessineSoleil(xSoleil=0, ySoleil=0, rayon=50, demander=0):
         forward(rayon+10)					    # on avance en diagonale
         down()							    # on baisse le pinceau
         forward(rayon/3)					    # trace un rayon de soleil
+

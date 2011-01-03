@@ -1,6 +1,8 @@
 def dessineDauphin(xDauphin =0, yDauphin = 0):
     
-    aller(xDauphin, yDauphin)
+    up()
+    goto(xDauphin,yDauphin)
+    down()
     width(5)
     begin_fill()
     color("Gray")
@@ -57,12 +59,14 @@ def dessineDauphin(xDauphin =0, yDauphin = 0):
     
     #Dessine un oeil
     color("black")
-    aller(xDauphin-136,yDauphin+4.5)
+    up()
+    goto(xDauphin-136,yDauphin+4.5)
+    down()
     circle(4)
     goto(xDauphin-137,yDauphin+3)
     color("white")
     circle(0.5)
     up()
-
+    goto(100,200)
 
 dessineDauphin(29, 20)

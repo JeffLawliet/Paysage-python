@@ -9,8 +9,9 @@ def aller(x,y,angle=0):
     down()
     seth(angle)
 
-def dessineVague(x,y,nb):
+def dessineVague(x,y,nb,longueurTot):
     aller(x,y)
+    longueurVague=412.534656794
     i=1
     while i<=nb:
         circle(200,-10)
@@ -26,6 +27,8 @@ def dessineVague(x,y,nb):
         circle(200,20)
         left(180)
         i=i+1
+    
+        
 
 def dessineRectangle(x,y,largeur=180,hauteur=50,couleur='red',epaisseur=1):
     aller(x,y)
@@ -60,16 +63,18 @@ def dessineSable():
         couleur2 = 'black'
     dessineRectangle(x,y,long,haut,couleur1,1)
     color(couleur2)
+    longueurVague=412.534656794
     i=1
     y2=y+(haut-20)
     while i<=haut/40:
-        dessineVague(x+long,y2,long/40)
+        dessineVague(x+long,y2,long/longueurVague)
         i=i+1
         y2=y2-40
 
 
 dessineSable()
-    
+
+
     
     
 
