@@ -725,40 +725,49 @@ def dessineVague5(x,y,hauteur,longueur):
     # penser à multiplier la longueur des vagues
     # attention à partir d'un certain nombre, les vagues "tombent"
 
-def dessineVagueSable(x,y,nb):
+def dessineVague(x,y,nb):
     aller(x,y)
+    longueurVague=412.534656794
     i=1
     while i<=nb:
-        circle(200,-5)
+        circle(200,-10)
         left(180)
         circle(200,20)
         left(180)
-        goto(xcor(), ycor())
+        circle(200,-10)
+        left(180)
+        circle(200,20)
+        left(180)
+        circle(200,-40)
+        left(180)
+        circle(200,20)
+        left(180)
         i=i+1
+    
 
-def dessineSable(x=0, y=0, long = 0, haut = 0, date = 'nuit', demander = 0):
-    if demander == 0:
-        
-        x=lireEntierClavier("Abscisse du coin bas gauche de la plage : ", LARGEUR_MIN, LARGEUR_MAX)
-        y=lireEntierClavier("Ordonnée du coin bas gauche de la plage : ", HAUTEUR_MIN, HAUTEUR_MAX)
-        long=lireEntierClavier("Longueur de la plage : ", 0, LARGEUR_MAX*2)
-        haut=lireEntierClavier("Largeur de la plage : ", 0, HAUTEUR_MAX*2)
+def dessineSable(x=0,y=0,long=412,haut=100,date='jour',demander=0):
+    if demander!=0:
+        x=int(input("Abscisse du coin bas gauche de la plage: "))
+        y=int(input("Ordonnée du coin bas gauche de la plage: "))
+        long=int(input("Longueur de la plage: "))
+        haut=int(input("Largeur de la plage: "))
         date=input("Fait-il jour ou nuit? ")
-        if date!="jour" and date!="Jour" and date!="nuit" and date!="Nuit":
-            print("Veuillez recommencer")
-            date=input("Fait-il jour ou nuit?")
+    if date!="jour" and date!="Jour" and date!="nuit" and date!="Nuit":
+        print("Veuillez recommencer")
+        date=input("Fait-il jour ou nuit?")
     if date=="jour" or date=="Jour":
         couleur1='#FAEC7F'
         couleur2='#A67E2E'
     if date=="Nuit" or date=="nuit":
         couleur1='#BF5C00'
         couleur2='#BD8D46'
-    dessineRectangle(x,y,long,haut,couleur1)
+    dessineRectangle(x,y,long,haut,couleur1,1)
     color(couleur2)
+    longueurVague=412.534656794
     i=1
     y2=y+(haut-20)
     while i<=haut/40:
-        dessineVagueSable(x+long,y2,long/40)
+        dessineVague(x+long,y2,long/longueurVague)
         i=i+1
         y2=y2-40
 
@@ -928,7 +937,7 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
     circle(0.5)
     up()
     goto(100,200)
-
+    right(150)
 
 def dessinePhare(x=0, y=0, demander = 0):
 
@@ -942,6 +951,9 @@ def dessinePhare(x=0, y=0, demander = 0):
         if i%2==0:
             begin_fill()
             color("red")
+        else:
+            begin_fill()
+            color("white")
         for k in range(0,2):
             forward(135)
             left(90)

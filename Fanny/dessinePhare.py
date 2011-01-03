@@ -32,7 +32,10 @@ def dessinePhare(x,y):
     #Ballustrade:
     forward(10)
     left(90)
-    forward(30)
+    forward(10)
+    fillcolor("darkgrey")
+    begin_fill()
+    forward(20)
     left(90)
     forward(10)
     right(90)
@@ -40,15 +43,26 @@ def dessinePhare(x,y):
     right(90)
     forward(25)
     right(90)
+    forward(30)
+    right(90)
+    forward(15)
+    end_fill()
+    backward(15)
+    left(90)
+    backward(30)
     for i in range(0,7):
         for k in range(0,2):
+            fillcolor('darkgrey')
+            begin_fill()
             forward(30)
             left(90)
             forward(15)
             left(90)
+            end_fill()
         right(90)
         backward(15)
         left(90)
+    begin_fill()
     left(90)
     forward(25)
     right(90)
@@ -57,14 +71,16 @@ def dessinePhare(x,y):
     forward(10)
     left(90)
     forward(20)
+    right(90)
+    forward(15)
+    end_fill()
+    color("black")
+    right(90)
+    forward(30)
 
     #Lumière du phare:
-    up()
-    backward(30)
     right(90)
-    forward(20)
-    down()
-    left(180)
+    backward(5)
     begin_fill()
     circle(7,180)
     forward(95)
@@ -72,8 +88,20 @@ def dessinePhare(x,y):
     end_fill()
     forward(4)
 
+    #Coloration :
     left(90)
-    forward(60)
+    forward(15)
+    begin_fill()
+    color("yellow")
+    for i in range(0,2):
+        forward(43)
+        right(90)
+        forward(88)
+        right(90)
+    end_fill()
+    
+    color("black")
+    forward(43)
     left(180)
     for i in range(0,3):
         for k in range(0,2):
@@ -83,7 +111,7 @@ def dessinePhare(x,y):
             left(90)
         right(90)
         backward(88/3)
-        left(90)
+        left(90)    
 
     #Dome du phare:
     left(90)

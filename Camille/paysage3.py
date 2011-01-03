@@ -6,6 +6,8 @@ from turtle import *
 from math import *								 
 from random import *								
 
+setup(1280,1024)
+
 LARGEUR_MAX = window_width()//2                     		
 LARGEUR_MIN = -window_width()//2					    
 HAUTEUR_MAX = window_height()//2						  
@@ -198,15 +200,21 @@ def dessineBouee(x=0,y=0, demander=0):
             right(202)
             
 def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
+
     if demander == 0:
+        
         xDauphin = lireEntierClavier("Entrez le x du point bas droit du dauphin : ", LARGEUR_MIN, LARGEUR_MAX)
         yDauphin = lireEntierClavier("Entrez le y du point bas droit du dauphin : ", HAUTEUR_MIN, HAUTEUR_MAX)
-    aller(xDauphin, yDauphin)
+    
+    up()
+    goto(xDauphin,yDauphin)
+    down()
     width(5)
     begin_fill()
     color("Gray")
     left(140)
     circle(125,90)
+
     #Dorsale:
     up()
     circle(125,-35)
@@ -215,6 +223,8 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
     circle(40,-80)
     left(45)
     circle(40,38)
+    
+    
     up()
     right(72)
     circle(125,47)
@@ -228,6 +238,7 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
     circle(125,30)
     right(170)
     circle(200,-35)
+
     #Nageoire
     up()
     circle(200,35)
@@ -236,6 +247,7 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
     circle(40,80)
     right(35)
     circle(40,-48)
+
     left(246)
     circle(200,-30)
     left(90)
@@ -246,18 +258,23 @@ def dessineDauphin(xDauphin =0, yDauphin = 0, demander = 0):
     circle(90,40)
     left(125)
     circle(150,25)
+
     right(68)
     circle(400,8)
     end_fill()
+    
     #Dessine un oeil
     color("black")
-    aller(xDauphin-136,yDauphin+4.5)
+    up()
+    goto(xDauphin-136,yDauphin+4.5)
+    down()
     circle(4)
     goto(xDauphin-137,yDauphin+3)
     color("white")
     circle(0.5)
     up()
-
+    goto(100,200)
+    right(150)
 
 def dessineNuage(x=0,y=0,rayon=100,couleur='white', demander = 1):
     if demander == 0:                                                                              
@@ -297,7 +314,6 @@ def dessineSoleil(xSoleil=0, ySoleil=0, rayon=50, demander=0):
 
 # dessin:
 
-setup(1280,1024)
 bgcolor('#ABC8E2')
 
 dessineMer('jour','agitée',1)
@@ -310,7 +326,7 @@ dessineDauphin(-50,-100,1)
 dessineDauphin(-300,-200,1)
 
 dessineRectangle(250,-300,500,350,'black')
-dessineTriangle(250,-300,60,405,'black')
+dessineTriangle(250,-300,60,404,'black')
 
 dessineBouee(400,-100,1)
 

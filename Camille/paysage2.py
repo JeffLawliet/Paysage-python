@@ -6,6 +6,8 @@ from turtle import *                                      			  # import du modul
 from math import *								  # import du module math pour certains calculs mathématiques
 from random import *								  # import du module random pour gérer l'aléatoire
 
+setup(1280,1024)
+
 LARGEUR_MAX = window_width()//2                     		
 LARGEUR_MIN = -window_width()//2					    
 HAUTEUR_MAX = window_height()//2						  
@@ -581,7 +583,6 @@ def dessineNuage(x=0,y=0,rayon=100,couleur='white', demander = 1):
 
 # dessin
 
-setup(1280,1024)
 bgcolor('#ABC8E2')
 
 dessineRectangle(LARGEUR_MIN,HAUTEUR_MIN,2*LARGEUR_MAX,HAUTEUR_MAX,'green')
@@ -600,6 +601,6 @@ dessineFleur(400,-100,50,1)
 dessineFleur(500,-75,50,1)
 dessineFleur(600,-150,45,1)
 
-dessineVoiture(LARGEUR_MAX-50,HAUTEUR_MIN+150,50,'red',1)
-dessineVoiture(LARGEUR_MIN+200,HAUTEUR_MIN+150,50,'purple',1)
+dessineVoiture(LARGEUR_MAX-50,HAUTEUR_MIN+150,50,'purple',1)
+dessineVoiture(LARGEUR_MIN+200,HAUTEUR_MIN+150,50,'red',1)
 
