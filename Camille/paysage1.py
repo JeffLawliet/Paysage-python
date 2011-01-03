@@ -1,6 +1,7 @@
 # paysage n°1
 
 from turtle import *
+setup(1280,1024)
 from math import *
 from random import *
 LARGEUR_MAX = window_width()//2

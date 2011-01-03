@@ -2,7 +2,8 @@
 
 # import des fonctions utiles
 
-from turtle import *                                      			
+from turtle import *
+setup(1280,1024)
 from math import *								 
 from random import *								
 

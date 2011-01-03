@@ -785,7 +785,7 @@ def dessineMer(date = 'jour', tps = 'calme', demander = 0):
             couleur1='#000050'
     color(couleur1)
     begin_fill()
-    if tps=="agitée" or tps =="agitée":
+    if tps=="agitée" or tps =="agitee":
         dessineVague5(LARGEUR_MAX,0,30,2*LARGEUR_MAX+100)
         goto(LARGEUR_MIN,HAUTEUR_MIN)
         goto(LARGEUR_MAX,HAUTEUR_MIN)

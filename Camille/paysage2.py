@@ -3,9 +3,10 @@
 # import des fonctions utiles
 
 from turtle import *                                      			  # import du module turtle pour faire fonctionner les fonctions
+setup(1280*1024)
+
 from math import *								  # import du module math pour certains calculs mathématiques
 from random import *								  # import du module random pour gérer l'aléatoire
-setup(1280*1024)
 LARGEUR_MAX = window_width()//2                     		
 LARGEUR_MIN = -window_width()//2					    
 HAUTEUR_MAX = window_height()//2						  
@@ -35,6 +36,7 @@ def dessineTrait(x,y,deplacement=50,orientation=0,couleur='black',epaisseur=2):
     aller(x,y,orientation)			
     forward(deplacement)			
  	
+
 
 def dessineCarre(x,y,cote=50,couleur='black',epaisseur=1):
     aller(x,y,315)	        
@@ -581,7 +583,7 @@ def dessineNuage(x=0,y=0,rayon=100,couleur='white', demander = 1):
 
 # dessin
 
-setup(1280,1024)
+
 bgcolor('#ABC8E2')
 
 dessineRectangle(LARGEUR_MIN,HAUTEUR_MIN,2*LARGEUR_MAX,HAUTEUR_MAX,'green')

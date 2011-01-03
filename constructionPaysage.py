@@ -102,7 +102,7 @@ if typeCreation == 2:
             dessineBouee(LARGEUR_MIN+ 150, HAUTEUR_MIN + 60,1)
             dessinePhare(0, HAUTEUR_MIN+100,1)
             dessineDauphin(LARGEUR_MAX-200, HAUTEUR_MIN+300, 1) 
-        elif enmplacementAstre == 'milieu':
+        elif enplacementAstre == 'milieu':
             dessineBouee(LARGEUR_MIN+ 150, HAUTEUR_MIN + 60,1)
             dessinePhare(LARGEUR_MAX - 110, HAUTEUR_MIN, 120,1)
             dessineDauphin(0, HAUTEUR_MAX + 300, 1)
@@ -130,9 +130,11 @@ elif typeCreation == 1:
     while continuer == 1:
                 
         print("Quelle catégorie d'éléments ?")
+        print(" 0. Arrêter de dessiner")
         print(" 1. Catégorie Ville")
         print(" 2. Catégorie Mer")
         print(" 3. Catégorie Ciel")
+        print(" 4. Effacer l'écran")
         choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",1,4)
                 
         while choixCategorie == 1:
@@ -209,5 +211,14 @@ elif typeCreation == 1:
                 continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter) : ", 0, 1)
                 if continuer == 0:
                     choixCategorie = 0
+                    
+        if choixCategorie == 4:
+            reset()
+            bgclor("white")
+            couleur = lireCouleurClavier("La nouvelle couleur du fond d'écran (en hexadécimal ou en anglais) : ", 1)
+            bgcolor(couleur)
+
+        elif choixCategorie == 0:
+            continuer = 0
 
 print("Admirez votre paysage !")
