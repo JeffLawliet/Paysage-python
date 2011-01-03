@@ -708,7 +708,7 @@ def dessineFleur(x=0, y=0, haut=20, demander = 0):
     aller(x+(diam/6)+(diam/8),y+(26*diam/3)+(diam/8))
     circle((2*diam/3),360)
     end_fill()
-    color('green')
+    color('#1D702D')
     width(2)
     aller(x-(diam/2),y+(22*diam/3))
     left(250)

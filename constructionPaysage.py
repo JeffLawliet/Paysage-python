@@ -134,8 +134,9 @@ elif typeCreation == 1:
         print(" 1. Catégorie Ville")
         print(" 2. Catégorie Mer")
         print(" 3. Catégorie Ciel")
-        print(" 4. Effacer l'écran")
-        choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",1,4)
+        print(" 4. Propriétés de dessin")
+        print(" 5. Effacer l'écran")
+        choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",0,5)
                 
         while choixCategorie == 1:
                 width(1)
@@ -170,9 +171,6 @@ elif typeCreation == 1:
                 if choix != 0:
                     continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter) : ", 0, 1)
                 
-                if continuer == 0:
-                    choixCategorie == 0
-                
         while choixCategorie == 2:
                 width(1)
                 print("Quel élément ?")
@@ -191,8 +189,6 @@ elif typeCreation == 1:
                 elif choix == 5: dessinePhare()
                 if choix != 0:
                     continuer = lireEntierClavier("Voulez-vous continuer de dessiner ? (1 pour continuer, 0 pour arrêter) : ", 0, 1)
-                if continuer == 0:
-                    choixCategorie = 0
                     
         while choixCategorie == 3:
                 width(1)
@@ -212,7 +208,13 @@ elif typeCreation == 1:
                 if continuer == 0:
                     choixCategorie = 0
                     
-        if choixCategorie == 4:
+        while choixCategorie == 4:
+                print("Quel élément ?")
+                print("0. Retour aux catégories")
+                print("1. ")
+            
+                    
+        if choixCategorie == 5:
             reset()
             bgclor("white")
             couleur = lireCouleurClavier("La nouvelle couleur du fond d'écran (en hexadécimal ou en anglais) : ", 1)
