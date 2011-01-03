@@ -503,13 +503,6 @@ def dessineFenetre(nbrFenetresEtages, nbrEtages, hauteurMaison, largeurMaison, x
                 aller(xcor()+ largeurFenetre,ycor()) # on se décale de largeur fenetre
                 
     elif nbrFenetresEtages == 1:
-        
-        if nbrEtages == 1:
-            print("ok")
-            aller(x+(largeurMaison/6),y+(hauteurMaison/2))   # on se décale un petit peu
-            dessineRectangle(xcor(),ycor(),largeurFenetre, hauteurFenetre, couleur,epaisseur) # on dessine la fenêtre
-            
-        else:
             for i in range(1,nbrEtages):
                 aller(x+(largeurMaison/24),y+((i+1)*(hauteurMaison/nbrEtages))-(hauteurMaison/(2*nbrEtages))) # on se décale un peu
                 dessineRectangle(xcor(),ycor(),largeurFenetre, hauteurFenetre,couleur,epaisseur)

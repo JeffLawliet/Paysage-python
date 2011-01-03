@@ -2,6 +2,10 @@ from turtle import *
 setup(1280, 1024)
 from fonction import *
 
+bgcolor('white')
+speed(0)
+ht()
+reset()
 continuer = 1
 print("Bienvenue dans le constructeur de paysage.")
 print("Ce logiciel a été crée par VENANT Fanny, REDOLFI Camille et FILIPPI Jeff. Il est actuellement en version 1.0")
@@ -130,13 +134,11 @@ elif typeCreation == 1:
     while continuer == 1:
                 
         print("Quelle catégorie d'éléments ?")
-        print(" 0. Arrêter de dessiner")
         print(" 1. Catégorie Ville")
         print(" 2. Catégorie Mer")
         print(" 3. Catégorie Ciel")
-        print(" 4. Propriétés de dessin")
-        print(" 5. Effacer l'écran")
-        choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",0,5)
+        print(" 4. Effacer l'écran")
+        choixCategorie = lireEntierClavier("Choisis le numéro correspondant à ton choix : ",1,4)
                 
         while choixCategorie == 1:
                 width(1)
@@ -208,19 +210,13 @@ elif typeCreation == 1:
                 if continuer == 0:
                     choixCategorie = 0
                     
-        while choixCategorie == 4:
-                print("Quel élément ?")
-                print("0. Retour aux catégories")
-                print("1. ")
             
                     
-        if choixCategorie == 5:
+        if choixCategorie == 4:
             reset()
             bgclor("white")
             couleur = lireCouleurClavier("La nouvelle couleur du fond d'écran (en hexadécimal ou en anglais) : ", 1)
             bgcolor(couleur)
 
-        elif choixCategorie == 0:
-            continuer = 0
 
 print("Admirez votre paysage !")

@@ -1,12 +1,7 @@
 from turtle import *
+setup(1280,1024)
 from fonction import *
 
-
-setup(1280,1024)
-LARGEUR_MAX = window_width()//2
-LARGEUR_MIN = -window_width()//2
-HAUTEUR_MAX = window_height()//2
-HAUTEUR_MIN = -window_height()//2
 reset()
 speed(0)
 ht()
@@ -18,7 +13,7 @@ print("3. Paysage 3")
 choix= lireEntierClavier("Entrez le nombre de votre choix : ",1,3)
 
 if choix == 1:
-        
+    bgcolor('#06011d')    
     for i in range(100):
         dessineEtoile(2,1)
 
