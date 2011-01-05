@@ -86,11 +86,10 @@ if typeCreation == 2:
         for j in range(0,4):
             for i in range(0,7):
                 aller(LARGEUR_MAX-300 + i*20, HAUTEUR_MIN + 30*(j+1))
-                dessineFleur(xcor(), ycor(), 20, 1)
+                dessineFleur(xcor(), ycor(), 20, 0)
         print("Tiens, un arbre !")
-        dessineArbre(LARGEUR_MIN + 50, HAUTEUR_MIN)
-        dessineArbre(LARGEUR_MIN + 150, HAUTEUR_MIN)
-        dessineArbre(LARGEUR_MIN + 100, HAUTEUR_MIN)
+        dessineArbre1(LARGEUR_MIN + 150, HAUTEUR_MIN,1)
+
 
     elif endroit == 'mer':
         temps = ''
